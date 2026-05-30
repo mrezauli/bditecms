@@ -39,6 +39,8 @@
             </div>
         </div>
 
+        <x-impersonate::banner/>
+
         @persist('toast')
             <flux:toast.group>
                 <flux:toast />

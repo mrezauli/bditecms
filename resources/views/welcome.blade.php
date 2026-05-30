@@ -1,202 +1,2190 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 
-        <title>{{ __('Welcome') }} - {{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ config('app.name', 'BD-ITEC') }} — Bangladesh IT Engineers Examination Center</title>
 
-        <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Tailwind CSS v4 Browser CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-        @fonts
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=swap"
+        rel="stylesheet" />
 
-        <!-- Styles -->
-        <style>
-            @layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-x-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-duration:initial;--tw-content:""}}}@layer theme{:root,:host{--font-sans:"Instrument Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-serif:ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;--font-mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--color-red-50:oklch(97.1% .013 17.38);--color-red-100:oklch(93.6% .032 17.717);--color-red-200:oklch(88.5% .062 18.334);--color-red-300:oklch(80.8% .114 19.571);--color-red-400:oklch(70.4% .191 22.216);--color-red-500:oklch(63.7% .237 25.331);--color-red-600:oklch(57.7% .245 27.325);--color-red-700:oklch(50.5% .213 27.518);--color-red-800:oklch(44.4% .177 26.899);--color-red-900:oklch(39.6% .141 25.723);--color-red-950:oklch(25.8% .092 26.042);--color-orange-50:oklch(98% .016 73.684);--color-orange-100:oklch(95.4% .038 75.164);--color-orange-200:oklch(90.1% .076 70.697);--color-orange-300:oklch(83.7% .128 66.29);--color-orange-400:oklch(75% .183 55.934);--color-orange-500:oklch(70.5% .213 47.604);--color-orange-600:oklch(64.6% .222 41.116);--color-orange-700:oklch(55.3% .195 38.402);--color-orange-800:oklch(47% .157 37.304);--color-orange-900:oklch(40.8% .123 38.172);--color-orange-950:oklch(26.6% .079 36.259);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-100:oklch(96.2% .059 95.617);--color-amber-200:oklch(92.4% .12 95.746);--color-amber-300:oklch(87.9% .169 91.605);--color-amber-400:oklch(82.8% .189 84.429);--color-amber-500:oklch(76.9% .188 70.08);--color-amber-600:oklch(66.6% .179 58.318);--color-amber-700:oklch(55.5% .163 48.998);--color-amber-800:oklch(47.3% .137 46.201);--color-amber-900:oklch(41.4% .112 45.904);--color-amber-950:oklch(27.9% .077 45.635);--color-yellow-50:oklch(98.7% .026 102.212);--color-yellow-100:oklch(97.3% .071 103.193);--color-yellow-200:oklch(94.5% .129 101.54);--color-yellow-300:oklch(90.5% .182 98.111);--color-yellow-400:oklch(85.2% .199 91.936);--color-yellow-500:oklch(79.5% .184 86.047);--color-yellow-600:oklch(68.1% .162 75.834);--color-yellow-700:oklch(55.4% .135 66.442);--color-yellow-800:oklch(47.6% .114 61.907);--color-yellow-900:oklch(42.1% .095 57.708);--color-yellow-950:oklch(28.6% .066 53.813);--color-lime-50:oklch(98.6% .031 120.757);--color-lime-100:oklch(96.7% .067 122.328);--color-lime-200:oklch(93.8% .127 124.321);--color-lime-300:oklch(89.7% .196 126.665);--color-lime-400:oklch(84.1% .238 128.85);--color-lime-500:oklch(76.8% .233 130.85);--color-lime-600:oklch(64.8% .2 131.684);--color-lime-700:oklch(53.2% .157 131.589);--color-lime-800:oklch(45.3% .124 130.933);--color-lime-900:oklch(40.5% .101 131.063);--color-lime-950:oklch(27.4% .072 132.109);--color-green-50:oklch(98.2% .018 155.826);--color-green-100:oklch(96.2% .044 156.743);--color-green-200:oklch(92.5% .084 155.995);--color-green-300:oklch(87.1% .15 154.449);--color-green-400:oklch(79.2% .209 151.711);--color-green-500:oklch(72.3% .219 149.579);--color-green-600:oklch(62.7% .194 149.214);--color-green-700:oklch(52.7% .154 150.069);--color-green-800:oklch(44.8% .119 151.328);--color-green-900:oklch(39.3% .095 152.535);--color-green-950:oklch(26.6% .065 152.934);--color-emerald-50:oklch(97.9% .021 166.113);--color-emerald-100:oklch(95% .052 163.051);--color-emerald-200:oklch(90.5% .093 164.15);--color-emerald-300:oklch(84.5% .143 164.978);--color-emerald-400:oklch(76.5% .177 163.223);--color-emerald-500:oklch(69.6% .17 162.48);--color-emerald-600:oklch(59.6% .145 163.225);--color-emerald-700:oklch(50.8% .118 165.612);--color-emerald-800:oklch(43.2% .095 166.913);--color-emerald-900:oklch(37.8% .077 168.94);--color-emerald-950:oklch(26.2% .051 172.552);--color-teal-50:oklch(98.4% .014 180.72);--color-teal-100:oklch(95.3% .051 180.801);--color-teal-200:oklch(91% .096 180.426);--color-teal-300:oklch(85.5% .138 181.071);--color-teal-400:oklch(77.7% .152 181.912);--color-teal-500:oklch(70.4% .14 182.503);--color-teal-600:oklch(60% .118 184.704);--color-teal-700:oklch(51.1% .096 186.391);--color-teal-800:oklch(43.7% .078 188.216);--color-teal-900:oklch(38.6% .063 188.416);--color-teal-950:oklch(27.7% .046 192.524);--color-cyan-50:oklch(98.4% .019 200.873);--color-cyan-100:oklch(95.6% .045 203.388);--color-cyan-200:oklch(91.7% .08 205.041);--color-cyan-300:oklch(86.5% .127 207.078);--color-cyan-400:oklch(78.9% .154 211.53);--color-cyan-500:oklch(71.5% .143 215.221);--color-cyan-600:oklch(60.9% .126 221.723);--color-cyan-700:oklch(52% .105 223.128);--color-cyan-800:oklch(45% .085 224.283);--color-cyan-900:oklch(39.8% .07 227.392);--color-cyan-950:oklch(30.2% .056 229.695);--color-sky-50:oklch(97.7% .013 236.62);--color-sky-100:oklch(95.1% .026 236.824);--color-sky-200:oklch(90.1% .058 230.902);--color-sky-300:oklch(82.8% .111 230.318);--color-sky-400:oklch(74.6% .16 232.661);--color-sky-500:oklch(68.5% .169 237.323);--color-sky-600:oklch(58.8% .158 241.966);--color-sky-700:oklch(50% .134 242.749);--color-sky-800:oklch(44.3% .11 240.79);--color-sky-900:oklch(39.1% .09 240.876);--color-sky-950:oklch(29.3% .066 243.157);--color-blue-50:oklch(97% .014 254.604);--color-blue-100:oklch(93.2% .032 255.585);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-300:oklch(80.9% .105 251.813);--color-blue-400:oklch(70.7% .165 254.624);--color-blue-500:oklch(62.3% .214 259.815);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-700:oklch(48.8% .243 264.376);--color-blue-800:oklch(42.4% .199 265.638);--color-blue-900:oklch(37.9% .146 265.522);--color-blue-950:oklch(28.2% .091 267.935);--color-indigo-50:oklch(96.2% .018 272.314);--color-indigo-100:oklch(93% .034 272.788);--color-indigo-200:oklch(87% .065 274.039);--color-indigo-300:oklch(78.5% .115 274.713);--color-indigo-400:oklch(67.3% .182 276.935);--color-indigo-500:oklch(58.5% .233 277.117);--color-indigo-600:oklch(51.1% .262 276.966);--color-indigo-700:oklch(45.7% .24 277.023);--color-indigo-800:oklch(39.8% .195 277.366);--color-indigo-900:oklch(35.9% .144 278.697);--color-indigo-950:oklch(25.7% .09 281.288);--color-violet-50:oklch(96.9% .016 293.756);--color-violet-100:oklch(94.3% .029 294.588);--color-violet-200:oklch(89.4% .057 293.283);--color-violet-300:oklch(81.1% .111 293.571);--color-violet-400:oklch(70.2% .183 293.541);--color-violet-500:oklch(60.6% .25 292.717);--color-violet-600:oklch(54.1% .281 293.009);--color-violet-700:oklch(49.1% .27 292.581);--color-violet-800:oklch(43.2% .232 292.759);--color-violet-900:oklch(38% .189 293.745);--color-violet-950:oklch(28.3% .141 291.089);--color-purple-50:oklch(97.7% .014 308.299);--color-purple-100:oklch(94.6% .033 307.174);--color-purple-200:oklch(90.2% .063 306.703);--color-purple-300:oklch(82.7% .119 306.383);--color-purple-400:oklch(71.4% .203 305.504);--color-purple-500:oklch(62.7% .265 303.9);--color-purple-600:oklch(55.8% .288 302.321);--color-purple-700:oklch(49.6% .265 301.924);--color-purple-800:oklch(43.8% .218 303.724);--color-purple-900:oklch(38.1% .176 304.987);--color-purple-950:oklch(29.1% .149 302.717);--color-fuchsia-50:oklch(97.7% .017 320.058);--color-fuchsia-100:oklch(95.2% .037 318.852);--color-fuchsia-200:oklch(90.3% .076 319.62);--color-fuchsia-300:oklch(83.3% .145 321.434);--color-fuchsia-400:oklch(74% .238 322.16);--color-fuchsia-500:oklch(66.7% .295 322.15);--color-fuchsia-600:oklch(59.1% .293 322.896);--color-fuchsia-700:oklch(51.8% .253 323.949);--color-fuchsia-800:oklch(45.2% .211 324.591);--color-fuchsia-900:oklch(40.1% .17 325.612);--color-fuchsia-950:oklch(29.3% .136 325.661);--color-pink-50:oklch(97.1% .014 343.198);--color-pink-100:oklch(94.8% .028 342.258);--color-pink-200:oklch(89.9% .061 343.231);--color-pink-300:oklch(82.3% .12 346.018);--color-pink-400:oklch(71.8% .202 349.761);--color-pink-500:oklch(65.6% .241 354.308);--color-pink-600:oklch(59.2% .249 .584);--color-pink-700:oklch(52.5% .223 3.958);--color-pink-800:oklch(45.9% .187 3.815);--color-pink-900:oklch(40.8% .153 2.432);--color-pink-950:oklch(28.4% .109 3.907);--color-rose-50:oklch(96.9% .015 12.422);--color-rose-100:oklch(94.1% .03 12.58);--color-rose-200:oklch(89.2% .058 10.001);--color-rose-300:oklch(81% .117 11.638);--color-rose-400:oklch(71.2% .194 13.428);--color-rose-500:oklch(64.5% .246 16.439);--color-rose-600:oklch(58.6% .253 17.585);--color-rose-700:oklch(51.4% .222 16.935);--color-rose-800:oklch(45.5% .188 13.697);--color-rose-900:oklch(41% .159 10.272);--color-rose-950:oklch(27.1% .105 12.094);--color-slate-50:oklch(98.4% .003 247.858);--color-slate-100:oklch(96.8% .007 247.896);--color-slate-200:oklch(92.9% .013 255.508);--color-slate-300:oklch(86.9% .022 252.894);--color-slate-400:oklch(70.4% .04 256.788);--color-slate-500:oklch(55.4% .046 257.417);--color-slate-600:oklch(44.6% .043 257.281);--color-slate-700:oklch(37.2% .044 257.287);--color-slate-800:oklch(27.9% .041 260.031);--color-slate-900:oklch(20.8% .042 265.755);--color-slate-950:oklch(12.9% .042 264.695);--color-gray-50:oklch(98.5% .002 247.839);--color-gray-100:oklch(96.7% .003 264.542);--color-gray-200:oklch(92.8% .006 264.531);--color-gray-300:oklch(87.2% .01 258.338);--color-gray-400:oklch(70.7% .022 261.325);--color-gray-500:oklch(55.1% .027 264.364);--color-gray-600:oklch(44.6% .03 256.802);--color-gray-700:oklch(37.3% .034 259.733);--color-gray-800:oklch(27.8% .033 256.848);--color-gray-900:oklch(21% .034 264.665);--color-gray-950:oklch(13% .028 261.692);--color-zinc-50:oklch(98.5% 0 0);--color-zinc-100:oklch(96.7% .001 286.375);--color-zinc-200:oklch(92% .004 286.32);--color-zinc-300:oklch(87.1% .006 286.286);--color-zinc-400:oklch(70.5% .015 286.067);--color-zinc-500:oklch(55.2% .016 285.938);--color-zinc-600:oklch(44.2% .017 285.786);--color-zinc-700:oklch(37% .013 285.805);--color-zinc-800:oklch(27.4% .006 286.033);--color-zinc-900:oklch(21% .006 285.885);--color-zinc-950:oklch(14.1% .005 285.823);--color-neutral-50:oklch(98.5% 0 0);--color-neutral-100:oklch(97% 0 0);--color-neutral-200:oklch(92.2% 0 0);--color-neutral-300:oklch(87% 0 0);--color-neutral-400:oklch(70.8% 0 0);--color-neutral-500:oklch(55.6% 0 0);--color-neutral-600:oklch(43.9% 0 0);--color-neutral-700:oklch(37.1% 0 0);--color-neutral-800:oklch(26.9% 0 0);--color-neutral-900:oklch(20.5% 0 0);--color-neutral-950:oklch(14.5% 0 0);--color-stone-50:oklch(98.5% .001 106.423);--color-stone-100:oklch(97% .001 106.424);--color-stone-200:oklch(92.3% .003 48.717);--color-stone-300:oklch(86.9% .005 56.366);--color-stone-400:oklch(70.9% .01 56.259);--color-stone-500:oklch(55.3% .013 58.071);--color-stone-600:oklch(44.4% .011 73.639);--color-stone-700:oklch(37.4% .01 67.558);--color-stone-800:oklch(26.8% .007 34.298);--color-stone-900:oklch(21.6% .006 56.043);--color-stone-950:oklch(14.7% .004 49.25);--color-black:#000;--color-white:#fff;--spacing:.25rem;--breakpoint-sm:40rem;--breakpoint-md:48rem;--breakpoint-lg:64rem;--breakpoint-xl:80rem;--breakpoint-2xl:96rem;--container-3xs:16rem;--container-2xs:18rem;--container-xs:20rem;--container-sm:24rem;--container-md:28rem;--container-lg:32rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--container-5xl:64rem;--container-6xl:72rem;--container-7xl:80rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-base:1rem;--text-base--line-height: 1.5 ;--text-lg:1.125rem;--text-lg--line-height:calc(1.75 / 1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height: 1.2 ;--text-4xl:2.25rem;--text-4xl--line-height:calc(2.5 / 2.25);--text-5xl:3rem;--text-5xl--line-height:1;--text-6xl:3.75rem;--text-6xl--line-height:1;--text-7xl:4.5rem;--text-7xl--line-height:1;--text-8xl:6rem;--text-8xl--line-height:1;--text-9xl:8rem;--text-9xl--line-height:1;--font-weight-thin:100;--font-weight-extralight:200;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--font-weight-black:900;--tracking-tighter:-.05em;--tracking-tight:-.025em;--tracking-normal:0em;--tracking-wide:.025em;--tracking-wider:.05em;--tracking-widest:.1em;--leading-tight:1.25;--leading-snug:1.375;--leading-normal:1.5;--leading-relaxed:1.625;--leading-loose:2;--radius-xs:.125rem;--radius-sm:.25rem;--radius-md:.375rem;--radius-lg:.5rem;--radius-xl:.75rem;--radius-2xl:1rem;--radius-3xl:1.5rem;--radius-4xl:2rem;--shadow-2xs:0 1px #0000000d;--shadow-xs:0 1px 2px 0 #0000000d;--shadow-sm:0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;--shadow-md:0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;--shadow-lg:0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;--shadow-xl:0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;--shadow-2xl:0 25px 50px -12px #00000040;--inset-shadow-2xs:inset 0 1px #0000000d;--inset-shadow-xs:inset 0 1px 1px #0000000d;--inset-shadow-sm:inset 0 2px 4px #0000000d;--drop-shadow-xs:0 1px 1px #0000000d;--drop-shadow-sm:0 1px 2px #00000026;--drop-shadow-md:0 3px 3px #0000001f;--drop-shadow-lg:0 4px 4px #00000026;--drop-shadow-xl:0 9px 7px #0000001a;--drop-shadow-2xl:0 25px 25px #00000026;--ease-in:cubic-bezier(.4, 0, 1, 1);--ease-out:cubic-bezier(0, 0, .2, 1);--ease-in-out:cubic-bezier(.4, 0, .2, 1);--animate-spin:spin 1s linear infinite;--animate-ping:ping 1s cubic-bezier(0, 0, .2, 1) infinite;--animate-pulse:pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;--animate-bounce:bounce 1s infinite;--blur-xs:4px;--blur-sm:8px;--blur-md:12px;--blur-lg:16px;--blur-xl:24px;--blur-2xl:40px;--blur-3xl:64px;--perspective-dramatic:100px;--perspective-near:300px;--perspective-normal:500px;--perspective-midrange:800px;--perspective-distant:1200px;--aspect-video:16 / 9;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab,red,red)){::placeholder{color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){appearance:button}::file-selector-button{appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.absolute{position:absolute}.relative{position:relative}.static{position:static}.inset-0{inset:calc(var(--spacing) * 0)}.start{inset-inline-start:var(--spacing)}.ms-1{margin-inline-start:calc(var(--spacing) * 1)}.-mt-\[6\.6rem\]{margin-top:-6.6rem}.-mb-px{margin-bottom:-1px}.mb-1{margin-bottom:calc(var(--spacing) * 1)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.-ml-8{margin-left:calc(var(--spacing) * -8)}.contents{display:contents}.flex{display:flex}.hidden{display:none}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.aspect-\[335\/364\]{aspect-ratio:335/364}.h-1{height:calc(var(--spacing) * 1)}.h-1\.5{height:calc(var(--spacing) * 1.5)}.h-2{height:calc(var(--spacing) * 2)}.h-2\.5{height:calc(var(--spacing) * 2.5)}.h-3{height:calc(var(--spacing) * 3)}.h-3\.5{height:calc(var(--spacing) * 3.5)}.h-14{height:calc(var(--spacing) * 14)}.h-14\.5{height:calc(var(--spacing) * 14.5)}.min-h-screen{min-height:100vh}.w-1{width:calc(var(--spacing) * 1)}.w-1\.5{width:calc(var(--spacing) * 1.5)}.w-2{width:calc(var(--spacing) * 2)}.w-2\.5{width:calc(var(--spacing) * 2.5)}.w-3{width:calc(var(--spacing) * 3)}.w-3\.5{width:calc(var(--spacing) * 3.5)}.w-\[438px\]{width:438px}.w-full{width:100%}.max-w-\[335px\]{max-width:335px}.max-w-none{max-width:none}.flex-1{flex:1}.shrink-0{flex-shrink:0}.translate-y-0{--tw-translate-y:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.items-center{align-items:center}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}:where(.space-x-1>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * 1) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-x-reverse)))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:3.40282e38px}.rounded-sm{border-radius:var(--radius-sm)}.rounded-ee-lg{border-end-end-radius:var(--radius-lg)}.rounded-es-lg{border-end-start-radius:var(--radius-lg)}.rounded-t-lg{border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg)}.rounded-br-lg{border-bottom-right-radius:var(--radius-lg)}.rounded-bl-lg{border-bottom-left-radius:var(--radius-lg)}.border{border-style:var(--tw-border-style);border-width:1px}.border-\[\#19140035\]{border-color:#19140035}.border-\[\#e3e3e0\]{border-color:#e3e3e0}.border-black{border-color:var(--color-black)}.border-transparent{border-color:#0000}.bg-\[\#1b1b18\]{background-color:#1b1b18}.bg-\[\#FDFDFC\]{background-color:#fdfdfc}.bg-\[\#dbdbd7\]{background-color:#dbdbd7}.bg-\[\#fff2f2\]{background-color:#fff2f2}.bg-white{background-color:var(--color-white)}.p-6{padding:calc(var(--spacing) * 6)}.px-5{padding-inline:calc(var(--spacing) * 5)}.py-1{padding-block:calc(var(--spacing) * 1)}.py-1\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.pb-12{padding-bottom:calc(var(--spacing) * 12)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-\[13px\]{font-size:13px}.leading-\[20px\]{--tw-leading:20px;line-height:20px}.leading-normal{--tw-leading:var(--leading-normal);line-height:var(--leading-normal)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.text-\[\#1B1B18\],.text-\[\#1b1b18\]{color:#1b1b18}.text-\[\#706f6c\]{color:#706f6c}.text-\[\#F3BEC7\]{color:#f3bec7}.text-\[\#F8B803\]{color:#f8b803}.text-\[\#F53003\],.text-\[\#f53003\]{color:#f53003}.text-white{color:var(--color-white)}.underline{text-decoration-line:underline}.underline-offset-4{text-underline-offset:4px}.opacity-100{opacity:1}.mix-blend-color{mix-blend-mode:color}.mix-blend-darken{mix-blend-mode:darken}.mix-blend-hard-light{mix-blend-mode:hard-light}.mix-blend-multiply{mix-blend-mode:multiply}.shadow-\[0px_0px_1px_0px_rgba\(0\,0\,0\,0\.03\)\,0px_1px_2px_0px_rgba\(0\,0\,0\,0\.06\)\]{--tw-shadow:0px 0px 1px 0px var(--tw-shadow-color,#00000008), 0px 1px 2px 0px var(--tw-shadow-color,#0000000f);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-\[inset_0px_0px_0px_1px_rgba\(26\,26\,0\,0\.16\)\]{--tw-shadow:inset 0px 0px 0px 1px var(--tw-shadow-color,#1a1a0029);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-opacity{transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.delay-300{transition-delay:.3s}.delay-400{transition-delay:.4s}.duration-750{--tw-duration:.75s;transition-duration:.75s}.\[--stroke-color\:\#1B1B18\]{--stroke-color:#1b1b18}.not-has-\[nav\]\:hidden:not(:has(:is(nav))){display:none}.before\:absolute:before{content:var(--tw-content);position:absolute}.before\:start-\[0\.4rem\]:before{content:var(--tw-content);inset-inline-start:.4rem}.before\:top-0:before{content:var(--tw-content);top:calc(var(--spacing) * 0)}.before\:top-1\/2:before{content:var(--tw-content);top:50%}.before\:bottom-0:before{content:var(--tw-content);bottom:calc(var(--spacing) * 0)}.before\:bottom-1\/2:before{content:var(--tw-content);bottom:50%}.before\:left-\[0\.4rem\]:before{content:var(--tw-content);left:.4rem}.before\:border-l:before{content:var(--tw-content);border-left-style:var(--tw-border-style);border-left-width:1px}.before\:border-\[\#e3e3e0\]:before{content:var(--tw-content);border-color:#e3e3e0}@media(hover:hover){.hover\:border-\[\#1915014a\]:hover{border-color:#1915014a}.hover\:border-\[\#19140035\]:hover{border-color:#19140035}.hover\:border-black:hover{border-color:var(--color-black)}.hover\:bg-black:hover{background-color:var(--color-black)}}@media(min-width:64rem){.lg\:mb-0{margin-bottom:calc(var(--spacing) * 0)}.lg\:mb-6{margin-bottom:calc(var(--spacing) * 6)}.lg\:-ml-px{margin-left:-1px}.lg\:ml-0{margin-left:calc(var(--spacing) * 0)}.lg\:block{display:block}.lg\:aspect-auto{aspect-ratio:auto}.lg\:w-\[438px\]{width:438px}.lg\:max-w-4xl{max-width:var(--container-4xl)}.lg\:grow{flex-grow:1}.lg\:flex-row{flex-direction:row}.lg\:justify-center{justify-content:center}.lg\:rounded-ss-lg{border-start-start-radius:var(--radius-lg)}.lg\:rounded-ee-none{border-end-end-radius:0}.lg\:rounded-t-none{border-top-left-radius:0;border-top-right-radius:0}.lg\:rounded-r-lg{border-top-right-radius:var(--radius-lg);border-bottom-right-radius:var(--radius-lg)}.lg\:p-8{padding:calc(var(--spacing) * 8)}.lg\:p-20{padding:calc(var(--spacing) * 20)}}@media(prefers-color-scheme:dark){.dark\:border-\[\#3E3E3A\]{border-color:#3e3e3a}.dark\:border-\[\#eeeeec\]{border-color:#eeeeec}.dark\:bg-\[\#0a0a0a\]{background-color:#0a0a0a}.dark\:bg-\[\#1D0002\]{background-color:#1d0002}.dark\:bg-\[\#3E3E3A\]{background-color:#3e3e3a}.dark\:bg-\[\#161615\]{background-color:#161615}.dark\:bg-\[\#eeeeec\]{background-color:#eeeeec}.dark\:text-\[\#1C1C1A\]{color:#1c1c1a}.dark\:text-\[\#4B0600\]{color:#4b0600}.dark\:text-\[\#391800\]{color:#391800}.dark\:text-\[\#733000\]{color:#733000}.dark\:text-\[\#A1A09A\]{color:#a1a09a}.dark\:text-\[\#EDEDEC\]{color:#ededec}.dark\:text-\[\#F61500\]{color:#f61500}.dark\:text-\[\#FF4433\]{color:#f43}.dark\:text-black{color:var(--color-black)}.dark\:mix-blend-hard-light{mix-blend-mode:hard-light}.dark\:mix-blend-normal{mix-blend-mode:normal}.dark\:shadow-\[inset_0px_0px_0px_1px_\#fffaed2d\]{--tw-shadow:inset 0px 0px 0px 1px var(--tw-shadow-color,#fffaed2d);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.dark\:\[--stroke-color\:\#FF750F\]{--stroke-color:#ff750f}.dark\:before\:border-\[\#3E3E3A\]:before{content:var(--tw-content);border-color:#3e3e3a}@media(hover:hover){.dark\:hover\:border-\[\#3E3E3A\]:hover{border-color:#3e3e3a}.dark\:hover\:border-\[\#62605b\]:hover{border-color:#62605b}.dark\:hover\:border-white:hover{border-color:var(--color-white)}.dark\:hover\:bg-white:hover{background-color:var(--color-white)}}}@starting-style{.starting\:opacity-0{opacity:0}}@media(prefers-reduced-motion:no-preference){@starting-style{.motion-safe\:starting\:-translate-x-\[26px\]{--tw-translate-x: -26px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[51px\]{--tw-translate-x: -51px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[78px\]{--tw-translate-x: -78px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[102px\]{--tw-translate-x: -102px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:translate-y-6{--tw-translate-y:calc(var(--spacing) * 6);translate:var(--tw-translate-x) var(--tw-translate-y)}}}}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-x-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@property --tw-duration{syntax:"*";inherits:false}@property --tw-content{syntax:"*";inherits:false;initial-value:""}@keyframes spin{to{transform:rotate(360deg)}}@keyframes ping{75%,to{opacity:0;transform:scale(2)}}@keyframes pulse{50%{opacity:.5}}@keyframes bounce{0%,to{animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}
-        </style>
-    </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
+    <style type="text/tailwindcss">
+        @theme {
+      --color-indigo-950: #1e1b4b;
+      --font-display: 'Sora', sans-serif;
+      --font-body:    'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+
+    <style>
+        /* ─── Base ─── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Sora', sans-serif;
+        }
+
+        /* ─── Material Symbols ─── */
+        .ms {
+            font-family: 'Material Symbols Rounded';
+            font-weight: normal;
+            font-style: normal;
+            display: inline-block;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            vertical-align: middle;
+        }
+
+        /* ─── Scrollbar ─── */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 3px;
+        }
+
+        /* ─── Gov Bar ─── */
+        #govbar {
+            background: #1e1b4b;
+            border-bottom: 2px solid #6366f1;
+            padding: 7px 0;
+        }
+
+        #govbar a {
+            color: #a5b4fc;
+            font-size: 11.5px;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: .02em;
+            transition: color .2s;
+        }
+
+        #govbar a:hover {
+            color: #fff;
+        }
+
+        .flag-bd {
+            width: 22px;
+            height: 15px;
+            border-radius: 2px;
+            background: #006a4e;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .flag-bd::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f42a41;
+        }
+
+        /* ─── Navbar ─── */
+        #navbar {
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all .3s;
+        }
+
+        #navbar.scrolled {
+            background: rgba(15, 23, 42, .97);
+            border-color: rgba(99, 102, 241, .25);
+        }
+
+        #navbar.scrolled .nav-link {
+            color: #94a3b8;
+        }
+
+        #navbar.scrolled .nav-link:hover {
+            color: #fff;
+            background: rgba(99, 102, 241, .15);
+        }
+
+        #navbar.scrolled #logo-text {
+            color: #fff;
+        }
+
+        #navbar.scrolled #logo-sub {
+            color: #818cf8;
+        }
+
+        #navbar.scrolled #burger-icon {
+            color: #e2e8f0;
+        }
+
+        .nav-link {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #334155;
+            padding: 7px 13px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all .2s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .nav-link:hover {
+            color: #4f46e5;
+            background: #eef2ff;
+        }
+
+        .cta-btn {
+            background: #4f46e5;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: .01em;
+            transition: all .25s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(79, 70, 229, .35);
+        }
+
+        /* ─── Ticker ─── */
+        #ticker {
+            background: #fffbeb;
+            border-bottom: 1px solid #fde68a;
+            padding: 9px 0;
+            overflow: hidden;
+        }
+
+        .ticker-inner {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: ticker-scroll 40s linear infinite;
+        }
+
+        .ticker-inner:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker-scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 48px;
+            font-size: 12.5px;
+            font-weight: 500;
+            color: #92400e;
+        }
+
+        .ticker-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #d97706;
+            flex-shrink: 0;
+        }
+
+        /* ─── Hero ─── */
+        #hero {
+            background: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 15% 55%, rgba(79, 70, 229, .28) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 85% 20%, rgba(14, 165, 233, .2) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 40% at 50% 100%, rgba(99, 102, 241, .12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(99, 102, 241, .06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, .06) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(99, 102, 241, .15);
+            border: 1px solid rgba(99, 102, 241, .3);
+            color: #a5b4fc;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 99px;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.07;
+            letter-spacing: -.03em;
+            color: #f8fafc;
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, #818cf8 0%, #38bdf8 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            color: #94a3b8;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            max-width: 520px;
+            margin: 20px 0 36px;
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            color: #fff;
+            font-size: 14.5px;
+            font-weight: 600;
+            padding: 13px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            letter-spacing: .01em;
+            transition: all .25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 8px 28px rgba(79, 70, 229, .4);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(79, 70, 229, .5);
+        }
+
+        .btn-hero-outline {
+            border: 1.5px solid rgba(255, 255, 255, .2);
+            color: #e2e8f0;
+            font-size: 14.5px;
+            font-weight: 600;
+            padding: 13px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-hero-outline:hover {
+            border-color: #818cf8;
+            color: #818cf8;
+            background: rgba(129, 140, 248, .08);
+        }
+
+        /* Hero bottom stat bar */
+        .hero-stat-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, .04);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            padding: 20px 0;
+        }
+
+        .hero-stat-item {
+            text-align: center;
+        }
+
+        .hero-stat-val {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #fff;
+            display: block;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            color: #64748b;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .hero-stat-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, .1);
+            align-self: center;
+        }
+
+        /* ─── Section shared ─── */
+        .section-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #eef2ff;
+            color: #4338ca;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 5px 13px;
+            border-radius: 99px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: -.025em;
+            color: #0f172a;
+            line-height: 1.15;
+        }
+
+        .section-title em {
+            font-style: normal;
+            color: #4f46e5;
+        }
+
+        .section-desc {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.75;
+            max-width: 540px;
+            margin-top: 12px;
+        }
+
+        .section-rule {
+            width: 40px;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #4f46e5, #38bdf8);
+            margin: 14px 0;
+        }
+
+        /* ─── Cards ─── */
+        .card-base {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all .3s cubic-bezier(.2, 0, 0, 1);
+        }
+
+        .card-base:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 48px rgba(15, 23, 42, .1);
+            border-color: #c7d2fe;
+        }
+
+        .icon-chip {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+
+        /* ─── Exam cards ─── */
+        .exam-card-ip {
+            background: linear-gradient(150deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: all .35s;
+        }
+
+        .exam-card-ip::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, .15);
+            pointer-events: none;
+        }
+
+        .exam-card-fe {
+            background: linear-gradient(150deg, #042f2e 0%, #064e3b 40%, #047857 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: all .35s;
+        }
+
+        .exam-card-fe::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, .12);
+            pointer-events: none;
+        }
+
+        .exam-card-ip:hover,
+        .exam-card-fe:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 60px rgba(0, 0, 0, .3);
+        }
+
+        .exam-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .22);
+            color: #fff;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 99px;
+        }
+
+        .exam-feat {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            font-size: 13px;
+        }
+
+        .exam-feat:last-child {
+            border-bottom: none;
+        }
+
+        .exam-feat-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ─── Stats section ─── */
+        #stats-section {
+            background: #0f172a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #stats-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 80% at 20% 50%, rgba(79, 70, 229, .2) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 60% at 80% 50%, rgba(14, 165, 233, .15) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 32px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-num {
+            font-family: 'Sora', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-num sup {
+            font-size: 1.2rem;
+            color: #818cf8;
+        }
+
+        .stat-lbl {
+            color: #64748b;
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .stat-divider {
+            width: 1px;
+            background: rgba(255, 255, 255, .08);
+            margin: 20px 0;
+        }
+
+        /* ─── Step cards ─── */
+        .step-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            transition: all .3s;
+            text-align: center;
+        }
+
+        .step-card:hover {
+            box-shadow: 0 12px 36px rgba(79, 70, 229, .12);
+            border-color: #c7d2fe;
+            transform: translateY(-4px);
+        }
+
+        .step-num {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #4f46e5, #818cf8);
+            color: #fff;
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            box-shadow: 0 6px 18px rgba(79, 70, 229, .35);
+        }
+
+        /* ─── Date cards ─── */
+        .date-card {
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            padding: 20px 22px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all .25s;
+        }
+
+        .date-card:hover {
+            border-color: #c7d2fe;
+            box-shadow: 0 8px 28px rgba(79, 70, 229, .1);
+            transform: translateX(4px);
+        }
+
+        .date-badge-wrap .month-lbl {
+            background: #4f46e5;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 5px 5px 0 0;
+            display: block;
+            text-align: center;
+        }
+
+        .date-badge-wrap .day-lbl {
+            background: #eef2ff;
+            color: #4338ca;
+            font-family: 'Sora', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 0 0 5px 5px;
+            display: block;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .status-pill {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: 3px 11px;
+            border-radius: 99px;
+        }
+
+        .status-open {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-soon {
+            background: #fff7ed;
+            color: #9a3412;
+        }
+
+        .status-closed {
+            background: #fce7f3;
+            color: #831843;
+        }
+
+        /* ─── Venues ─── */
+        .venue-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 28px 22px;
+            text-align: center;
+            transition: all .3s;
+            cursor: pointer;
+        }
+
+        .venue-card:hover {
+            border-color: #a5b4fc;
+            box-shadow: 0 16px 40px rgba(79, 70, 229, .14);
+            transform: translateY(-5px);
+        }
+
+        .venue-pin-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 26px;
+        }
+
+        /* ─── Notice rows ─── */
+        .notice-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+            transition: all .18s;
+            cursor: pointer;
+        }
+
+        .notice-row:last-child {
+            border-bottom: none;
+        }
+
+        .notice-row:hover {
+            padding-left: 8px;
+        }
+
+        .notice-icon-box {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: #eef2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .notice-cat {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            padding: 2px 9px;
+            border-radius: 99px;
+        }
+
+        .nc-exam {
+            background: #eef2ff;
+            color: #3730a3;
+        }
+
+        .nc-result {
+            background: #fff7ed;
+            color: #9a3412;
+        }
+
+        .nc-general {
+            background: #f0fdf4;
+            color: #166534;
+        }
+
+        /* ─── Tab buttons ─── */
+        .tab-btn {
+            padding: 7px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 12.5px;
+            font-weight: 600;
+            transition: all .2s;
+            background: transparent;
+            color: #64748b;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .tab-btn.active {
+            background: #4f46e5;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, .3);
+        }
+
+        /* ─── Partners ─── */
+        .partner-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: all .3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .partner-card:hover {
+            border-color: #c7d2fe;
+            box-shadow: 0 10px 32px rgba(79, 70, 229, .1);
+            transform: scale(1.02);
+        }
+
+        /* ─── Footer ─── */
+        #footer {
+            background: #020617;
+            color: #64748b;
+        }
+
+        #footer a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            padding: 3px 0;
+            transition: color .18s;
+        }
+
+        #footer a:hover {
+            color: #a5b4fc;
+        }
+
+        .footer-head {
+            color: #e2e8f0;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 14.5px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, .4);
+            border-top: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        /* ─── Reveal animation ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .65s ease, transform .65s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        .d1 {
+            transition-delay: .08s;
+        }
+
+        .d2 {
+            transition-delay: .16s;
+        }
+
+        .d3 {
+            transition-delay: .24s;
+        }
+
+        .d4 {
+            transition-delay: .32s;
+        }
+
+        /* ─── Back to top ─── */
+        #btt {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: #4f46e5;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(79, 70, 229, .4);
+            transition: all .25s;
+            z-index: 90;
+        }
+
+        #btt:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        /* ─── Mobile menu ─── */
+        #mob-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease;
+            background: #fff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        #mob-menu.open {
+            max-height: 440px;
+        }
+
+        #navbar.scrolled #mob-menu {
+            background: #0f172a;
+            border-color: rgba(99, 102, 241, .2);
+        }
+
+        /* ─── Canvas ─── */
+        #hero-canvas {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .6;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            #desktop-nav {
+                display: none !important;
+            }
+
+            #hamburger {
+                display: flex !important;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .exam-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .step-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            .venue-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .step-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            .venue-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ════════════════════════════════
+     GOV TOP BAR
+════════════════════════════════ -->
+    <div id="govbar">
+        <div
+            style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px">
+
+
+            </div>
+            <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+                <a href="#">ICT Division</a>
+                <span style="color:rgba(255,255,255,.15);font-size:14px">|</span>
+                <a href="#">Bangladesh Computer Council</a>
+                <span style="color:rgba(255,255,255,.15);font-size:14px">|</span>
+                <a href="#" style="display:flex;align-items:center;gap:5px">
+                    <span class="ms" style="font-size:13px;color:#a5b4fc">mail</span>Contact
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════
+     NAVBAR
+════════════════════════════════ -->
+    <nav id="navbar">
+        <div
+            style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px">
+            <!-- Logo -->
+            <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:13px;text-decoration:none">
+                <img src="{{ asset('assets/bditecLogo.png') }}" alt="ITEE Logo">
+            </a>
+
+            <!-- Desktop links -->
+            <div id="desktop-nav" style="display:flex;align-items:center;gap:2px">
+                <a href="#about" class="nav-link">About ITEE</a>
+                <a href="#exams" class="nav-link">Exam Levels</a>
+                <a href="#schedule" class="nav-link">Exam Dates</a>
+                <a href="#venues" class="nav-link">Venues</a>
+                <a href="#news" class="nav-link">Notices</a>
+                <a href="#partners" class="nav-link">Partners</a>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:10px">
+                @if (Route::has('login'))
                     @auth
-                        <a
-                            href="{{ route('dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
+                        <a href="{{ route('dashboard') }}" class="cta-btn">Dashboard</a>
                     @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
+                        <a href="{{ route('login') }}" class="nav-link">Log in</a>
 
                         @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
+                            <a href="{{ route('register') }}" class="cta-btn">Register</a>
                         @endif
                     @endauth
-                </nav>
-            @endif
-        </header>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-none">
-                    <h1 class="mb-1 font-medium">Let's get started</h1>
-                    <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">Laravel has an incredibly rich ecosystem. <br>We suggest starting with the following.</p>
-                    <ul class="flex flex-col mb-4 lg:mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Read the
-                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ms-1">
-                                    <span>Documentation</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:start-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Watch video tutorials at
-                                <a href="https://laracasts.com" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ms-1">
-                                    <span>Laracasts</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                    </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
-                        <li>
-                            <a href="https://cloud.laravel.com" target="_blank" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Deploy now
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="bg-[#fff2f2] dark:bg-[#1D0002] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/364] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
-                    {{-- Laravel Logo --}}
-                    <svg class="w-full text-[#F53003] dark:text-[#F61500] transition-all translate-y-0 opacity-100 max-w-none duration-750 starting:opacity-0 motion-safe:starting:translate-y-6" viewBox="0 0 438 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.2036 -3H0V102.197H49.5189V86.7187H17.2036V-3Z" fill="currentColor" />
-                        <path d="M110.256 41.6337C108.061 38.1275 104.945 35.3731 100.905 33.3681C96.8667 31.3647 92.8016 30.3618 88.7131 30.3618C83.4247 30.3618 78.5885 31.3389 74.201 33.2923C69.8111 35.2456 66.0474 37.928 62.9059 41.3333C59.7643 44.7401 57.3198 48.6726 55.5754 53.1293C53.8287 57.589 52.9572 62.274 52.9572 67.1813C52.9572 72.1925 53.8287 76.8995 55.5754 81.3069C57.3191 85.7173 59.7636 89.6241 62.9059 93.0293C66.0474 96.4361 69.8119 99.1155 74.201 101.069C78.5885 103.022 83.4247 103.999 88.7131 103.999C92.8016 103.999 96.8667 102.997 100.905 100.994C104.945 98.9911 108.061 96.2359 110.256 92.7282V102.195H126.563V32.1642H110.256V41.6337ZM108.76 75.7472C107.762 78.4531 106.366 80.8078 104.572 82.8112C102.776 84.8161 100.606 86.4183 98.0637 87.6206C95.5202 88.823 92.7004 89.4238 89.6103 89.4238C86.5178 89.4238 83.7252 88.823 81.2324 87.6206C78.7388 86.4183 76.5949 84.8161 74.7998 82.8112C73.004 80.8078 71.6319 78.4531 70.6856 75.7472C69.7356 73.0421 69.2644 70.1868 69.2644 67.1821C69.2644 64.1758 69.7356 61.3205 70.6856 58.6154C71.6319 55.9102 73.004 53.5571 74.7998 51.5522C76.5949 49.5495 78.738 47.9451 81.2324 46.7427C83.7252 45.5404 86.5178 44.9396 89.6103 44.9396C92.7012 44.9396 95.5202 45.5404 98.0637 46.7427C100.606 47.9451 102.776 49.5487 104.572 51.5522C106.367 53.5571 107.762 55.9102 108.76 58.6154C109.756 61.3205 110.256 64.1758 110.256 67.1821C110.256 70.1868 109.756 73.0421 108.76 75.7472Z" fill="currentColor" />
-                        <path d="M242.805 41.6337C240.611 38.1275 237.494 35.3731 233.455 33.3681C229.416 31.3647 225.351 30.3618 221.262 30.3618C215.974 30.3618 211.138 31.3389 206.75 33.2923C202.36 35.2456 198.597 37.928 195.455 41.3333C192.314 44.7401 189.869 48.6726 188.125 53.1293C186.378 57.589 185.507 62.274 185.507 67.1813C185.507 72.1925 186.378 76.8995 188.125 81.3069C189.868 85.7173 192.313 89.6241 195.455 93.0293C198.597 96.4361 202.361 99.1155 206.75 101.069C211.138 103.022 215.974 103.999 221.262 103.999C225.351 103.999 229.416 102.997 233.455 100.994C237.494 98.9911 240.611 96.2359 242.805 92.7282V102.195H259.112V32.1642H242.805V41.6337ZM241.31 75.7472C240.312 78.4531 238.916 80.8078 237.122 82.8112C235.326 84.8161 233.156 86.4183 230.614 87.6206C228.07 88.823 225.251 89.4238 222.16 89.4238C219.068 89.4238 216.275 88.823 213.782 87.6206C211.289 86.4183 209.145 84.8161 207.35 82.8112C205.554 80.8078 204.182 78.4531 203.236 75.7472C202.286 73.0421 201.814 70.1868 201.814 67.1821C201.814 64.1758 202.286 61.3205 203.236 58.6154C204.182 55.9102 205.554 53.5571 207.35 51.5522C209.145 49.5495 211.288 47.9451 213.782 46.7427C216.275 45.5404 219.068 44.9396 222.16 44.9396C225.251 44.9396 228.07 45.5404 230.614 46.7427C233.156 47.9451 235.326 49.5487 237.122 51.5522C238.917 53.5571 240.312 55.9102 241.31 58.6154C242.306 61.3205 242.806 64.1758 242.806 67.1821C242.805 70.1868 242.305 73.0421 241.31 75.7472Z" fill="currentColor" />
-                        <path d="M438 -3H421.694V102.197H438V-3Z" fill="currentColor" />
-                        <path d="M139.43 102.197H155.735V48.2834H183.712V32.1665H139.43V102.197Z" fill="currentColor" />
-                        <path d="M324.49 32.1665L303.995 85.794L283.498 32.1665H266.983L293.748 102.197H314.242L341.006 32.1665H324.49Z" fill="currentColor" />
-                        <path d="M376.571 30.3656C356.603 30.3656 340.797 46.8497 340.797 67.1828C340.797 89.6597 356.094 104 378.661 104C391.29 104 399.354 99.1488 409.206 88.5848L398.189 80.0226C398.183 80.031 389.874 90.9895 377.468 90.9895C363.048 90.9895 356.977 79.3111 356.977 73.269H411.075C413.917 50.1328 398.775 30.3656 376.571 30.3656ZM357.02 61.0967C357.145 59.7487 359.023 43.3761 376.442 43.3761C393.861 43.3761 395.978 59.7464 396.099 61.0967H357.02Z" fill="currentColor" />
-                    </svg>
-
-                    {{-- 13 --}}
-                    <svg class="w-[438px] max-w-none relative -mt-[6.6rem] -ml-8 lg:ml-0 [--stroke-color:#1B1B18] dark:[--stroke-color:#FF750F]" viewBox="0 0 440 392" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g class="mix-blend-darken dark:mix-blend-normal transition-all delay-300 opacity-100 duration-750 starting:opacity-0 text-[#1B1B18] dark:text-black">
-                            <mask id="path-1-mask" maskUnits="userSpaceOnUse" x="-0.328613" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="-0.328613" y="103" width="338" height="299"/>
-                                <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z"/>
-                                <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z"/>
-                            </mask>
-                            <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" fill="currentColor"/>
-                            <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" fill="currentColor"/>
-                            <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-1-mask)"/>
-                            <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-1-mask)"/>
-                        </g>
-
-                        <g class="transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[26px] text-[#F3BEC7] dark:text-[#4B0600]">
-                            <mask id="path-2-mask" maskUnits="userSpaceOnUse" x="25.3357" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="25.3357" y="103" width="338" height="299"/>
-                                <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z"/>
-                                <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z"/>
-                            </mask>
-                            <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" fill="currentColor"/>
-                            <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" fill="currentColor"/>
-                            <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-2-mask)"/>
-                            <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-2-mask)"/>
-                        </g>
-
-                        <g class="mix-blend-color dark:mix-blend-hard-light transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[51px] text-[#F8B803] dark:text-[#391800]">
-                            <mask id="path-3-mask" maskUnits="userSpaceOnUse" x="51" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="51" y="103" width="338" height="299"/>
-                                <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z"/>
-                                <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z"/>
-                            </mask>
-                            <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" fill="currentColor"/>
-                            <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" fill="currentColor"/>
-                            <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-3-mask)"/>
-                            <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-3-mask)"/>
-                        </g>
-
-                        <g class="mix-blend-multiply dark:mix-blend-normal transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[78px] text-[#F3BEC7] dark:text-[#733000]">
-                            <mask id="path-4-mask" maskUnits="userSpaceOnUse" x="76.6643" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="76.6643" y="103" width="338" height="299"/>
-                                <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z"/>
-                                <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z"/>
-                            </mask>
-                            <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" fill="currentColor"/>
-                            <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" fill="currentColor"/>
-                            <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-4-mask)"/>
-                            <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-4-mask)"/>
-                        </g>
-
-                        <g class="mix-blend-hard-light transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[102px] text-[#F3BEC7] dark:text-[#4B0600]">
-                            <mask id="path-5-mask" maskUnits="userSpaceOnUse" x="102.329" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="102.329" y="103" width="338" height="299"/>
-                                <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z"/>
-                                <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z"/>
-                            </mask>
-                            <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" fill="currentColor"/>
-                            <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" fill="currentColor"/>
-                            <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-5-mask)"/>
-                            <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-5-mask)"/>
-                        </g>
-                    </svg>
-                    <div class="absolute inset-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"></div>
-                </div>
-            </main>
+                @endif
+                <button id="hamburger"
+                    style="display:none;background:none;border:none;cursor:pointer;padding:4px;align-items:center;justify-content:center"
+                    aria-label="Menu">
+                    <span class="ms" id="burger-icon" style="font-size:26px;color:#334155">menu</span>
+                </button>
+            </div>
         </div>
 
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
-    </body>
+        <!-- Mobile menu -->
+        <div id="mob-menu">
+            <div style="padding:12px 24px 18px;display:flex;flex-direction:column;gap:2px">
+                <a href="#about" class="nav-link">About ITEE</a>
+                <a href="#exams" class="nav-link">Exam Levels</a>
+                <a href="#schedule" class="nav-link">Exam Dates</a>
+                <a href="#venues" class="nav-link">Venues</a>
+                <a href="#news" class="nav-link">Notices</a>
+                <a href="#partners" class="nav-link">Partners</a>
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ route('dashboard') }}" class="cta-btn" style="margin-top:10px;text-align:center">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="nav-link">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="cta-btn" style="margin-top:10px;text-align:center">Register</a>
+                        @endif
+                    @endauth
+                @endif
+            </div>
+        </div>
+    </nav>
+
+    <!-- ════════════════════════════════
+     HERO
+════════════════════════════════ -->
+    <section id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-grid-bg"></div>
+
+        <div style="max-width:1200px;margin:0 auto;padding:80px 24px 120px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center"
+            class="hero-grid">
+            <!-- Left -->
+            <div>
+                <div class="hero-badge">
+                    <span class="ms" style="font-size:13px">public</span>
+                    Bangladesh · IPA Japan · ITPEC Member
+                </div>
+                <h1 class="hero-title">
+                    Elevate Your<br>
+                    <span class="gradient-text">IT Career</span><br>
+                    with ITEE
+                </h1>
+                <p class="hero-desc">
+                    The globally recognized IT Engineers Examination, governed by IPA Japan and conducted in Bangladesh
+                    by BCC since 2013. Open to all — students, graduates, and working professionals.
+                </p>
+                <div style="display:flex;gap:12px;flex-wrap:wrap">
+                    <a href="#" class="btn-hero-primary">
+                        Register for Exam
+                        <span class="ms" style="font-size:18px">arrow_forward</span>
+                    </a>
+                    <a href="#about" class="btn-hero-outline">
+                        <span class="ms" style="font-size:17px">play_circle</span>
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Trust indicators -->
+                <div
+                    style="display:flex;align-items:center;gap:20px;margin-top:44px;padding-top:32px;border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap">
+                    <div style="display:flex;align-items:center;gap-8px">
+                        <div style="display:flex;margin-right:8px">
+                            <!-- Stacked avatar initials (no SVG) -->
+                            <div
+                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#818cf8,#6366f1);border:2px solid #0f172a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;z-index:3">
+                                R</div>
+                            <div
+                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#34d399,#059669);border:2px solid #0f172a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;z-index:2;margin-left:-8px">
+                                S</div>
+                            <div
+                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#38bdf8,#0284c7);border:2px solid #0f172a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;z-index:1;margin-left:-8px">
+                                A</div>
+                        </div>
+                        <div>
+                            <div style="color:#e2e8f0;font-size:13px;font-weight:600">Thousands of passers</div>
+                            <div style="color:#475569;font-size:11.5px">since October 2013</div>
+                        </div>
+                    </div>
+                    <div style="width:1px;height:32px;background:rgba(255,255,255,.1)"></div>
+                    <div style="display:flex;align-items:center;gap:7px">
+                        <span class="ms" style="color:#fbbf24;font-size:20px">verified</span>
+                        <div>
+                            <div style="color:#e2e8f0;font-size:13px;font-weight:600">Internationally certified</div>
+                            <div style="color:#475569;font-size:11.5px">10+ ITPEC countries</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: floating card cluster -->
+            <div style="display:flex;flex-direction:column;gap:14px">
+                <!-- Main card -->
+                <div
+                    style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:26px;backdrop-filter:blur(12px)">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+                        <span
+                            style="color:#94a3b8;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase">Upcoming
+                            Examination</span>
+                        <span
+                            style="background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:#34d399;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:99px">Open</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px">
+                            <div
+                                style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:#818cf8;line-height:1">
+                                IP Exam</div>
+                            <div style="color:#94a3b8;font-size:12px;margin-top:5px;font-weight:500">Level 1 — Passport
+                            </div>
+                            <div style="margin-top:10px;font-size:11px;color:#64748b">For all graduates &amp;
+                                professionals</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px">
+                            <div
+                                style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:#34d399;line-height:1">
+                                FE Exam</div>
+                            <div style="color:#94a3b8;font-size:12px;margin-top:5px;font-weight:500">Level 2 —
+                                Fundamental</div>
+                            <div style="margin-top:10px;font-size:11px;color:#64748b">For CSE/IT students &amp;
+                                engineers</div>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between">
+                        <div style="display:flex;align-items:center;gap:6px;color:#64748b;font-size:12px">
+                            <span class="ms" style="font-size:15px;color:#64748b">calendar_month</span>
+                            April / May 2026
+                        </div>
+                        <a href="#"
+                            style="color:#818cf8;font-size:12px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:3px">
+                            Details <span class="ms" style="font-size:15px">chevron_right</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Two small info cards -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                    <div
+                        style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:16px;backdrop-filter:blur(12px)">
+                        <div
+                            style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#fbbf24,#f59e0b);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+                            <span class="ms" style="color:#fff;font-size:20px">emoji_events</span>
+                        </div>
+                        <div style="color:#e2e8f0;font-size:13px;font-weight:600;line-height:1.3">Top Gun Program</div>
+                        <div style="color:#64748b;font-size:11.5px;margin-top:5px;line-height:1.5">Earn a sponsored
+                            training trip to Japan</div>
+                    </div>
+                    <div
+                        style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:16px;backdrop-filter:blur(12px)">
+                        <div
+                            style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#34d399,#059669);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+                            <span class="ms" style="color:#fff;font-size:20px">workspace_premium</span>
+                        </div>
+                        <div style="color:#e2e8f0;font-size:13px;font-weight:600;line-height:1.3">IPA Certificate</div>
+                        <div style="color:#64748b;font-size:11.5px;margin-top:5px;line-height:1.5">Top 3 scorers receive
+                            IPA Japan award</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats bar at bottom of hero -->
+        <div class="hero-stat-bar">
+            <div
+                style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:0">
+                <div class="hero-stat-item" style="flex:1">
+                    <span class="hero-stat-val" data-count="12">0</span>
+                    <span class="hero-stat-label">Years Active</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat-item" style="flex:1">
+                    <span class="hero-stat-val" data-count="4">0</span>
+                    <span class="hero-stat-label">Exam Venues</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat-item" style="flex:1">
+                    <span class="hero-stat-val">2×</span>
+                    <span class="hero-stat-label">Per Year</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat-item" style="flex:1">
+                    <span class="hero-stat-val" data-count="10">0</span>
+                    <span class="hero-stat-label">ITPEC Countries</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat-item" style="flex:1">
+                    <span class="hero-stat-val">MCQ</span>
+                    <span class="hero-stat-label">No Negative Mark</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     NOTICE TICKER
+════════════════════════════════ -->
+    <div id="ticker">
+        <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;padding:0 24px;overflow:hidden">
+            <div
+                style="flex-shrink:0;background:#f59e0b;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 13px;border-radius:99px;margin-right:16px;display:flex;align-items:center;gap:5px">
+                <span class="ms" style="font-size:13px;color:#fff">notifications</span>NOTICE
+            </div>
+            <div style="overflow:hidden;flex:1">
+                <div class="ticker-inner">
+                    <span class="ticker-item"><span class="ticker-dot"></span>Registration open for IP &amp; FE Exam —
+                        Spring Session April/May 2026. Deadline: 31 March 2026.</span>
+                    <span class="ticker-item"><span class="ticker-dot"></span>Free 30-hour online FE training program
+                        starts 4 October 2025. All registered FE candidates eligible.</span>
+                    <span class="ticker-item"><span class="ticker-dot"></span>IP Exam Result (October 2024) is now
+                        published. View results on our portal.</span>
+                    <span class="ticker-item"><span class="ticker-dot"></span>Certificate collection for October 2024
+                        passers — contact BCC Agargaon office.</span>
+                    <span class="ticker-item"><span class="ticker-dot"></span>Exam venues: Dhaka, Chittagong, Rajshahi
+                        and Khulna. Choose your preferred location at registration.</span>
+                    <!-- Duplicate for seamless loop -->
+                    <span class="ticker-item"><span class="ticker-dot"></span>Registration open for IP &amp; FE Exam —
+                        Spring Session April/May 2026. Deadline: 31 March 2026.</span>
+                    <span class="ticker-item"><span class="ticker-dot"></span>Free 30-hour online FE training program
+                        starts 4 October 2025. All registered FE candidates eligible.</span>
+                    <span class="ticker-item"><span class="ticker-dot"></span>IP Exam Result (October 2024) is now
+                        published. View results on our portal.</span>
+                    <span class="ticker-item"><span class="ticker-dot"></span>Certificate collection for October 2024
+                        passers — contact BCC Agargaon office.</span>
+                    <span class="ticker-item"><span class="ticker-dot"></span>Exam venues: Dhaka, Chittagong, Rajshahi
+                        and Khulna. Choose your preferred location at registration.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════
+     ABOUT ITEE
+════════════════════════════════ -->
+    <section id="about" style="padding:96px 24px;background:#fff">
+        <div style="max-width:1200px;margin:0 auto">
+            <div style="text-align:center;margin-bottom:56px" class="reveal">
+                <div class="section-chip">
+                    <span class="ms" style="font-size:13px">info</span>What is ITEE?
+                </div>
+                <h2 class="section-title">Japan's Premier IT Exam, <em>Now in Bangladesh</em></h2>
+                <div class="section-rule" style="margin:14px auto"></div>
+                <p class="section-desc" style="margin:0 auto;text-align:center;max-width:580px">
+                    ITEE (Information Technology Engineers Examination) is Japan's national IT qualification — one of
+                    the largest IT exams globally, with ~600,000 applicants per year. Bangladesh has been an ITPEC
+                    member conducting ITEE since October 2013.
+                </p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px">
+                <div class="card-base reveal d1" style="padding:28px">
+                    <div class="icon-chip" style="background:#eef2ff;margin-bottom:18px">
+                        <span class="ms" style="color:#4f46e5;font-size:28px">public</span>
+                    </div>
+                    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px">Global Recognition</h3>
+                    <p style="color:#64748b;font-size:13.5px;line-height:1.7">ITEE certificates are recognized across
+                        all 10+ ITPEC member countries, greatly boosting your international career prospects in the IT
+                        industry.</p>
+                </div>
+
+                <div class="card-base reveal d2" style="padding:28px">
+                    <div class="icon-chip" style="background:#f0fdf4;margin-bottom:18px">
+                        <span class="ms" style="color:#16a34a;font-size:28px">school</span>
+                    </div>
+                    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px">Two Exam Levels</h3>
+                    <p style="color:#64748b;font-size:13.5px;line-height:1.7">Level 1 (IP) suits all graduates and
+                        non-IT professionals. Level 2 (FE) targets IT engineers and final-year CSE students looking for
+                        professional certification.</p>
+                </div>
+
+                <div class="card-base reveal d3" style="padding:28px">
+                    <div class="icon-chip" style="background:#fff7ed;margin-bottom:18px">
+                        <span class="ms" style="color:#ea580c;font-size:28px">block</span>
+                    </div>
+                    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px">No Prerequisites</h3>
+                    <p style="color:#64748b;font-size:13.5px;line-height:1.7">No age limit, no degree requirement, and
+                        no restriction on retakes. Any person — student or professional — can sit the exam as many times
+                        as needed.</p>
+                </div>
+
+                <div class="card-base reveal d4" style="padding:28px">
+                    <div class="icon-chip" style="background:#fdf4ff;margin-bottom:18px">
+                        <span class="ms" style="color:#9333ea;font-size:28px">calendar_month</span>
+                    </div>
+                    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px">Held Twice a Year</h3>
+                    <p style="color:#64748b;font-size:13.5px;line-height:1.7">Exams run in April/May and October —
+                        simultaneously across all ITPEC countries with the same question set and timing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     EXAM LEVELS
+════════════════════════════════ -->
+    <section id="exams" style="padding:96px 24px;background:#f8fafc">
+        <div style="max-width:1200px;margin:0 auto">
+            <div style="display:grid;grid-template-columns:1fr 2.2fr;gap:56px;align-items:start" class="exam-grid">
+                <!-- Left -->
+                <div class="reveal">
+                    <div class="section-chip">
+                        <span class="ms" style="font-size:13px">assignment</span>Examination
+                    </div>
+                    <h2 class="section-title">Choose Your<br><em>Exam Level</em></h2>
+                    <div class="section-rule"></div>
+                    <p class="section-desc">Both exams are paper-based MCQ with no negative marking. Register for both
+                        together during the same window.</p>
+
+                    <div
+                        style="margin-top:28px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px;border-left:4px solid #f59e0b">
+                        <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                            <span class="ms" style="font-size:18px;color:#f59e0b">info</span>
+                            <span style="font-size:13.5px;font-weight:700;color:#0f172a">Half Passer Rule (FE
+                                Only)</span>
+                        </div>
+                        <p style="font-size:12.5px;color:#64748b;line-height:1.6">Pass only the morning or afternoon
+                            session? You're a "Half Passer" — you have 2 more attempts within 1 year to clear the
+                            remaining part.</p>
+                    </div>
+                </div>
+
+                <!-- Right: exam cards -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+                    <!-- IP Card -->
+                    <div class="exam-card-ip reveal d1" style="padding:32px;position:relative">
+                        <div
+                            style="position:absolute;font-family:'Sora',sans-serif;font-size:7rem;font-weight:900;color:rgba(255,255,255,.05);right:16px;top:8px;line-height:1;pointer-events:none;user-select:none">
+                            1</div>
+                        <div class="exam-tag" style="margin-bottom:20px">Level 1</div>
+                        <h3
+                            style="color:#fff;font-family:'Sora',sans-serif;font-size:1.6rem;font-weight:800;line-height:1.15;margin-bottom:6px">
+                            IT Passport<br>Exam <span style="color:#a5b4fc">(IP)</span></h3>
+                        <p style="color:#a5b4fc;font-size:12.5px;line-height:1.6;margin-bottom:22px">Ideal for IT &amp;
+                            non-IT graduates seeking internationally recognized IT literacy certification.</p>
+                        <div>
+                            <div class="exam-feat">
+                                <div class="exam-feat-dot"><span class="ms"
+                                        style="font-size:11px;color:#fff">check</span></div>
+                                <span style="color:#c7d2fe;font-size:12.5px">40% IT · 35% Strategy · 25%
+                                    Management</span>
+                            </div>
+                            <div class="exam-feat">
+                                <div class="exam-feat-dot"><span class="ms"
+                                        style="font-size:11px;color:#fff">check</span></div>
+                                <span style="color:#c7d2fe;font-size:12.5px">MCQ — No negative marking</span>
+                            </div>
+                            <div class="exam-feat">
+                                <div class="exam-feat-dot"><span class="ms"
+                                        style="font-size:11px;color:#fff">check</span></div>
+                                <span style="color:#c7d2fe;font-size:12.5px">Single morning session only</span>
+                            </div>
+                            <div class="exam-feat">
+                                <div class="exam-feat-dot"><span class="ms"
+                                        style="font-size:11px;color:#fff">check</span></div>
+                                <span style="color:#c7d2fe;font-size:12.5px">Open to all — no prerequisites</span>
+                            </div>
+                        </div>
+                        <a href="#"
+                            style="display:inline-flex;align-items:center;gap:5px;margin-top:22px;background:rgba(165,180,252,.15);border:1px solid rgba(165,180,252,.3);color:#a5b4fc;padding:9px 18px;border-radius:9px;font-size:12.5px;font-weight:600;text-decoration:none;transition:all .2s"
+                            onmouseover="this.style.background='rgba(165,180,252,.25)'"
+                            onmouseout="this.style.background='rgba(165,180,252,.15)'">
+                            Learn More <span class="ms" style="font-size:15px">arrow_forward</span>
+                        </a>
+                    </div>
+
+                    <!-- FE Card -->
+                    <div class="exam-card-fe reveal d2" style="padding:32px;position:relative">
+                        <div
+                            style="position:absolute;font-family:'Sora',sans-serif;font-size:7rem;font-weight:900;color:rgba(255,255,255,.05);right:16px;top:8px;line-height:1;pointer-events:none;user-select:none">
+                            2</div>
+                        <div class="exam-tag" style="margin-bottom:20px">Level 2</div>
+                        <h3
+                            style="color:#fff;font-family:'Sora',sans-serif;font-size:1.6rem;font-weight:800;line-height:1.15;margin-bottom:6px">
+                            Fundamental IT<br>Engineer <span style="color:#6ee7b7">(FE)</span></h3>
+                        <p style="color:#6ee7b7;font-size:12.5px;line-height:1.6;margin-bottom:22px">For IT
+                            professionals, graduates, and final-year CSE/IT students aiming for engineering-level
+                            recognition.</p>
+                        <div>
+                            <div class="exam-feat">
+                                <div class="exam-feat-dot"><span class="ms"
+                                        style="font-size:11px;color:#fff">check</span></div>
+                                <span style="color:#a7f3d0;font-size:12.5px">60% IT · 20% Strategy · 20%
+                                    Management</span>
+                            </div>
+                            <div class="exam-feat">
+                                <div class="exam-feat-dot"><span class="ms"
+                                        style="font-size:11px;color:#fff">check</span></div>
+                                <span style="color:#a7f3d0;font-size:12.5px">Two sessions: morning + afternoon</span>
+                            </div>
+                            <div class="exam-feat">
+                                <div class="exam-feat-dot"><span class="ms"
+                                        style="font-size:11px;color:#fff">check</span></div>
+                                <span style="color:#a7f3d0;font-size:12.5px">Top Gun: sponsored Japan training</span>
+                            </div>
+                            <div class="exam-feat">
+                                <div class="exam-feat-dot"><span class="ms"
+                                        style="font-size:11px;color:#fff">check</span></div>
+                                <span style="color:#a7f3d0;font-size:12.5px">IPA Japan cert for top 3 scorers</span>
+                            </div>
+                        </div>
+                        <a href="#"
+                            style="display:inline-flex;align-items:center;gap:5px;margin-top:22px;background:rgba(110,231,183,.15);border:1px solid rgba(110,231,183,.3);color:#6ee7b7;padding:9px 18px;border-radius:9px;font-size:12.5px;font-weight:600;text-decoration:none;transition:all .2s"
+                            onmouseover="this.style.background='rgba(110,231,183,.25)'"
+                            onmouseout="this.style.background='rgba(110,231,183,.15)'">
+                            Learn More <span class="ms" style="font-size:15px">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     STATS
+════════════════════════════════ -->
+    <section id="stats-section" style="padding:72px 24px">
+        <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)" class="stats-grid">
+            <div class="stat-box reveal">
+                <span class="stat-num" data-target="12">0<sup>+</sup></span>
+                <span class="stat-lbl">Years Conducting ITEE</span>
+            </div>
+            <div class="stat-box reveal d1">
+                <span class="stat-num" data-target="10">0<sup>+</sup></span>
+                <span class="stat-lbl">ITPEC Member Countries</span>
+            </div>
+            <div class="stat-box reveal d2">
+                <span class="stat-num" data-target="4">0</span>
+                <span class="stat-lbl">Exam Venues in Bangladesh</span>
+            </div>
+            <div class="stat-box reveal d3">
+                <span class="stat-num">600K<sup>+</sup></span>
+                <span class="stat-lbl">Annual Applicants in Japan</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     HOW TO REGISTER
+════════════════════════════════ -->
+    <section style="padding:96px 24px;background:#fff">
+        <div style="max-width:1200px;margin:0 auto">
+            <div style="text-align:center;margin-bottom:54px" class="reveal">
+                <div class="section-chip">
+                    <span class="ms" style="font-size:13px">fact_check</span>Registration
+                </div>
+                <h2 class="section-title">How to <em>Apply</em></h2>
+                <div class="section-rule" style="margin:14px auto"></div>
+            </div>
+
+            <!-- Connecting line behind steps -->
+            <div style="position:relative">
+                <div
+                    style="position:absolute;top:48px;left:calc(12.5% + 24px);right:calc(12.5% + 24px);height:1.5px;background:linear-gradient(90deg,#4f46e5,#38bdf8);opacity:.2;pointer-events:none">
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative"
+                    class="step-grid">
+                    <div class="step-card reveal d1">
+                        <div class="step-num">1</div>
+                        <h4 style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">Visit the Portal</h4>
+                        <p style="color:#64748b;font-size:13px;line-height:1.65">Go to registration.bditec.gov.bd and
+                            create an account with your valid email address.</p>
+                    </div>
+                    <div class="step-card reveal d2">
+                        <div class="step-num">2</div>
+                        <h4 style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">Fill the Form</h4>
+                        <p style="color:#64748b;font-size:13px;line-height:1.65">Select IP or FE exam level, choose your
+                            nearest venue city, and complete your personal details.</p>
+                    </div>
+                    <div class="step-card reveal d3">
+                        <div class="step-num">3</div>
+                        <h4 style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">Pay via bKash</h4>
+                        <p style="color:#64748b;font-size:13px;line-height:1.65">Send the exam fee to the BCC Merchant
+                            Account via bKash and submit your transaction reference.</p>
+                    </div>
+                    <div class="step-card reveal d4">
+                        <div class="step-num" style="background:linear-gradient(135deg,#059669,#34d399)">4</div>
+                        <h4 style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">Sit & Get Certified
+                        </h4>
+                        <p style="color:#64748b;font-size:13px;line-height:1.65">Bring your photo ID on exam day. Pass
+                            to receive your internationally recognized ITEE certificate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:40px">
+                <a href="#" class="btn-hero-primary" style="display:inline-flex">
+                    Start Your Registration
+                    <span class="ms" style="font-size:18px">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     EXAM SCHEDULE
+════════════════════════════════ -->
+    <section id="schedule" style="padding:96px 24px;background:#f8fafc">
+        <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:54px;align-items:start"
+            class="exam-grid">
+            <div class="reveal">
+                <div class="section-chip">
+                    <span class="ms" style="font-size:13px">event</span>Calendar
+                </div>
+                <h2 class="section-title">Important<br><em>Dates</em></h2>
+                <div class="section-rule"></div>
+                <p class="section-desc">Exams are conducted twice yearly. Always register before the announced deadline.
+                </p>
+                <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px">
+                    <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#64748b">
+                        <span
+                            style="width:10px;height:10px;border-radius:50%;background:#16a34a;display:inline-block;flex-shrink:0"></span>Open
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#64748b">
+                        <span
+                            style="width:10px;height:10px;border-radius:50%;background:#ea580c;display:inline-block;flex-shrink:0"></span>Upcoming
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#64748b">
+                        <span
+                            style="width:10px;height:10px;border-radius:50%;background:#be185d;display:inline-block;flex-shrink:0"></span>Closed
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:12px">
+                <div class="date-card reveal">
+                    <div class="date-badge-wrap" style="flex-shrink:0">
+                        <span class="month-lbl">Apr</span>
+                        <span class="day-lbl">26</span>
+                    </div>
+                    <div style="flex:1">
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
+                            <span style="font-weight:700;color:#0f172a;font-size:15px">IP &amp; FE Exam — Spring
+                                2026</span>
+                            <span class="status-pill status-open">Open</span>
+                        </div>
+                        <div style="color:#64748b;font-size:12.5px">Registration closes 31 March 2026</div>
+                        <div
+                            style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:flex;align-items:center;gap:5px">
+                            <span class="ms" style="font-size:13px;color:#94a3b8">location_on</span>Dhaka · Chittagong ·
+                            Rajshahi · Khulna
+                        </div>
+                    </div>
+                    <span class="ms" style="color:#c7d2fe;font-size:20px;flex-shrink:0">chevron_right</span>
+                </div>
+
+                <div class="date-card reveal d1" style="border-left-color:#16a34a">
+                    <div class="date-badge-wrap" style="flex-shrink:0">
+                        <span class="month-lbl" style="background:#16a34a">Mar</span>
+                        <span class="day-lbl" style="background:#dcfce7;color:#166534">31</span>
+                    </div>
+                    <div style="flex:1">
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
+                            <span style="font-weight:700;color:#0f172a;font-size:15px">Registration Deadline — Spring
+                                2026</span>
+                            <span class="status-pill status-soon">Upcoming</span>
+                        </div>
+                        <div style="color:#64748b;font-size:12.5px">Submit form and bKash payment confirmation before
+                            midnight</div>
+                    </div>
+                    <span class="ms" style="color:#c7d2fe;font-size:20px;flex-shrink:0">chevron_right</span>
+                </div>
+
+                <div class="date-card reveal d2" style="border-left-color:#9ca3af;opacity:.65">
+                    <div class="date-badge-wrap" style="flex-shrink:0">
+                        <span class="month-lbl" style="background:#6b7280">Oct</span>
+                        <span class="day-lbl" style="background:#f3f4f6;color:#374151">25</span>
+                    </div>
+                    <div style="flex:1">
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
+                            <span style="font-weight:700;color:#0f172a;font-size:15px">IP &amp; FE Exam — Autumn
+                                2025</span>
+                            <span class="status-pill status-closed">Closed</span>
+                        </div>
+                        <div style="color:#64748b;font-size:12.5px">Results published — check the Results page</div>
+                    </div>
+                    <span class="ms" style="color:#e2e8f0;font-size:20px;flex-shrink:0">chevron_right</span>
+                </div>
+
+                <div class="date-card reveal d3" style="border-left-color:#9ca3af;opacity:.5">
+                    <div class="date-badge-wrap" style="flex-shrink:0">
+                        <span class="month-lbl" style="background:#6b7280">Apr</span>
+                        <span class="day-lbl" style="background:#f3f4f6;color:#374151">27</span>
+                    </div>
+                    <div style="flex:1">
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
+                            <span style="font-weight:700;color:#0f172a;font-size:15px">IP &amp; FE Exam — Spring
+                                2025</span>
+                            <span class="status-pill status-closed">Closed</span>
+                        </div>
+                        <div style="color:#64748b;font-size:12.5px">Results published — check the Results page</div>
+                    </div>
+                    <span class="ms" style="color:#e2e8f0;font-size:20px;flex-shrink:0">chevron_right</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     VENUES
+════════════════════════════════ -->
+    <section id="venues" style="padding:96px 24px;background:#fff">
+        <div style="max-width:1200px;margin:0 auto">
+            <div style="text-align:center;margin-bottom:52px" class="reveal">
+                <div class="section-chip">
+                    <span class="ms" style="font-size:13px">location_on</span>Exam Venues
+                </div>
+                <h2 class="section-title">Four Cities <em>Across Bangladesh</em></h2>
+                <div class="section-rule" style="margin:14px auto"></div>
+                <p class="section-desc" style="margin:0 auto;text-align:center">The examination is conducted
+                    simultaneously at four venues on the same day and time.</p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" class="venue-grid">
+                <div class="venue-card reveal d1">
+                    <div class="venue-pin-icon" style="background:#eef2ff">
+                        <span class="ms" style="color:#4f46e5;font-size:28px">location_city</span>
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">Dhaka</h3>
+                    <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">Bangladesh Computer
+                        Council, ICT Tower, Agargaon</p>
+                    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
+                        <span
+                            style="background:#eef2ff;color:#4338ca;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">Primary
+                            Venue</span>
+                    </div>
+                </div>
+                <div class="venue-card reveal d2">
+                    <div class="venue-pin-icon" style="background:#f0fdf4">
+                        <span class="ms" style="color:#16a34a;font-size:28px">location_city</span>
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">Chittagong
+                    </h3>
+                    <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">Chittagong University of
+                        Engineering &amp; Technology</p>
+                    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
+                        <span
+                            style="background:#f0fdf4;color:#166534;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">Regional
+                            Venue</span>
+                    </div>
+                </div>
+                <div class="venue-card reveal d3">
+                    <div class="venue-pin-icon" style="background:#fff7ed">
+                        <span class="ms" style="color:#ea580c;font-size:28px">location_city</span>
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">Rajshahi</h3>
+                    <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">Rajshahi University of
+                        Engineering &amp; Technology</p>
+                    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
+                        <span
+                            style="background:#fff7ed;color:#9a3412;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">Regional
+                            Venue</span>
+                    </div>
+                </div>
+                <div class="venue-card reveal d4">
+                    <div class="venue-pin-icon" style="background:#fdf4ff">
+                        <span class="ms" style="color:#9333ea;font-size:28px">location_city</span>
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">Khulna</h3>
+                    <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">Khulna University of
+                        Engineering &amp; Technology</p>
+                    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
+                        <span
+                            style="background:#fdf4ff;color:#7e22ce;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">Regional
+                            Venue</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     NEWS & NOTICES
+════════════════════════════════ -->
+    <section id="news" style="padding:96px 24px;background:#f8fafc">
+        <div style="max-width:1200px;margin:0 auto">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px"
+                class="reveal">
+                <div>
+                    <div class="section-chip">
+                        <span class="ms" style="font-size:13px">feed</span>Updates
+                    </div>
+                    <h2 class="section-title">News &amp; <em>Notices</em></h2>
+                    <div class="section-rule"></div>
+                </div>
+                <!-- Tabs -->
+                <div
+                    style="background:#fff;border:1px solid #e2e8f0;border-radius:11px;padding:5px;display:flex;gap:4px">
+                    <button class="tab-btn active" data-filter="all">All</button>
+                    <button class="tab-btn" data-filter="exam">Exam</button>
+                    <button class="tab-btn" data-filter="result">Results</button>
+                    <button class="tab-btn" data-filter="general">General</button>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:28px;align-items:start" class="news-grid">
+                <!-- Notices list -->
+                <div style="background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px" class="reveal">
+                    <div id="notice-list"></div>
+                    <div style="text-align:center;margin-top:16px">
+                        <a href="#"
+                            style="color:#4f46e5;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+                            View All Notices <span class="ms" style="font-size:16px">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Downloads sidebar -->
+                <div style="display:flex;flex-direction:column;gap:16px" class="reveal d1">
+                    <!-- Download card -->
+                    <div style="background:#0f172a;border-radius:16px;padding:22px">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+                            <span class="ms" style="font-size:20px;color:#818cf8">download</span>
+                            <span
+                                style="color:#fff;font-family:'Sora',sans-serif;font-weight:700;font-size:14.5px">Downloads</span>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:9px">
+                            <a href="#"
+                                style="display:flex;align-items:center;gap:10px;padding:11px;background:rgba(255,255,255,.06);border-radius:10px;text-decoration:none;transition:background .2s;border:1px solid rgba(255,255,255,.06)"
+                                onmouseover="this.style.background='rgba(255,255,255,.12)'"
+                                onmouseout="this.style.background='rgba(255,255,255,.06)'">
+                                <div
+                                    style="width:32px;height:32px;border-radius:8px;background:rgba(129,140,248,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                    <span class="ms" style="font-size:17px;color:#818cf8">description</span>
+                                </div>
+                                <div>
+                                    <div style="color:#e2e8f0;font-size:13px;font-weight:600">FE Syllabus (PDF)</div>
+                                    <div style="color:#475569;font-size:11px;margin-top:1px">Updated 2024</div>
+                                </div>
+                            </a>
+                            <a href="#"
+                                style="display:flex;align-items:center;gap:10px;padding:11px;background:rgba(255,255,255,.06);border-radius:10px;text-decoration:none;transition:background .2s;border:1px solid rgba(255,255,255,.06)"
+                                onmouseover="this.style.background='rgba(255,255,255,.12)'"
+                                onmouseout="this.style.background='rgba(255,255,255,.06)'">
+                                <div
+                                    style="width:32px;height:32px;border-radius:8px;background:rgba(52,211,153,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                    <span class="ms" style="font-size:17px;color:#34d399">quiz</span>
+                                </div>
+                                <div>
+                                    <div style="color:#e2e8f0;font-size:13px;font-weight:600">Past Exam Questions</div>
+                                    <div style="color:#475569;font-size:11px;margin-top:1px">IP &amp; FE — All years
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#"
+                                style="display:flex;align-items:center;gap:10px;padding:11px;background:rgba(255,255,255,.06);border-radius:10px;text-decoration:none;transition:background .2s;border:1px solid rgba(255,255,255,.06)"
+                                onmouseover="this.style.background='rgba(255,255,255,.12)'"
+                                onmouseout="this.style.background='rgba(255,255,255,.06)'">
+                                <div
+                                    style="width:32px;height:32px;border-radius:8px;background:rgba(251,191,36,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                    <span class="ms" style="font-size:17px;color:#fbbf24">article</span>
+                                </div>
+                                <div>
+                                    <div style="color:#e2e8f0;font-size:13px;font-weight:600">ITEE Brochure</div>
+                                    <div style="color:#475569;font-size:11px;margin-top:1px">Overview &amp; Guide</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick links -->
+                    <div style="background:#fff;border-radius:14px;border:1px solid #e2e8f0;padding:20px">
+                        <div
+                            style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#0f172a;margin-bottom:14px">
+                            Quick Links</div>
+                        <div style="display:flex;flex-direction:column;gap:2px">
+                            <a href="#"
+                                style="display:flex;align-items:center;gap:8px;color:#4f46e5;font-size:13px;font-weight:500;text-decoration:none;padding:9px 10px;border-radius:9px;transition:background .15s"
+                                onmouseover="this.style.background='#eef2ff'"
+                                onmouseout="this.style.background='transparent'">
+                                <span class="ms" style="font-size:16px;color:#818cf8">arrow_forward</span>Check Exam
+                                Results
+                            </a>
+                            <a href="#"
+                                style="display:flex;align-items:center;gap:8px;color:#4f46e5;font-size:13px;font-weight:500;text-decoration:none;padding:9px 10px;border-radius:9px;transition:background .15s"
+                                onmouseover="this.style.background='#eef2ff'"
+                                onmouseout="this.style.background='transparent'">
+                                <span class="ms" style="font-size:16px;color:#818cf8">arrow_forward</span>E-Learning
+                                Portal
+                            </a>
+                            <a href="#"
+                                style="display:flex;align-items:center;gap:8px;color:#4f46e5;font-size:13px;font-weight:500;text-decoration:none;padding:9px 10px;border-radius:9px;transition:background .15s"
+                                onmouseover="this.style.background='#eef2ff'"
+                                onmouseout="this.style.background='transparent'">
+                                <span class="ms" style="font-size:16px;color:#818cf8">arrow_forward</span>Top Gun
+                                Program
+                            </a>
+                            <a href="#"
+                                style="display:flex;align-items:center;gap:8px;color:#4f46e5;font-size:13px;font-weight:500;text-decoration:none;padding:9px 10px;border-radius:9px;transition:background .15s"
+                                onmouseover="this.style.background='#eef2ff'"
+                                onmouseout="this.style.background='transparent'">
+                                <span class="ms" style="font-size:16px;color:#818cf8">arrow_forward</span>ITPEC Official
+                                Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     PARTNERS
+════════════════════════════════ -->
+    <section id="partners" style="padding:72px 24px;background:#fff">
+        <div style="max-width:1200px;margin:0 auto">
+            <div style="text-align:center;margin-bottom:40px" class="reveal">
+                <div class="section-chip">
+                    <span class="ms" style="font-size:13px">handshake</span>Partners & Affiliations
+                </div>
+                <h2 class="section-title">Backed by <em>Trusted Organizations</em></h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:18px" class="venue-grid">
+                <div class="partner-card reveal d1">
+                    <img class="" src="{{ asset('assets/ipaLogoWithoutName.jpg') }}" alt="IPA Logo" />
+                    <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:14px;color:#0f172a">IPA Japan
+                    </div>
+                    <div style="color:#64748b;font-size:11.5px;margin-top:5px;text-align:center">
+                        Information-technology<br>Promotion Agency, Japan</div>
+                </div>
+                <div class="partner-card reveal d2">
+                    <img src="{{ asset('assets/bccLogo.png') }}" alt="BCC Logo" />
+                    <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:14px;color:#0f172a">Bangladesh
+                        Computer Council</div>
+                    <div style="color:#64748b;font-size:11.5px;margin-top:5px;text-align:center">Host Organization (BCC)
+                    </div>
+                </div>
+                <div class="partner-card reveal d3">
+                    <img src="{{ asset('assets/ictdLogo.png') }}" alt="IPA Logo" />
+                    <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:14px;color:#0f172a">ICT Division
+                    </div>
+                    <div style="color:#64748b;font-size:11.5px;margin-top:5px;text-align:center">Ministry of Posts
+                        &amp;<br>Telecom, Bangladesh</div>
+                </div>
+                <div class="partner-card reveal d4">
+                    <img src="{{ asset('assets/itpecLogo.gif') }}" alt="IPA Logo" />
+                    <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:14px;color:#0f172a">ITPEC</div>
+                    <div style="color:#64748b;font-size:11.5px;margin-top:5px;text-align:center">Information Technology
+                        Professionals
+                        Examination Council</div>
+                </div>
+                <div class="partner-card reveal d5">
+                    <img src="{{ asset('assets/jicaLogo.png') }}" alt="IPA Logo" />
+                    <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:14px;color:#0f172a">JICA</div>
+                    <div style="color:#64748b;font-size:11.5px;margin-top:5px;text-align:center">Japan International
+                        Cooperation Agency</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+    <footer id="footer">
+        <div style="max-width:1200px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px"
+            class="footer-grid">
+            <!-- Brand -->
+            <div>
+                <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px">
+
+                    <div>
+                        <div
+                            style="color:#f8fafc;font-family:'Sora',sans-serif;font-weight:800;font-size:19px;line-height:1;letter-spacing:-.03em">
+                            BD-ITEC</div>
+                        <div
+                            style="color:#4f46e5;font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase">
+                            IT Engineers Exam Center</div>
+                    </div>
+                </div>
+                <p style="font-size:13px;line-height:1.75;max-width:270px;margin-bottom:22px">
+                    Under Bangladesh Computer Council, BD-ITEC conducts the globally recognized ITEE in partnership with
+                    IPA Japan since October 2013.
+                </p>
+                <!-- Social -->
+                <div style="display:flex;gap:9px">
+                    <a href="#"
+                        style="width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .2s"
+                        onmouseover="this.style.background='rgba(79,70,229,.25)'"
+                        onmouseout="this.style.background='rgba(255,255,255,.06)'">
+                        <span class="ms" style="font-size:18px;color:#94a3b8">facebook</span>
+                    </a>
+                    <a href="#"
+                        style="width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .2s"
+                        onmouseover="this.style.background='rgba(79,70,229,.25)'"
+                        onmouseout="this.style.background='rgba(255,255,255,.06)'">
+                        <span class="ms" style="font-size:18px;color:#94a3b8">mail</span>
+                    </a>
+                    <a href="#"
+                        style="width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .2s"
+                        onmouseover="this.style.background='rgba(79,70,229,.25)'"
+                        onmouseout="this.style.background='rgba(255,255,255,.06)'">
+                        <span class="ms" style="font-size:18px;color:#94a3b8">play_circle</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-head">Examination</div>
+                <a href="#">About ITEE</a>
+                <a href="#">IP Exam — Level 1</a>
+                <a href="#">FE Exam — Level 2</a>
+                <a href="#">Exam Schedule</a>
+                <a href="#">Exam Venues</a>
+                <a href="#">Registration</a>
+            </div>
+            <div>
+                <div class="footer-head">Resources</div>
+                <a href="#">Past Questions</a>
+                <a href="#">FE Syllabus</a>
+                <a href="#">ITEE Brochure</a>
+                <a href="#">E-Learning Portal</a>
+                <a href="#">Top Gun Program</a>
+                <a href="#">Study Materials</a>
+            </div>
+            <div>
+                <div class="footer-head">Contact</div>
+                <p style="font-size:12.5px;line-height:1.75;margin-bottom:12px">
+                    Bangladesh Computer Council<br>
+                    ICT Tower, Agargaon<br>
+                    Sher-e-Bangla Nagar<br>
+                    Dhaka-1207, Bangladesh
+                </p>
+                <a href="mailto:info@bditec.gov.bd"
+                    style="color:#818cf8 !important;font-size:13px">info@bditec.gov.bd</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div
+                style="max-width:1200px;margin:0 auto;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+                <div style="font-size:12px">© 2026 BD-ITEC — Bangladesh Computer Council. All rights reserved.</div>
+                <div style="display:flex;gap:18px">
+                    <a href="#" style="font-size:12px;display:inline">Privacy Policy</a>
+                    <a href="#" style="font-size:12px;display:inline">Terms of Use</a>
+                    <a href="#" style="font-size:12px;display:inline">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="btt" aria-label="Back to top">
+        <span class="ms" style="font-size:22px;pointer-events:none">keyboard_arrow_up</span>
+    </button>
+
+    <!-- ════════════════════════════════
+     SCRIPTS
+════════════════════════════════ -->
+    <script>
+        /* ── Hero Canvas: floating particles ── */
+        (function () {
+            const c = document.getElementById('hero-canvas');
+            const ctx = c.getContext('2d');
+            let pts = [], raf;
+            function resize() { c.width = c.offsetWidth; c.height = c.offsetHeight; }
+
+            function Pt() {
+                this.x = Math.random() * c.width;
+                this.y = Math.random() * c.height;
+                this.vx = (Math.random() - .5) * .35;
+                this.vy = (Math.random() - .5) * .35;
+                this.r = Math.random() * 1.2 + .4;
+                this.a = Math.random() * .55 + .15;
+            }
+
+            function init() {
+                pts = [];
+                const n = Math.min(90, ~~(c.width / 12));
+                for (let i = 0; i < n; i++) pts.push(new Pt());
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, c.width, c.height);
+                for (let i = 0; i < pts.length; i++) {
+                    const p = pts[i];
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > c.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > c.height) p.vy *= -1;
+                    for (let j = i + 1; j < pts.length; j++) {
+                        const q = pts[j], dx = p.x - q.x, dy = p.y - q.y, d = Math.sqrt(dx * dx + dy * dy);
+                        if (d < 110) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+                            ctx.strokeStyle = `rgba(129,140,248,${.14 * (1 - d / 110)})`;
+                            ctx.lineWidth = .7; ctx.stroke();
+                        }
+                    }
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(165,180,252,${p.a})`;
+                    ctx.fill();
+                }
+                raf = requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', () => { resize(); init(); });
+            resize(); init(); draw();
+        })();
+
+        /* ── Navbar scroll effect ── */
+        const navbar = document.getElementById('navbar');
+        const btt = document.getElementById('btt');
+        window.addEventListener('scroll', () => {
+            const s = window.scrollY;
+            navbar.classList.toggle('scrolled', s > 72);
+            btt.style.display = s > 400 ? 'flex' : 'none';
+        });
+        btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        /* ── Mobile hamburger ── */
+        const burger = document.getElementById('hamburger');
+        const mobMenu = document.getElementById('mob-menu');
+        burger.addEventListener('click', () => mobMenu.classList.toggle('open'));
+        document.querySelectorAll('#mob-menu a').forEach(a =>
+            a.addEventListener('click', () => mobMenu.classList.remove('open'))
+        );
+
+        /* ── Smooth scroll for anchor links ── */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const id = a.getAttribute('href');
+                if (id === '#') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+                const el = document.querySelector(id);
+                if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+
+        /* ── Scroll reveal ── */
+        const revealObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+        }, { threshold: .1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        /* ── Animated counters ── */
+        function countUp(el, target, dur = 1800) {
+            const start = performance.now();
+            const sup = el.querySelector('sup') ? el.querySelector('sup').outerHTML : '';
+            const update = now => {
+                const p = Math.min((now - start) / dur, 1);
+                const ease = 1 - Math.pow(1 - p, 3);
+                const val = Math.round(ease * target);
+                el.innerHTML = val + sup;
+                if (p < 1) requestAnimationFrame(update);
+            };
+            requestAnimationFrame(update);
+        }
+
+        const cntObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const el = e.target, t = parseInt(el.dataset.target || el.dataset.count);
+                    if (!isNaN(t)) countUp(el, t);
+                    cntObs.unobserve(el);
+                }
+            });
+        }, { threshold: .5 });
+        document.querySelectorAll('[data-target],[data-count]').forEach(el => cntObs.observe(el));
+
+        /* ── Notices data & render ── */
+        const notices = [
+            { d: '21 Apr 2026', title: 'Registration is open for IP & FE Exam — Spring Session 2026. Deadline: March 31.', cat: 'exam' },
+            { d: '14 Apr 2026', title: 'Free 30-hour online FE preparation training commences October 4, 2025. All FE registrants eligible.', cat: 'general' },
+            { d: '10 Mar 2026', title: 'IP Exam Result for October 2024 session published. Download from Results page.', cat: 'result' },
+            { d: '18 Feb 2026', title: 'Certificate collection schedule announced for October 2024 passers — visit BCC Agargaon.', cat: 'general' },
+            { d: '05 Jan 2026', title: 'Admit cards for Spring 2026 available for download from registration portal.', cat: 'exam' },
+            { d: '01 Dec 2025', title: 'FE Half Passer list updated for October 2025 session. Check your registration portal.', cat: 'result' },
+        ];
+
+        const catStyle = {
+            exam: { cls: 'nc-exam', label: 'Exam' },
+            result: { cls: 'nc-result', label: 'Result' },
+            general: { cls: 'nc-general', label: 'General' },
+        };
+
+        function renderNotices(filter) {
+            const list = document.getElementById('notice-list');
+            const data = filter === 'all' ? notices : notices.filter(n => n.cat === filter);
+            list.innerHTML = data.map(n => `
+    <div class="notice-row">
+      <div class="notice-icon-box">
+        <span class="ms" style="font-size:17px;color:#6366f1">event_note</span>
+      </div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap">
+          <span class="notice-cat ${catStyle[n.cat].cls}">${catStyle[n.cat].label}</span>
+          <span style="color:#94a3b8;font-size:11.5px">${n.d}</span>
+        </div>
+        <div style="font-size:13.5px;color:#1e293b;font-weight:500;line-height:1.5">${n.title}</div>
+      </div>
+      <span class="ms" style="font-size:18px;color:#e2e8f0;flex-shrink:0;margin-top:4px">chevron_right</span>
+    </div>
+  `).join('');
+        }
+        renderNotices('all');
+
+        /* ── Tab filter ── */
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                btn.classList.add('active');
+                renderNotices(btn.dataset.filter);
+            });
+        });
+
+        /* ── Hero stat bar quick counter ── */
+        document.querySelectorAll('.hero-stat-val[data-count]').forEach(el => {
+            const t = parseInt(el.dataset.count);
+            if (!isNaN(t)) countUp(el, t, 1400);
+        });
+    </script>
+</body>
+
 </html>

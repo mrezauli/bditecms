@@ -3,23 +3,22 @@
     "name": "laravel/livewire-starter-kit",
     "type": "project",
     "description": "The official Laravel starter kit for Livewire.",
-    "keywords": [
-        "laravel",
-        "framework"
-    ],
+    "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "filament/filament": "^5.0",
         "laravel/chisel": "^0.1.0",
         "laravel/fortify": "^1.37.2",
         "laravel/framework": "^13.7",
         "laravel/tinker": "^3.0",
         "livewire/flux": "^2.13.1",
-        "livewire/livewire": "^4.1"
+        "livewire/livewire": "^4.1",
+        "stechstudio/filament-impersonate": "^5.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24",
-        "laravel/boost": "^2.2",
+        "laravel/boost": "^2.4",
         "laravel/pail": "^1.2.5",
         "laravel/pao": "^1.0.6",
         "laravel/pint": "^1.27",
@@ -71,11 +70,31 @@
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan boost:update --ansi"
+            "@php artisan clear-compiled --ansi",
+            "@php artisan auth:clear-resets --ansi",
+            "@php artisan cache:clear --ansi",
+            "@php artisan config:clear --ansi",
+            "@php artisan event:clear --ansi",
+            "@php artisan filament:clear-cached-components --ansi",
+            "@php artisan filament:optimize-clear --ansi",
+            "@php artisan icons:clear --ansi",
+            "@php artisan optimize:clear --ansi",
+            "@php artisan route:clear --ansi",
+            "@php artisan view:clear --ansi",
+            "@php artisan optimize --ansi",
+            "@php artisan boost:update --ansi",
+            "@php artisan icons:cache --ansi",
+            "@php artisan config:cache --ansi",
+            "@php artisan event:cache --ansi",
+            "@php artisan filament:cache-components --ansi",
+            "@php artisan filament:optimize --ansi",
+            "@php artisan route:cache --ansi",
+            "@php artisan view:cache --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
