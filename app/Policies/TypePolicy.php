@@ -12,6 +12,10 @@ class TypePolicy
      */
     public function viewAny(User $user): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -20,6 +24,10 @@ class TypePolicy
      */
     public function view(User $user, Type $type): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -28,6 +36,10 @@ class TypePolicy
      */
     public function create(User $user): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -36,6 +48,10 @@ class TypePolicy
      */
     public function update(User $user, Type $type): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -44,6 +60,19 @@ class TypePolicy
      */
     public function delete(User $user, Type $type): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function deleteAny(User $user): bool
+    {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -52,6 +81,10 @@ class TypePolicy
      */
     public function restore(User $user, Type $type): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -60,6 +93,10 @@ class TypePolicy
      */
     public function forceDelete(User $user, Type $type): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 }
