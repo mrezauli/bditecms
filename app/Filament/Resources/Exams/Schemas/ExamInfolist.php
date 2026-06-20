@@ -19,7 +19,7 @@ class ExamInfolist
                         TextEntry::make('acronym'),
                         TextEntry::make('level'),
                         TextEntry::make('details')
-                            ->columnSpanFull()
+                            ->columnSpanFull(),
                     ]),
 
                 Section::make('Timestamps')
@@ -32,7 +32,7 @@ class ExamInfolist
                             ->placeholder('-'),
                         TextEntry::make('deleted_at')
                             ->dateTime()
-                            ->visible(fn(Exam $record): bool => $record->trashed()),
+                            ->visible(fn (Exam $record): bool => $record->trashed()),
 
                     ]),
             ]);

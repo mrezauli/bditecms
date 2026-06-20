@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Types\Pages;
 
+use App\Filament\Actions\ActivateRecordAction;
+use App\Filament\Actions\DeactivateRecordAction;
 use App\Filament\Resources\Types\TypeResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
@@ -17,6 +19,8 @@ class EditType extends EditRecord
     {
         return [
             ViewAction::make(),
+            ActivateRecordAction::make(),
+            DeactivateRecordAction::make(),
             DeleteAction::make(),
             ForceDeleteAction::make(),
             RestoreAction::make(),

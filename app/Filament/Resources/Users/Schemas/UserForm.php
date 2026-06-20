@@ -21,9 +21,6 @@ class UserForm
                     ->email()
                     ->required(),
                 DateTimePicker::make('email_verified_at'),
-                TextInput::make('password')
-                    ->password()
-                    ->required(),
                 Select::make('role')
                     ->options(RoleEnum::class)
                     ->required(),

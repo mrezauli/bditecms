@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\Users\Tables;
 
 use App\Enums\RoleEnum;
+use App\Filament\Actions\ActivateRecordAction;
+use App\Filament\Actions\DeactivateRecordAction;
 use App\Models\User;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -42,7 +44,7 @@ class UsersTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('role')
+                TextColumn::make('role'),
             ])
             ->filters([
                 TrashedFilter::make(),
@@ -50,6 +52,8 @@ class UsersTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                ActivateRecordAction::make(),
+                DeactivateRecordAction::make(),
                 Impersonate::make(),
             ])
             ->toolbarActions([
@@ -59,7 +63,7 @@ class UsersTable
                     RestoreBulkAction::make(),
                 ]),
             ])
-            ->recordClasses(fn(User $record): ?string => self::roleRowClasses($record));
+            ->recordClasses(fn (User $record): ?string => self::roleRowClasses($record));
     }
 
     public static function roleRowClasses(User $record): ?string

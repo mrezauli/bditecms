@@ -19,7 +19,7 @@ class UserInfolist
                         TextEntry::make('email')
                             ->label('Email address'),
                         TextEntry::make('role')
-                            ->placeholder('-')
+                            ->placeholder('-'),
                     ]),
                 Section::make('Timestamps')
                     ->schema([
@@ -34,7 +34,7 @@ class UserInfolist
                             ->placeholder('-'),
                         TextEntry::make('deleted_at')
                             ->dateTime()
-                            ->visible(fn(User $record): bool => $record->trashed()),
+                            ->visible(fn (User $record): bool => $record->trashed()),
 
                     ]),
                 Section::make('Two Factor Info')
@@ -47,8 +47,8 @@ class UserInfolist
                             ->columnSpanFull(),
                         TextEntry::make('two_factor_confirmed_at')
                             ->dateTime()
-                            ->placeholder('-')
-                    ])
+                            ->placeholder('-'),
+                    ]),
 
             ]);
     }

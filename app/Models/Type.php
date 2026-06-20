@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\ModelStatus\HasStatuses;
 
 #[Fillable(['name', 'exam_id'])]
 class Type extends Model
 {
     /** @use HasFactory<TypeFactory> */
-    use HasFactory, SoftDeletes;
+    use HasFactory, HasStatuses, SoftDeletes;
 
     /**
      * Get the exam that owns the Type

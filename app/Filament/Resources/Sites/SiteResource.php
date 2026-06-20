@@ -17,12 +17,15 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
 
 class SiteResource extends Resource
 {
     protected static ?string $model = Site::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|UnitEnum|null $navigationGroup = 'Venue Metadata';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Cloud;
 
     public static function form(Schema $schema): Schema
     {

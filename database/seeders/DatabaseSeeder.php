@@ -3,9 +3,14 @@
 namespace Database\Seeders;
 
 use App\Enums\RoleEnum;
+use App\Models\Answer;
+use App\Models\District;
+use App\Models\Division;
 use App\Models\Exam;
+use App\Models\Question;
 use App\Models\Site;
 use App\Models\Type;
+use App\Models\University;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
@@ -51,6 +56,11 @@ class DatabaseSeeder extends Seeder
             Exam::factory(10)->create();
             Type::factory(10)->create();
             Site::factory(10)->create();
+            Question::factory(10)->create();
+            Answer::factory(10)->create();
+            Division::factory(10)->create();
+            District::factory(10)->create();
+            University::factory(10)->create();
         } else {
             User::factory()->create([
                 'name' => 'Director',
@@ -69,10 +79,16 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
                 'role' => RoleEnum::SuperAdmin->value,
             ]);
+
             $this->call([
                 ExamSeeder::class,
                 TypeSeeder::class,
                 SiteSeeder::class,
+                QuestionSeeder::class,
+                AnswerSeeder::class,
+                DivisionSeeder::class,
+                DistrictSeeder::class,
+                UniversitySeeder::class,
             ]);
         }
     }

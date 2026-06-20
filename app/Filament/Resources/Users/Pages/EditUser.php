@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Users\Pages;
 
+use App\Filament\Actions\ActivateRecordAction;
+use App\Filament\Actions\DeactivateRecordAction;
 use App\Filament\Resources\Users\UserResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
@@ -18,6 +20,8 @@ class EditUser extends EditRecord
     {
         return [
             ViewAction::make(),
+            ActivateRecordAction::make(),
+            DeactivateRecordAction::make(),
             DeleteAction::make(),
             ForceDeleteAction::make(),
             RestoreAction::make(),

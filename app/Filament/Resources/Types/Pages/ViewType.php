@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Types\Pages;
 
+use App\Filament\Actions\ActivateRecordAction;
+use App\Filament\Actions\DeactivateRecordAction;
 use App\Filament\Resources\Types\TypeResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
@@ -14,6 +16,8 @@ class ViewType extends ViewRecord
     {
         return [
             EditAction::make(),
+            ActivateRecordAction::make(),
+            DeactivateRecordAction::make(),
         ];
     }
 }
