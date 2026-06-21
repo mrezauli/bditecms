@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('acronym', 10);
-            $table->string('website', 50);
+            $table->string('website', 250);
             $table->enum('category', ['public', 'private', 'international']);
             $table->timestamps();
             $table->softDeletes();

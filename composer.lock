@@ -1698,7 +1698,6 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-<<<<<<< Updated upstream
             "version": "7.12.1",
             "source": {
                 "type": "git",
@@ -1709,28 +1708,12 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d34627490fbc03bf5c5d7cfed81f2faa19519425",
                 "reference": "d34627490fbc03bf5c5d7cfed81f2faa19519425",
-=======
-            "version": "7.11.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "5af96f374e0ab4ebd747b8310888c99d3adb0a8c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/5af96f374e0ab4ebd747b8310888c99d3adb0a8c",
-                "reference": "5af96f374e0ab4ebd747b8310888c99d3adb0a8c",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^2.5",
-<<<<<<< Updated upstream
                 "guzzlehttp/psr7": "^2.12.1",
-=======
-                "guzzlehttp/psr7": "^2.11",
->>>>>>> Stashed changes
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.5 || ^3.0",
@@ -1743,11 +1726,7 @@
                 "bamarni/composer-bin-plugin": "^1.8.2",
                 "ext-curl": "*",
                 "guzzle/client-integration-tests": "3.0.2",
-<<<<<<< Updated upstream
                 "guzzlehttp/test-server": "^0.5.1",
-=======
-                "guzzlehttp/test-server": "^0.5",
->>>>>>> Stashed changes
                 "php-http/message-factory": "^1.1",
                 "phpunit/phpunit": "^8.5.52 || ^9.6.34",
                 "psr/log": "^1.1 || ^2.0 || ^3.0"
@@ -1827,11 +1806,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-<<<<<<< Updated upstream
                 "source": "https://github.com/guzzle/guzzle/tree/7.12.1"
-=======
-                "source": "https://github.com/guzzle/guzzle/tree/7.11.1"
->>>>>>> Stashed changes
             },
             "funding": [
                 {
@@ -1847,11 +1822,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< Updated upstream
             "time": "2026-06-18T14:12:49+00:00"
-=======
-            "time": "2026-06-07T22:54:06+00:00"
->>>>>>> Stashed changes
         },
         {
             "name": "guzzlehttp/promises",
@@ -1939,7 +1910,6 @@
         },
         {
             "name": "guzzlehttp/psr7",
-<<<<<<< Updated upstream
             "version": "2.12.1",
             "source": {
                 "type": "git",
@@ -1950,18 +1920,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/guzzle/psr7/zipball/172ef2f4e9824c1e058b7f30be8ae25a02c0f2b7",
                 "reference": "172ef2f4e9824c1e058b7f30be8ae25a02c0f2b7",
-=======
-            "version": "2.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/psr7.git",
-                "reference": "bbb5e61349fa5cb822b3e87842b951088b76b81f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/bbb5e61349fa5cb822b3e87842b951088b76b81f",
-                "reference": "bbb5e61349fa5cb822b3e87842b951088b76b81f",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2051,11 +2009,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-<<<<<<< Updated upstream
                 "source": "https://github.com/guzzle/psr7/tree/2.12.1"
-=======
-                "source": "https://github.com/guzzle/psr7/tree/2.11.0"
->>>>>>> Stashed changes
             },
             "funding": [
                 {
@@ -2071,11 +2025,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< Updated upstream
             "time": "2026-06-18T09:49:37+00:00"
-=======
-            "time": "2026-06-02T12:30:48+00:00"
->>>>>>> Stashed changes
         },
         {
             "name": "guzzlehttp/uri-template",
@@ -2344,7 +2294,6 @@
         },
         {
             "name": "laravel/framework",
-<<<<<<< Updated upstream
             "version": "v13.16.1",
             "source": {
                 "type": "git",
@@ -2355,18 +2304,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/6135650d69bd9442e470bb1b343422081b076f1e",
                 "reference": "6135650d69bd9442e470bb1b343422081b076f1e",
-=======
-            "version": "v13.14.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "e60b1c817a9ef7da319e4007de6cfda5301a58c0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e60b1c817a9ef7da319e4007de6cfda5301a58c0",
-                "reference": "e60b1c817a9ef7da319e4007de6cfda5301a58c0",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -2577,11 +2514,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-<<<<<<< Updated upstream
             "time": "2026-06-16T16:07:50+00:00"
-=======
-            "time": "2026-06-04T18:46:35+00:00"
->>>>>>> Stashed changes
         },
         {
             "name": "laravel/passkeys",
@@ -3715,8 +3648,6 @@
                 }
             ],
             "time": "2026-06-02T08:58:52+00:00"
-<<<<<<< Updated upstream
-=======
         },
         {
             "name": "masterminds/html5",
@@ -3784,7 +3715,6 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.10.0"
             },
             "time": "2025-07-25T09:04:22+00:00"
->>>>>>> Stashed changes
         },
         {
             "name": "monolog/monolog",
@@ -7866,16 +7796,16 @@
         },
         {
             "name": "symfony/polyfill-php83",
-            "version": "v1.38.1",
+            "version": "v1.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php83.git",
-                "reference": "8339098cae28673c15cce00d80734af0453054e2"
+                "reference": "796a26abb75ce49f3a84433cd81bf1009d73d5f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php83/zipball/8339098cae28673c15cce00d80734af0453054e2",
-                "reference": "8339098cae28673c15cce00d80734af0453054e2",
+                "url": "https://api.github.com/repos/symfony/polyfill-php83/zipball/796a26abb75ce49f3a84433cd81bf1009d73d5f8",
+                "reference": "796a26abb75ce49f3a84433cd81bf1009d73d5f8",
                 "shasum": ""
             },
             "require": {
@@ -7922,7 +7852,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php83/tree/v1.38.1"
+                "source": "https://github.com/symfony/polyfill-php83/tree/v1.38.2"
             },
             "funding": [
                 {
@@ -7942,7 +7872,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-26T12:51:13+00:00"
+            "time": "2026-05-27T06:51:48+00:00"
         },
         {
             "name": "symfony/polyfill-php84",
@@ -10412,7 +10342,6 @@
         },
         {
             "name": "laravel/boost",
-<<<<<<< Updated upstream
             "version": "v2.4.10",
             "source": {
                 "type": "git",
@@ -10423,18 +10352,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/boost/zipball/080189f51c8d27c0792a03483a70adc7770f6eeb",
                 "reference": "080189f51c8d27c0792a03483a70adc7770f6eeb",
-=======
-            "version": "v2.4.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/boost.git",
-                "reference": "f0359e55f6c3782023a35baf1d3df817053d69e8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/boost/zipball/f0359e55f6c3782023a35baf1d3df817053d69e8",
-                "reference": "f0359e55f6c3782023a35baf1d3df817053d69e8",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -10443,11 +10360,7 @@
                 "illuminate/contracts": "^11.45.3|^12.41.1|^13.0",
                 "illuminate/routing": "^11.45.3|^12.41.1|^13.0",
                 "illuminate/support": "^11.45.3|^12.41.1|^13.0",
-<<<<<<< Updated upstream
                 "laravel/mcp": "^0.7.1|^0.8.0",
-=======
-                "laravel/mcp": "^0.7.1",
->>>>>>> Stashed changes
                 "laravel/prompts": "^0.3.10",
                 "laravel/roster": "^0.5.0",
                 "php": "^8.2"
@@ -10491,7 +10404,6 @@
                 "issues": "https://github.com/laravel/boost/issues",
                 "source": "https://github.com/laravel/boost"
             },
-<<<<<<< Updated upstream
             "time": "2026-06-09T10:21:08+00:00"
         },
         {
@@ -10506,22 +10418,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/mcp/zipball/fdc39c9e21048801508765cb4d72bd9e8501b51f",
                 "reference": "fdc39c9e21048801508765cb4d72bd9e8501b51f",
-=======
-            "time": "2026-06-04T10:33:57+00:00"
-        },
-        {
-            "name": "laravel/mcp",
-            "version": "v0.7.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/mcp.git",
-                "reference": "08962a276357f89164f78b38407c08187ab26cfe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/mcp/zipball/08962a276357f89164f78b38407c08187ab26cfe",
-                "reference": "08962a276357f89164f78b38407c08187ab26cfe",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -10582,11 +10478,7 @@
                 "issues": "https://github.com/laravel/mcp/issues",
                 "source": "https://github.com/laravel/mcp"
             },
-<<<<<<< Updated upstream
             "time": "2026-06-11T13:59:49+00:00"
-=======
-            "time": "2026-05-22T11:45:29+00:00"
->>>>>>> Stashed changes
         },
         {
             "name": "laravel/pail",
