@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Types\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -13,9 +14,9 @@ class TypeForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('exam_id')
-                    ->required()
-                    ->numeric(),
+                Select::make('exam_id')
+                    ->relationship('exam', 'name')
+                    ->required(),
             ]);
     }
 }

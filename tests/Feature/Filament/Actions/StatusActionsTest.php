@@ -12,6 +12,7 @@ use App\Models\Question;
 use App\Models\Site;
 use App\Models\Type;
 use App\Models\University;
+use App\Models\UniversityCategory;
 use App\Models\User;
 
 describe('Status Actions', function () {
@@ -73,6 +74,7 @@ describe('Status Actions', function () {
         });
 
         it('activates a university record', function () {
+            UniversityCategory::factory()->create();
             $university = University::factory()->create();
 
             expect($university->hasStatus('active'))->toBeFalse();
@@ -173,6 +175,7 @@ describe('Status Actions', function () {
         });
 
         it('deactivates a university record', function () {
+            UniversityCategory::factory()->create();
             $university = University::factory()->create();
             $university->setStatus('active');
 

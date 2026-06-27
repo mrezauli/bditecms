@@ -17,7 +17,7 @@ class AnswerForm
                 TextInput::make('content')
                     ->required(),
                 Select::make('question_id')
-                    ->relationship('question', 'id')
+                    ->relationship('question', 'label')
                     ->required(),
             ]);
     }

@@ -15,7 +15,8 @@ class UniversityInfolist
                 TextEntry::make('name'),
                 TextEntry::make('acronym'),
                 TextEntry::make('website'),
-                TextEntry::make('category'),
+                TextEntry::make('universityCategory.name')
+                    ->label('Category'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

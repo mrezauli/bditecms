@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Questions\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -11,7 +12,8 @@ class QuestionForm
     {
         return $schema
             ->components([
-                TextInput::make('label')
+                Select::make('label')
+                    ->options(collect(range(1, 9))->mapWithKeys(fn ($i) => ["Q{$i}" => "Q{$i}"]))
                     ->required(),
                 TextInput::make('content')
                     ->required(),

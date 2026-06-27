@@ -26,8 +26,9 @@ class UniversitiesTable
                     ->searchable(),
                 TextColumn::make('website')
                     ->searchable(),
-                TextColumn::make('category')
-                    ->searchable(),
+                TextColumn::make('universityCategory.name')
+                    ->label('Category')
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

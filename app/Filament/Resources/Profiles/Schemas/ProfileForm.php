@@ -3,8 +3,9 @@
 namespace App\Filament\Resources\Profiles\Schemas;
 
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class ProfileForm
@@ -13,14 +14,14 @@ class ProfileForm
     {
         return $schema
             ->components([
-                TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
+                Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->required(),
                 DatePicker::make('date_of_birth')
                     ->required(),
-                TextInput::make('gender_id')
-                    ->required()
-                    ->numeric(),
+                Select::make('gender_id')
+                    ->relationship('gender', 'name')
+                    ->required(),
                 TextInput::make('mobile_number')
                     ->required()
                     ->numeric(),
@@ -33,12 +34,12 @@ class ProfileForm
                 TextInput::make('post_code')
                     ->required()
                     ->numeric(),
-                TextInput::make('district_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('university_id')
-                    ->required()
-                    ->numeric(),
+                Select::make('district_id')
+                    ->relationship('district', 'name')
+                    ->required(),
+                Select::make('university_id')
+                    ->relationship('university', 'acronym')
+                    ->required(),
                 TextInput::make('occupation')
                     ->required(),
             ]);

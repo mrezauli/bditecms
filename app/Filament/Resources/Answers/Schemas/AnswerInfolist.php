@@ -14,7 +14,7 @@ class AnswerInfolist
             ->components([
                 TextEntry::make('label'),
                 TextEntry::make('content'),
-                TextEntry::make('question.id')
+                TextEntry::make('question.label')
                     ->label('Question'),
                 TextEntry::make('created_at')
                     ->dateTime()

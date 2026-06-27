@@ -12,30 +12,30 @@ class EnrollmentInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('exam_id')
-                    ->numeric(),
-                TextEntry::make('type_id')
-                    ->numeric(),
-                TextEntry::make('site_id')
-                    ->numeric(),
-                TextEntry::make('first_answer_id')
-                    ->numeric(),
-                TextEntry::make('second_answer_id')
-                    ->numeric(),
-                TextEntry::make('third_answer_id')
-                    ->numeric(),
-                TextEntry::make('fourth_answer_id')
-                    ->numeric(),
-                TextEntry::make('fifth_answer_id')
-                    ->numeric(),
-                TextEntry::make('sixth_answer_id')
-                    ->numeric(),
-                TextEntry::make('seventh_answer_id')
-                    ->numeric(),
-                TextEntry::make('eighth_answer_id')
-                    ->numeric(),
-                TextEntry::make('ninth_answer_id')
-                    ->numeric(),
+                TextEntry::make('exam.acronym')
+                    ->label('Exam'),
+                TextEntry::make('type.name')
+                    ->label('Type'),
+                TextEntry::make('site.name')
+                    ->label('Site'),
+                TextEntry::make('firstAnswer.label')
+                    ->label('1st Answer'),
+                TextEntry::make('secondAnswer.label')
+                    ->label('2nd Answer'),
+                TextEntry::make('thirdAnswer.label')
+                    ->label('3rd Answer'),
+                TextEntry::make('fourthAnswer.label')
+                    ->label('4th Answer'),
+                TextEntry::make('fifthAnswer.label')
+                    ->label('5th Answer'),
+                TextEntry::make('sixthAnswer.label')
+                    ->label('6th Answer'),
+                TextEntry::make('seventhAnswer.label')
+                    ->label('7th Answer'),
+                TextEntry::make('eighthAnswer.label')
+                    ->label('8th Answer'),
+                TextEntry::make('ninthAnswer.label')
+                    ->label('9th Answer'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

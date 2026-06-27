@@ -13,8 +13,8 @@ class DistrictInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
-                TextEntry::make('division_id')
-                    ->numeric(),
+                TextEntry::make('division.name')
+                    ->label('Division'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

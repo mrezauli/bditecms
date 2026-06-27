@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Enrollments\Tables;
 
+use App\Filament\Actions\ActivateRecordAction;
+use App\Filament\Actions\DeactivateRecordAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -18,41 +20,41 @@ class EnrollmentsTable
     {
         return $table
             ->columns([
-                TextColumn::make('exam_id')
-                    ->numeric()
+                TextColumn::make('exam.acronym')
+                    ->label('Exam')
                     ->sortable(),
-                TextColumn::make('type_id')
-                    ->numeric()
+                TextColumn::make('type.name')
+                    ->label('Type')
                     ->sortable(),
-                TextColumn::make('site_id')
-                    ->numeric()
+                TextColumn::make('site.name')
+                    ->label('Site')
                     ->sortable(),
-                TextColumn::make('first_answer_id')
-                    ->numeric()
+                TextColumn::make('firstAnswer.label')
+                    ->label('1st Answer')
                     ->sortable(),
-                TextColumn::make('second_answer_id')
-                    ->numeric()
+                TextColumn::make('secondAnswer.label')
+                    ->label('2nd Answer')
                     ->sortable(),
-                TextColumn::make('third_answer_id')
-                    ->numeric()
+                TextColumn::make('thirdAnswer.label')
+                    ->label('3rd Answer')
                     ->sortable(),
-                TextColumn::make('fourth_answer_id')
-                    ->numeric()
+                TextColumn::make('fourthAnswer.label')
+                    ->label('4th Answer')
                     ->sortable(),
-                TextColumn::make('fifth_answer_id')
-                    ->numeric()
+                TextColumn::make('fifthAnswer.label')
+                    ->label('5th Answer')
                     ->sortable(),
-                TextColumn::make('sixth_answer_id')
-                    ->numeric()
+                TextColumn::make('sixthAnswer.label')
+                    ->label('6th Answer')
                     ->sortable(),
-                TextColumn::make('seventh_answer_id')
-                    ->numeric()
+                TextColumn::make('seventhAnswer.label')
+                    ->label('7th Answer')
                     ->sortable(),
-                TextColumn::make('eighth_answer_id')
-                    ->numeric()
+                TextColumn::make('eighthAnswer.label')
+                    ->label('8th Answer')
                     ->sortable(),
-                TextColumn::make('ninth_answer_id')
-                    ->numeric()
+                TextColumn::make('ninthAnswer.label')
+                    ->label('9th Answer')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -73,6 +75,8 @@ class EnrollmentsTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                ActivateRecordAction::make(),
+                DeactivateRecordAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\UniversityCategories\Tables;
 
+use App\Filament\Actions\ActivateRecordAction;
+use App\Filament\Actions\DeactivateRecordAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -39,6 +41,8 @@ class UniversityCategoriesTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                ActivateRecordAction::make(),
+                DeactivateRecordAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

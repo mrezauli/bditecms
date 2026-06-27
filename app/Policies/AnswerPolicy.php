@@ -27,6 +27,7 @@ class AnswerPolicy
         if ($user->role->value === 'super admin') {
             return true;
         }
+
         return false;
     }
 

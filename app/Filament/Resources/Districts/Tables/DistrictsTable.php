@@ -22,8 +22,8 @@ class DistrictsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('division_id')
-                    ->numeric()
+                TextColumn::make('division.name')
+                    ->label('Division')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()

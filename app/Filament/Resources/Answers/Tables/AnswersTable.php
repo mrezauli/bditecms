@@ -24,7 +24,8 @@ class AnswersTable
                     ->searchable(),
                 TextColumn::make('content')
                     ->searchable(),
-                TextColumn::make('question.id')
+                TextColumn::make('question.label')
+                    ->label('Question')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Profile;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class ProfilePolicy
 {
@@ -88,7 +87,7 @@ class ProfilePolicy
         if ($user->role->value === 'super admin') {
             return true;
         }
-        
+
         return false;
     }
 

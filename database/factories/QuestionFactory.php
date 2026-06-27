@@ -17,8 +17,10 @@ class QuestionFactory extends Factory
      */
     public function definition(): array
     {
+        static $i = 0;
+
         return [
-            'label' => fake()->isbn10(),
+            'label' => 'Q'.((++$i % 9) ?: 9),
             'content' => fake()->sentence(),
         ];
     }

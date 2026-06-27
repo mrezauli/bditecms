@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Enrollment;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class EnrollmentPolicy
 {
@@ -88,7 +87,7 @@ class EnrollmentPolicy
         if ($user->role->value === 'super admin') {
             return true;
         }
-        
+
         return false;
     }
 

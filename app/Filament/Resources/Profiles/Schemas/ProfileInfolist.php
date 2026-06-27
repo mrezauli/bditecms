@@ -12,12 +12,12 @@ class ProfileInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('user_id')
-                    ->numeric(),
+                TextEntry::make('user.name')
+                    ->label('User'),
                 TextEntry::make('date_of_birth')
                     ->date(),
-                TextEntry::make('gender_id')
-                    ->numeric(),
+                TextEntry::make('gender.name')
+                    ->label('Gender'),
                 TextEntry::make('mobile_number')
                     ->numeric(),
                 TextEntry::make('present_address')
@@ -26,10 +26,10 @@ class ProfileInfolist
                     ->columnSpanFull(),
                 TextEntry::make('post_code')
                     ->numeric(),
-                TextEntry::make('district_id')
-                    ->numeric(),
-                TextEntry::make('university_id')
-                    ->numeric(),
+                TextEntry::make('district.name')
+                    ->label('District'),
+                TextEntry::make('university.acronym')
+                    ->label('University'),
                 TextEntry::make('occupation'),
                 TextEntry::make('created_at')
                     ->dateTime()

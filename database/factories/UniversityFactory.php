@@ -22,7 +22,7 @@ class UniversityFactory extends Factory
             'name' => fake()->company(),
             'acronym' => fake()->currencyCode(),
             'website' => fake()->url(),
-            'university_category_id' => fn(): ?int => UniversityCategory::inRandomOrder()->value('id'),
+            'university_category_id' => fn (): ?int => UniversityCategory::inRandomOrder()->value('id'),
         ];
     }
 }

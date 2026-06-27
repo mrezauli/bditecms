@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Universities\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -18,7 +19,8 @@ class UniversityForm
                 TextInput::make('website')
                     ->url()
                     ->required(),
-                TextInput::make('category')
+                Select::make('university_category_id')
+                    ->relationship('universityCategory', 'name')
                     ->required(),
             ]);
     }

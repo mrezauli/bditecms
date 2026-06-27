@@ -4,6 +4,15 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
+use App\Models\Answer;
+use App\Models\District;
+use App\Models\Exam;
+use App\Models\Gender;
+use App\Models\Question;
+use App\Models\Site;
+use App\Models\Type;
+use App\Models\University;
+use App\Models\UniversityCategory;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -49,7 +58,22 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::verifyEmailView(fn () => view('livewire.auth.verify-email'));
         Fortify::twoFactorChallengeView(fn () => view('livewire.auth.two-factor-challenge'));
         Fortify::confirmPasswordView(fn () => view('livewire.auth.confirm-password'));
-        Fortify::registerView(fn () => view('livewire.auth.register'));
+        Fortify::registerView(function () {
+            $questions = Question::orderBy('label')->get();
+            $answers = Answer::with('question')->get()->groupBy('question_id');
+            $exams = Exam::pluck('acronym', 'id');
+            $types = Type::pluck('name', 'id');
+            $sites = Site::pluck('name', 'id');
+            $genders = Gender::pluck('name', 'id');
+            $districts = District::with('division')->get()->mapWithKeys(fn ($d) => [$d->id => $d->name.' ('.$d->division->name.')']);
+            $universityCategories = UniversityCategory::with('universities')->get();
+            $universities = University::pluck('acronym', 'id');
+
+            return view('livewire.auth.register', compact(
+                'questions', 'answers', 'exams', 'types', 'sites',
+                'genders', 'districts', 'universityCategories', 'universities',
+            ));
+        });
         Fortify::resetPasswordView(fn () => view('livewire.auth.reset-password'));
         Fortify::requestPasswordResetLinkView(fn () => view('livewire.auth.forgot-password'));
     }

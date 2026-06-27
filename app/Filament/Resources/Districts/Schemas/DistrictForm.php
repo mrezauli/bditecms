@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Districts\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -13,9 +14,9 @@ class DistrictForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('division_id')
-                    ->required()
-                    ->numeric(),
+                Select::make('division_id')
+                    ->relationship('division', 'name')
+                    ->required(),
             ]);
     }
 }

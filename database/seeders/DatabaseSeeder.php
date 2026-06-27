@@ -16,7 +16,6 @@ use App\Models\Type;
 use App\Models\University;
 use App\Models\UniversityCategory;
 use App\Models\User;
-use Database\Seeders\UniversityCategorySeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
@@ -61,7 +60,7 @@ class DatabaseSeeder extends Seeder
             Exam::factory(10)->create();
             Type::factory(10)->create();
             Site::factory(10)->create();
-            Question::factory(10)->create();
+            Question::factory(9)->create();
             Answer::factory(10)->create();
             Division::factory(10)->create();
             District::factory(10)->create();
@@ -101,7 +100,7 @@ class DatabaseSeeder extends Seeder
                 UniversitySeeder::class,
                 GenderSeeder::class,
                 ProfileSeeder::class,
-                EnrollmentSeeder::class
+                EnrollmentSeeder::class,
             ]);
         }
     }

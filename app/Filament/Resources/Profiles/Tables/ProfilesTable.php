@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Profiles\Tables;
 
+use App\Filament\Actions\ActivateRecordAction;
+use App\Filament\Actions\DeactivateRecordAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -18,14 +20,14 @@ class ProfilesTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
-                    ->numeric()
+                TextColumn::make('user.name')
+                    ->label('User')
                     ->sortable(),
                 TextColumn::make('date_of_birth')
                     ->date()
                     ->sortable(),
-                TextColumn::make('gender_id')
-                    ->numeric()
+                TextColumn::make('gender.name')
+                    ->label('Gender')
                     ->sortable(),
                 TextColumn::make('mobile_number')
                     ->numeric()
@@ -33,11 +35,11 @@ class ProfilesTable
                 TextColumn::make('post_code')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('district_id')
-                    ->numeric()
+                TextColumn::make('district.name')
+                    ->label('District')
                     ->sortable(),
-                TextColumn::make('university_id')
-                    ->numeric()
+                TextColumn::make('university.acronym')
+                    ->label('University')
                     ->sortable(),
                 TextColumn::make('occupation')
                     ->searchable(),
@@ -60,6 +62,8 @@ class ProfilesTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                ActivateRecordAction::make(),
+                DeactivateRecordAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
