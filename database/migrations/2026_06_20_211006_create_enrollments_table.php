@@ -24,10 +24,10 @@ return new class extends Migration {
             $table->foreignIdFor(Answer::class, 'third_answer_id');
             $table->foreignIdFor(Answer::class, 'fourth_answer_id');
             $table->foreignIdFor(Answer::class, 'fifth_answer_id');
-            $table->foreignIdFor(Answer::class, 'six_answer_id');
-            $table->foreignIdFor(Answer::class, 'seven_answer_id');
-            $table->foreignIdFor(Answer::class, 'eight_answer_id');
-            $table->foreignIdFor(Answer::class, 'nine_answer_id');
+            $table->foreignIdFor(Answer::class, 'sixth_answer_id');
+            $table->foreignIdFor(Answer::class, 'seventh_answer_id');
+            $table->foreignIdFor(Answer::class, 'eighth_answer_id');
+            $table->foreignIdFor(Answer::class, 'ninth_answer_id');
             $table->timestamps();
             $table->softDeletes();
         });

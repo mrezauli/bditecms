@@ -6,6 +6,7 @@ use App\Enums\RoleEnum;
 use App\Models\Answer;
 use App\Models\District;
 use App\Models\Division;
+use App\Models\Enrollment;
 use App\Models\Exam;
 use App\Models\Gender;
 use App\Models\Profile;
@@ -68,6 +69,7 @@ class DatabaseSeeder extends Seeder
             University::factory(10)->create();
             Gender::factory(2)->create();
             Profile::factory(10)->create();
+            Enrollment::factory(10)->create();
         } else {
             User::factory()->create([
                 'name' => 'Director',
@@ -99,6 +101,7 @@ class DatabaseSeeder extends Seeder
                 UniversitySeeder::class,
                 GenderSeeder::class,
                 ProfileSeeder::class,
+                EnrollmentSeeder::class
             ]);
         }
     }

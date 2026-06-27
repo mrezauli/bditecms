@@ -24,6 +24,9 @@ class AnswerPolicy
      */
     public function view(User $user, Answer $answer): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
         return false;
     }
 
