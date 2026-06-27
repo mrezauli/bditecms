@@ -1,11 +1,11 @@
 <?php
 
+use App\Models\UniversityCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('acronym', 10);
             $table->string('website', 250);
-            $table->enum('category', ['public', 'private', 'international']);
+            $table->foreignIdFor(UniversityCategory::class);
             $table->timestamps();
             $table->softDeletes();
         });

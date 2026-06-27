@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\District;
+use App\Models\Gender;
 use App\Models\University;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +16,12 @@ return new class extends Migration {
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class);
             $table->date('date_of_birth');
-            $table->enum('gender', ['male', 'female']);
+            $table->foreignIdFor(Gender::class);
             $table->integer('mobile_number');
             $table->text('present_address');
+            $table->text('work_address');
             $table->integer('post_code');
             $table->foreignIdFor(District::class);
             $table->foreignIdFor(University::class);

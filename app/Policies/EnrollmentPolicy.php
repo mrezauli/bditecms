@@ -13,6 +13,10 @@ class EnrollmentPolicy
      */
     public function viewAny(User $user): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -21,6 +25,10 @@ class EnrollmentPolicy
      */
     public function view(User $user, Enrollment $enrollment): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -29,6 +37,10 @@ class EnrollmentPolicy
      */
     public function create(User $user): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -37,6 +49,10 @@ class EnrollmentPolicy
      */
     public function update(User $user, Enrollment $enrollment): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -45,6 +61,10 @@ class EnrollmentPolicy
      */
     public function delete(User $user, Enrollment $enrollment): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -53,6 +73,10 @@ class EnrollmentPolicy
      */
     public function restore(User $user, Enrollment $enrollment): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -61,6 +85,19 @@ class EnrollmentPolicy
      */
     public function forceDelete(User $user, Enrollment $enrollment): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public function deleteAny(User $user): bool
+    {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 }

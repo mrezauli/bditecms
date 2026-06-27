@@ -7,11 +7,15 @@ use App\Models\Answer;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\Exam;
+use App\Models\Gender;
+use App\Models\Profile;
 use App\Models\Question;
 use App\Models\Site;
 use App\Models\Type;
 use App\Models\University;
+use App\Models\UniversityCategory;
 use App\Models\User;
+use Database\Seeders\UniversityCategorySeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
@@ -60,7 +64,10 @@ class DatabaseSeeder extends Seeder
             Answer::factory(10)->create();
             Division::factory(10)->create();
             District::factory(10)->create();
+            UniversityCategory::factory(10)->create();
             University::factory(10)->create();
+            Gender::factory(2)->create();
+            Profile::factory(10)->create();
         } else {
             User::factory()->create([
                 'name' => 'Director',
@@ -88,7 +95,10 @@ class DatabaseSeeder extends Seeder
                 AnswerSeeder::class,
                 DivisionSeeder::class,
                 DistrictSeeder::class,
+                UniversityCategorySeeder::class,
                 UniversitySeeder::class,
+                GenderSeeder::class,
+                ProfileSeeder::class,
             ]);
         }
     }

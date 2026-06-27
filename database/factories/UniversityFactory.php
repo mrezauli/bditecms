@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\University;
+use App\Models\UniversityCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,7 @@ class UniversityFactory extends Factory
             'name' => fake()->company(),
             'acronym' => fake()->currencyCode(),
             'website' => fake()->url(),
-            'category' => fake()->randomElement(['public', 'private', 'international']),
+            'university_category_id' => fn(): ?int => UniversityCategory::inRandomOrder()->value('id'),
         ];
     }
 }

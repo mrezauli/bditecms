@@ -13,6 +13,10 @@ class ProfilePolicy
      */
     public function viewAny(User $user): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -21,6 +25,10 @@ class ProfilePolicy
      */
     public function view(User $user, Profile $profile): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -29,6 +37,10 @@ class ProfilePolicy
      */
     public function create(User $user): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -37,6 +49,10 @@ class ProfilePolicy
      */
     public function update(User $user, Profile $profile): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -45,6 +61,10 @@ class ProfilePolicy
      */
     public function delete(User $user, Profile $profile): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -53,6 +73,10 @@ class ProfilePolicy
      */
     public function restore(User $user, Profile $profile): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 
@@ -61,6 +85,19 @@ class ProfilePolicy
      */
     public function forceDelete(User $user, Profile $profile): bool
     {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public function deleteAny(User $user): bool
+    {
+        if ($user->role->value === 'super admin') {
+            return true;
+        }
+
         return false;
     }
 }
