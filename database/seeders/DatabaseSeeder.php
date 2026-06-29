@@ -57,16 +57,16 @@ class DatabaseSeeder extends Seeder
             ]);
 
             User::factory(7)->create();
-            Exam::factory(10)->create();
-            Type::factory(10)->create();
-            Site::factory(10)->create();
-            Question::factory(9)->create();
-            Answer::factory(10)->create();
-            Division::factory(10)->create();
-            District::factory(10)->create();
-            UniversityCategory::factory(10)->create();
-            University::factory(10)->create();
-            Gender::factory(2)->create();
+            Exam::factory(10)->create()->each->setStatus('active');
+            Type::factory(10)->create()->each->setStatus('active');
+            Site::factory(10)->create()->each->setStatus('active');
+            Question::factory(9)->create()->each->setStatus('active');
+            Answer::factory(100)->create()->each->setStatus('active');
+            Division::factory(10)->create()->each->setStatus('active');
+            District::factory(10)->create()->each->setStatus('active');
+            UniversityCategory::factory(10)->create()->each->setStatus('active');
+            University::factory(10)->create()->each->setStatus('active');
+            Gender::factory(2)->create()->each->setStatus('active');
             Profile::factory(10)->create();
             Enrollment::factory(10)->create();
         } else {

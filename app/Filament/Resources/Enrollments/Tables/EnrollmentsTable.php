@@ -20,6 +20,9 @@ class EnrollmentsTable
     {
         return $table
             ->columns([
+                TextColumn::make('user.name')
+                    ->label('User')
+                    ->sortable(),
                 TextColumn::make('exam.acronym')
                     ->label('Exam')
                     ->sortable(),
@@ -69,6 +72,7 @@ class EnrollmentsTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 TrashedFilter::make(),
             ])

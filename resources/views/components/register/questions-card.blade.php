@@ -15,7 +15,7 @@
             @php $field = $answerFields[$index] ?? null; @endphp
             @if ($field)
                 <flux:field>
-                    <flux:label>{{ $question->label }}</flux:label>
+                    <flux:label>{{ $question->label }} - {{ $question->content }}</flux:label>
                     <flux:select name="{{ $field }}" required>
                         <option value="">{{ __('Select answer') }}</option>
                         @foreach (($answers[$question->id] ?? collect()) as $answer)

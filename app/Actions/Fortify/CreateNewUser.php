@@ -81,6 +81,7 @@ class CreateNewUser implements CreatesNewUsers
             ]);
 
             Enrollment::create([
+                'user_id' => $user->id,
                 'exam_id' => $input['exam_id'],
                 'type_id' => $input['type_id'],
                 'site_id' => $input['site_id'],

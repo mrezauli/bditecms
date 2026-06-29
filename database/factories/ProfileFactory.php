@@ -25,13 +25,13 @@ class ProfileFactory extends Factory
             'user_id' => fn (): ?int => User::inRandomOrder()->value('id'),
             'date_of_birth' => fake()->date(),
             'gender_id' => fn (): ?int => Gender::inRandomOrder()->value('id'),
-            'mobile_number' => fake()->phoneNumber(),
+            'mobile_number' => fake()->randomDigitNotZero(),
             'present_address' => fake()->address(),
             'work_address' => fake()->address(),
-            'post_code' => fake()->postcode(),
+            'post_code' => fake()->randomDigitNotZero(),
             'district_id' => fn (): ?int => District::inRandomOrder()->value('id'),
             'university_id' => fn (): ?int => University::inRandomOrder()->value('id'),
-            'occupation' => fake()->jobTitle,
+            'occupation' => fake()->word(),
         ];
     }
 }

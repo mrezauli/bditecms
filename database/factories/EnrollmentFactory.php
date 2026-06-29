@@ -7,6 +7,7 @@ use App\Models\Enrollment;
 use App\Models\Exam;
 use App\Models\Site;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class EnrollmentFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => fn (): ?int => User::inRandomOrder()->value('id'),
             'exam_id' => fn (): ?int => Exam::inRandomOrder()->value('id'),
             'type_id' => fn (): ?int => Type::inRandomOrder()->value('id'),
             'site_id' => fn (): ?int => Site::inRandomOrder()->value('id'),

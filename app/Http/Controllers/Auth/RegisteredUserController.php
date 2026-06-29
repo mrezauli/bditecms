@@ -18,14 +18,14 @@ class RegisteredUserController extends FortifyRegisteredUserController
 {
     public function create(Request $request): RegisterViewResponse
     {
-        $questions = Question::orderBy('label')->get();
-        $answers = Answer::with('question')->get()->groupBy('question_id');
-        $exams = Exam::pluck('acronym', 'id');
-        $types = Type::pluck('name', 'id');
-        $sites = Site::pluck('name', 'id');
-        $genders = Gender::pluck('name', 'id');
-        $districts = District::with('division')->get()->mapWithKeys(fn ($d) => [$d->id => $d->name.' ('.$d->division->name.')']);
-        $universities = University::pluck('acronym', 'id');
+        $questions = Question::currentStatus('active')->orderBy('label')->get();
+        $answers = Answer::currentStatus('active')->with('question')->get()->groupBy('question_id');
+        $exams = Exam::currentStatus('active')->pluck('acronym', 'id');
+        $types = Type::currentStatus('active')->pluck('name', 'id');
+        $sites = Site::currentStatus('active')->pluck('name', 'id');
+        $genders = Gender::currentStatus('active')->pluck('name', 'id');
+        $districts = District::currentStatus('active')->with('division')->get()->mapWithKeys(fn ($d) => [$d->id => $d->name.' ('.$d->division->name.')']);
+        $universities = University::currentStatus('active')->pluck('acronym', 'id');
 
         return new class($questions, $answers, $exams, $types, $sites, $genders, $districts, $universities) implements RegisterViewResponse
         {
