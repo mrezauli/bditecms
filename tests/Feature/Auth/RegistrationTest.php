@@ -59,7 +59,7 @@ test('new users can register', function () {
         'date_of_birth' => '2000-01-15',
         'gender_id' => $gender->id,
         'occupation' => 'Engineer',
-        'mobile_number' => '01712345678',
+        'mobile_number' => '1712345678',
         'present_address' => '123 Main Street',
         'work_address' => '456 Office Road',
         'post_code' => '1205',

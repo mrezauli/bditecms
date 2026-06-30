@@ -18,6 +18,12 @@ test('profile information can be updated', function () {
     $response = Livewire::test(Profile::class)
         ->set('name', 'Test User')
         ->set('email', 'test@example.com')
+        ->set('date_of_birth', '2000-01-15')
+        ->set('mobile_number', '123456789')
+        ->set('present_address', '123 Main Street')
+        ->set('work_address', '456 Work Avenue')
+        ->set('post_code', '12345')
+        ->set('occupation', 'Engineer')
         ->call('updateProfileInformation');
 
     $response->assertHasNoErrors();
@@ -27,6 +33,16 @@ test('profile information can be updated', function () {
     expect($user->name)->toEqual('Test User');
     expect($user->email)->toEqual('test@example.com');
     expect($user->email_verified_at)->toBeNull();
+
+    $profile = $user->profile;
+
+    expect($profile)->not->toBeNull();
+    expect($profile->date_of_birth->format('Y-m-d'))->toEqual('2000-01-15');
+    expect($profile->mobile_number)->toEqual('123456789');
+    expect($profile->present_address)->toEqual('123 Main Street');
+    expect($profile->work_address)->toEqual('456 Work Avenue');
+    expect((string) $profile->post_code)->toEqual('12345');
+    expect($profile->occupation)->toEqual('Engineer');
 });
 
 test('email verification status is unchanged when email address is unchanged', function () {
@@ -42,6 +58,28 @@ test('email verification status is unchanged when email address is unchanged', f
     $response->assertHasNoErrors();
 
     expect($user->refresh()->email_verified_at)->not->toBeNull();
+});
+
+test('profile information can be updated when profile already exists', function () {
+    $user = User::factory()->create();
+    $profile = App\Models\Profile::factory()->create(['user_id' => $user->id]);
+
+    $this->actingAs($user);
+
+    $response = Livewire::test(Profile::class)
+        ->set('name', 'Updated User')
+        ->set('date_of_birth', '1995-05-20')
+        ->set('occupation', 'Doctor')
+        ->call('updateProfileInformation');
+
+    $response->assertHasNoErrors();
+
+    $user->refresh();
+
+    expect($user->name)->toEqual('Updated User');
+
+    expect($user->profile->date_of_birth->format('Y-m-d'))->toEqual('1995-05-20');
+    expect($user->profile->occupation)->toEqual('Doctor');
 });
 
 test('user can delete their account', function () {

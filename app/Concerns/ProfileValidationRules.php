@@ -2,6 +2,9 @@
 
 namespace App\Concerns;
 
+use App\Models\District;
+use App\Models\Gender;
+use App\Models\University;
 use App\Models\User;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Validation\Rule;
@@ -18,6 +21,15 @@ trait ProfileValidationRules
         return [
             'name' => $this->nameRules(),
             'email' => $this->emailRules($userId),
+            'date_of_birth' => ['nullable', 'date'],
+            'gender_id' => ['nullable', 'exists:'.Gender::class.',id'],
+            'mobile_number' => ['nullable', 'integer'],
+            'present_address' => ['nullable', 'string', 'max:500'],
+            'work_address' => ['nullable', 'string', 'max:500'],
+            'post_code' => ['nullable', 'integer'],
+            'district_id' => ['nullable', 'exists:'.District::class.',id'],
+            'university_id' => ['nullable', 'exists:'.University::class.',id'],
+            'occupation' => ['nullable', 'string', 'max:20'],
         ];
     }
 

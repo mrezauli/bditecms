@@ -16,6 +16,13 @@ class Profile extends Model
     /** @use HasFactory<ProfileFactory> */
     use HasFactory, HasStatuses, SoftDeletes;
 
+    protected function casts(): array
+    {
+        return [
+            'date_of_birth' => 'date:Y-m-d',
+        ];
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

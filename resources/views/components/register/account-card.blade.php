@@ -6,25 +6,25 @@
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <flux:field>
-            <flux:label>{{ __('Name') }}</flux:label>
+            <flux:label>{{ __('Name') }} <span class="text-red-500">*</span></flux:label>
             <flux:input name="name" :value="old('name')" type="text" required autofocus autocomplete="name" placeholder="{{ __('Full name') }}" />
             <flux:error name="name" />
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('Email address') }}</flux:label>
+            <flux:label>{{ __('Email address') }} <span class="text-red-500">*</span></flux:label>
             <flux:input name="email" :value="old('email')" type="email" required autocomplete="email" placeholder="email@example.com" />
             <flux:error name="email" />
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('Password') }}</flux:label>
+            <flux:label>{{ __('Password') }} <span class="text-red-500">*</span></flux:label>
             <flux:input name="password" type="password" required autocomplete="new-password" placeholder="{{ __('Password') }}" viewable />
             <flux:error name="password" />
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('Confirm password') }}</flux:label>
+            <flux:label>{{ __('Confirm password') }} <span class="text-red-500">*</span></flux:label>
             <flux:input name="password_confirmation" type="password" required autocomplete="new-password" placeholder="{{ __('Confirm password') }}" viewable />
             <flux:error name="password_confirmation" />
         </flux:field>

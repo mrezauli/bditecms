@@ -8,13 +8,13 @@
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <flux:field>
-            <flux:label>{{ __('Date of birth') }}</flux:label>
+            <flux:label>{{ __('Date of birth') }} <span class="text-red-500">*</span></flux:label>
             <flux:input name="date_of_birth" :value="old('date_of_birth')" type="date" required />
             <flux:error name="date_of_birth" />
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('Gender') }}</flux:label>
+            <flux:label>{{ __('Gender') }} <span class="text-red-500">*</span></flux:label>
             <flux:select name="gender_id" required>
                 <option value="">{{ __('Select gender') }}</option>
                 @foreach ($genders as $id => $name)
@@ -25,37 +25,37 @@
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('Occupation') }}</flux:label>
-            <flux:input name="occupation" :value="old('occupation')" type="text" required placeholder="{{ __('Occupation') }}" />
+            <flux:label>{{ __('Occupation') }} <span class="text-red-500">*</span></flux:label>
+            <flux:input name="occupation" :value="old('occupation')" type="text" required maxlength="20" placeholder="{{ __('Occupation') }}" />
             <flux:error name="occupation" />
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('Mobile number') }}</flux:label>
+            <flux:label>{{ __('Mobile number') }} <span class="text-red-500">*</span></flux:label>
             <flux:input name="mobile_number" :value="old('mobile_number')" type="number" required placeholder="{{ __('Mobile number') }}" />
             <flux:error name="mobile_number" />
         </flux:field>
 
         <flux:field class="md:col-span-2">
-            <flux:label>{{ __('Present address') }}</flux:label>
+            <flux:label>{{ __('Present address') }} <span class="text-red-500">*</span></flux:label>
             <flux:textarea name="present_address" required placeholder="{{ __('Present address') }}">{{ old('present_address') }}</flux:textarea>
             <flux:error name="present_address" />
         </flux:field>
 
         <flux:field class="md:col-span-2">
-            <flux:label>{{ __('Work address') }}</flux:label>
+            <flux:label>{{ __('Work address') }} <span class="text-red-500">*</span></flux:label>
             <flux:textarea name="work_address" required placeholder="{{ __('Work address') }}">{{ old('work_address') }}</flux:textarea>
             <flux:error name="work_address" />
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('Post code') }}</flux:label>
+            <flux:label>{{ __('Post code') }} <span class="text-red-500">*</span></flux:label>
             <flux:input name="post_code" :value="old('post_code')" type="number" required placeholder="{{ __('Post code') }}" />
             <flux:error name="post_code" />
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('District') }}</flux:label>
+            <flux:label>{{ __('District') }} <span class="text-red-500">*</span></flux:label>
             <flux:select name="district_id" required>
                 <option value="">{{ __('Select district') }}</option>
                 @foreach ($districts as $id => $label)
@@ -66,7 +66,7 @@
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('University') }}</flux:label>
+            <flux:label>{{ __('University') }} <span class="text-red-500">*</span></flux:label>
             <flux:select name="university_id" required>
                 <option value="">{{ __('Select university') }}</option>
                 @foreach ($universities as $id => $acronym)

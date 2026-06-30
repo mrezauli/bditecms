@@ -8,7 +8,7 @@
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <flux:field>
-            <flux:label>{{ __('Exam') }}</flux:label>
+            <flux:label>{{ __('Exam') }} <span class="text-red-500">*</span></flux:label>
             <flux:select name="exam_id" required>
                 <option value="">{{ __('Select exam') }}</option>
                 @foreach ($exams as $id => $acronym)
@@ -19,7 +19,7 @@
         </flux:field>
 
         <flux:field>
-            <flux:label>{{ __('Type') }}</flux:label>
+            <flux:label>{{ __('Type') }} <span class="text-red-500">*</span></flux:label>
             <flux:select name="type_id" required>
                 <option value="">{{ __('Select type') }}</option>
                 @foreach ($types as $id => $name)
@@ -30,7 +30,7 @@
         </flux:field>
 
         <flux:field class="md:col-span-2">
-            <flux:label>{{ __('Site') }}</flux:label>
+            <flux:label>{{ __('Site') }} <span class="text-red-500">*</span></flux:label>
             <flux:select name="site_id" required>
                 <option value="">{{ __('Select site') }}</option>
                 @foreach ($sites as $id => $name)
