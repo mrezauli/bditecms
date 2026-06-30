@@ -19,6 +19,11 @@
                     wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:sidebar.item>
+
+                <flux:sidebar.item icon="clipboard-document-list" :href="route('applied.exams')"
+                    :current="request()->routeIs('applied.exams')" wire:navigate>
+                    {{ __('Applied exams') }}
+                </flux:sidebar.item>
             </flux:sidebar.group>
         </flux:sidebar.nav>
 
