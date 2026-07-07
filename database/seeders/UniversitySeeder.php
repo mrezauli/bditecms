@@ -1436,5 +1436,14 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         );
+
+        University::firstOrCreate(
+            ['name' => 'Other'],
+            [
+                'acronym' => null,
+                'website' => null,
+                'university_category_id' => null,
+            ],
+        );
     }
 }

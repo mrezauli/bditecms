@@ -31,6 +31,7 @@ class ProfileFactory extends Factory
             'post_code' => fake()->randomDigitNotZero(),
             'district_id' => fn (): ?int => District::inRandomOrder()->value('id'),
             'university_id' => fn (): ?int => University::inRandomOrder()->value('id'),
+            'other_university_name' => null,
             'occupation' => fake()->word(),
         ];
     }

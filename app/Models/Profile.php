@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\ModelStatus\HasStatuses;
 
-#[Fillable(['user_id', 'date_of_birth', 'gender_id', 'mobile_number', 'present_address', 'work_address', 'post_code', 'district_id', 'university_id', 'occupation'])]
+#[Fillable(['user_id', 'date_of_birth', 'gender_id', 'mobile_number', 'present_address', 'work_address', 'post_code', 'district_id', 'university_id', 'occupation', 'other_university_name'])]
 class Profile extends Model
 {
     /** @use HasFactory<ProfileFactory> */
