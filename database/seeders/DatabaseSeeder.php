@@ -56,19 +56,19 @@ class DatabaseSeeder extends Seeder
                 'role' => RoleEnum::SuperAdmin->value,
             ]);
 
-            User::factory(100000)->create();
-            Exam::factory(100000)->create()->each->setStatus('active');
-            Type::factory(100000)->create()->each->setStatus('active');
-            Site::factory(100000)->create()->each->setStatus('active');
-            Question::factory(100000)->create()->each->setStatus('active');
-            Answer::factory(100000)->create()->each->setStatus('active');
-            Division::factory(1100000)->create()->each->setStatus('active');
-            District::factory(100000)->create()->each->setStatus('active');
-            UniversityCategory::factory(100000)->create()->each->setStatus('active');
-            University::factory(100000)->create()->each->setStatus('active');
-            Gender::factory(100000)->create()->each->setStatus('active');
-            Profile::factory(100000)->create();
-            Enrollment::factory(100000)->create();
+            User::factory(10)->create();
+            Exam::factory(10)->create()->each->setStatus('active');
+            Type::factory(10)->create()->each->setStatus('active');
+            Site::factory(10)->create()->each->setStatus('active');
+            Question::factory(9)->create()->each->setStatus('active');
+            Answer::factory(10)->create()->each->setStatus('active');
+            Division::factory(10)->create()->each->setStatus('active');
+            District::factory(10)->create()->each->setStatus('active');
+            UniversityCategory::factory(10)->create()->each->setStatus('active');
+            University::factory(10)->create()->each->setStatus('active');
+            Gender::factory(10)->create()->each->setStatus('active');
+            Profile::factory(10)->create();
+            Enrollment::factory(10)->create();
         } else {
             User::factory()->create([
                 'name' => 'Director',
