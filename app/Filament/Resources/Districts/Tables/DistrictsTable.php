@@ -22,6 +22,9 @@ class DistrictsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('name_bn')
+                    ->label('Name (Bengali)')
+                    ->searchable(),
                 TextColumn::make('division.name')
                     ->label('Division')
                     ->sortable(),

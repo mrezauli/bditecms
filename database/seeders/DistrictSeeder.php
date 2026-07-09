@@ -13,260 +13,260 @@ class DistrictSeeder extends Seeder
         $divisions = Division::pluck('id', 'name');
 
         District::firstOrCreate(
-            ['name' => 'পঞ্চগড়'],
-            ['division_id' => $divisions['রংপুর']],
+            ['name' => 'Panchagarh'],
+            ['name_bn' => 'পঞ্চগড়', 'division_id' => $divisions['রংপুর']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ঠাকুরগাঁও'],
-            ['division_id' => $divisions['রংপুর']],
+            ['name' => 'Thakurgaon'],
+            ['name_bn' => 'ঠাকুরগাঁও', 'division_id' => $divisions['রংপুর']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'দিনাজপুর'],
-            ['division_id' => $divisions['রংপুর']],
+            ['name' => 'Dinajpur'],
+            ['name_bn' => 'দিনাজপুর', 'division_id' => $divisions['রংপুর']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'নীলফামারী'],
-            ['division_id' => $divisions['রংপুর']],
+            ['name' => 'Nilphamari'],
+            ['name_bn' => 'নীলফামারী', 'division_id' => $divisions['রংপুর']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'লালমনিরহাট'],
-            ['division_id' => $divisions['রংপুর']],
+            ['name' => 'Lalmonirhat'],
+            ['name_bn' => 'লালমনিরহাট', 'division_id' => $divisions['রংপুর']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'রংপুর'],
-            ['division_id' => $divisions['রংপুর']],
+            ['name' => 'Rangpur'],
+            ['name_bn' => 'রংপুর', 'division_id' => $divisions['রংপুর']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'কুড়িগ্রাম'],
-            ['division_id' => $divisions['রংপুর']],
+            ['name' => 'Kurigram'],
+            ['name_bn' => 'কুড়িগ্রাম', 'division_id' => $divisions['রংপুর']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'গাইবান্ধা'],
-            ['division_id' => $divisions['রংপুর']],
+            ['name' => 'Gaibandha'],
+            ['name_bn' => 'গাইবান্ধা', 'division_id' => $divisions['রংপুর']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'জয়পুরহাট'],
-            ['division_id' => $divisions['রাজশাহী']],
+            ['name' => 'Joypurhat'],
+            ['name_bn' => 'জয়পুরহাট', 'division_id' => $divisions['রাজশাহী']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'বগুড়া'],
-            ['division_id' => $divisions['রাজশাহী']],
+            ['name' => 'Bogura'],
+            ['name_bn' => 'বগুড়া', 'division_id' => $divisions['রাজশাহী']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'চাঁপাই নবাবগঞ্জ'],
-            ['division_id' => $divisions['রাজশাহী']],
+            ['name' => 'Chapai Nawabganj'],
+            ['name_bn' => 'চাঁপাই নবাবগঞ্জ', 'division_id' => $divisions['রাজশাহী']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'নওগাঁ'],
-            ['division_id' => $divisions['রাজশাহী']],
+            ['name' => 'Naogaon'],
+            ['name_bn' => 'নওগাঁ', 'division_id' => $divisions['রাজশাহী']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'রাজশাহী'],
-            ['division_id' => $divisions['রাজশাহী']],
+            ['name' => 'Rajshahi'],
+            ['name_bn' => 'রাজশাহী', 'division_id' => $divisions['রাজশাহী']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'নাটোর'],
-            ['division_id' => $divisions['রাজশাহী']],
+            ['name' => 'Natore'],
+            ['name_bn' => 'নাটোর', 'division_id' => $divisions['রাজশাহী']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'সিরাজগঞ্জ'],
-            ['division_id' => $divisions['রাজশাহী']],
+            ['name' => 'Sirajganj'],
+            ['name_bn' => 'সিরাজগঞ্জ', 'division_id' => $divisions['রাজশাহী']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'পাবনা'],
-            ['division_id' => $divisions['রাজশাহী']],
+            ['name' => 'Pabna'],
+            ['name_bn' => 'পাবনা', 'division_id' => $divisions['রাজশাহী']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'মেহেরপুর'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Meherpur'],
+            ['name_bn' => 'মেহেরপুর', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'কুষ্টিয়া'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Kushtia'],
+            ['name_bn' => 'কুষ্টিয়া', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'চুয়াডাঙ্গা'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Chuadanga'],
+            ['name_bn' => 'চুয়াডাঙ্গা', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ঝিনাইদহ'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Jhenaidah'],
+            ['name_bn' => 'ঝিনাইদহ', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'যশোর'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Jashore'],
+            ['name_bn' => 'যশোর', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'মাগুরা'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Magura'],
+            ['name_bn' => 'মাগুরা', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'নড়াইল'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Narail'],
+            ['name_bn' => 'নড়াইল', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'বাগেরহাট'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Bagerhat'],
+            ['name_bn' => 'বাগেরহাট', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'খুলনা'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Khulna'],
+            ['name_bn' => 'খুলনা', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'সাতক্ষীরা'],
-            ['division_id' => $divisions['খুলনা']],
+            ['name' => 'Satkhira'],
+            ['name_bn' => 'সাতক্ষীরা', 'division_id' => $divisions['খুলনা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'বরগুনা'],
-            ['division_id' => $divisions['বরিশাল']],
+            ['name' => 'Barguna'],
+            ['name_bn' => 'বরগুনা', 'division_id' => $divisions['বরিশাল']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'পটুয়াখালী'],
-            ['division_id' => $divisions['বরিশাল']],
+            ['name' => 'Patuakhali'],
+            ['name_bn' => 'পটুয়াখালী', 'division_id' => $divisions['বরিশাল']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ভোলা'],
-            ['division_id' => $divisions['বরিশাল']],
+            ['name' => 'Bhola'],
+            ['name_bn' => 'ভোলা', 'division_id' => $divisions['বরিশাল']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'বরিশাল'],
-            ['division_id' => $divisions['বরিশাল']],
+            ['name' => 'Barishal'],
+            ['name_bn' => 'বরিশাল', 'division_id' => $divisions['বরিশাল']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ঝালকাঠি'],
-            ['division_id' => $divisions['বরিশাল']],
+            ['name' => 'Jhalokati'],
+            ['name_bn' => 'ঝালকাঠি', 'division_id' => $divisions['বরিশাল']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'পিরোজপুর'],
-            ['division_id' => $divisions['বরিশাল']],
+            ['name' => 'Pirojpur'],
+            ['name_bn' => 'পিরোজপুর', 'division_id' => $divisions['বরিশাল']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'টাঙ্গাইল'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Tangail'],
+            ['name_bn' => 'টাঙ্গাইল', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'কিশোরগঞ্জ'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Kishoreganj'],
+            ['name_bn' => 'কিশোরগঞ্জ', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'মানিকগঞ্জ'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Manikganj'],
+            ['name_bn' => 'মানিকগঞ্জ', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'মুন্সিগঞ্জ'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Munshiganj'],
+            ['name_bn' => 'মুন্সিগঞ্জ', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ঢাকা'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Dhaka'],
+            ['name_bn' => 'ঢাকা', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'গাজীপুর'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Gazipur'],
+            ['name_bn' => 'গাজীপুর', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'নরসীংদী'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Narsingdi'],
+            ['name_bn' => 'নরসীংদী', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'নারায়নগঞ্জ'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Narayanganj'],
+            ['name_bn' => 'নারায়নগঞ্জ', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'রাজবাড়ী'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Rajbari'],
+            ['name_bn' => 'রাজবাড়ী', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ফরিদপুর'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Faridpur'],
+            ['name_bn' => 'ফরিদপুর', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'গোপালগঞ্জ'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Gopalganj'],
+            ['name_bn' => 'গোপালগঞ্জ', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'মাদারীপুর'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Madaripur'],
+            ['name_bn' => 'মাদারীপুর', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'শরীয়তপুর'],
-            ['division_id' => $divisions['ঢাকা']],
+            ['name' => 'Shariatpur'],
+            ['name_bn' => 'শরীয়তপুর', 'division_id' => $divisions['ঢাকা']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'জামালপুর'],
-            ['division_id' => $divisions['ময়মনসিংহ']],
+            ['name' => 'Jamalpur'],
+            ['name_bn' => 'জামালপুর', 'division_id' => $divisions['ময়মনসিংহ']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'শেরপুর'],
-            ['division_id' => $divisions['ময়মনসিংহ']],
+            ['name' => 'Sherpur'],
+            ['name_bn' => 'শেরপুর', 'division_id' => $divisions['ময়মনসিংহ']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ময়মনসিংহ'],
-            ['division_id' => $divisions['ময়মনসিংহ']],
+            ['name' => 'Mymensingh'],
+            ['name_bn' => 'ময়মনসিংহ', 'division_id' => $divisions['ময়মনসিংহ']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'নেত্রকোণা'],
-            ['division_id' => $divisions['ময়মনসিংহ']],
+            ['name' => 'Netrokona'],
+            ['name_bn' => 'নেত্রকোণা', 'division_id' => $divisions['ময়মনসিংহ']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'সুনামগঞ্জ'],
-            ['division_id' => $divisions['সিলেট']],
+            ['name' => 'Sunamganj'],
+            ['name_bn' => 'সুনামগঞ্জ', 'division_id' => $divisions['সিলেট']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'সিলেট'],
-            ['division_id' => $divisions['সিলেট']],
+            ['name' => 'Sylhet'],
+            ['name_bn' => 'সিলেট', 'division_id' => $divisions['সিলেট']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'মৌলভীবাজার'],
-            ['division_id' => $divisions['সিলেট']],
+            ['name' => 'Moulvibazar'],
+            ['name_bn' => 'মৌলভীবাজার', 'division_id' => $divisions['সিলেট']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'হবিগঞ্জ'],
-            ['division_id' => $divisions['সিলেট']],
+            ['name' => 'Habiganj'],
+            ['name_bn' => 'হবিগঞ্জ', 'division_id' => $divisions['সিলেট']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ব্রাহ্মণবাড়িয়া'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Brahmanbaria'],
+            ['name_bn' => 'ব্রাহ্মণবাড়িয়া', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'কুমিল্লা'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Cumilla'],
+            ['name_bn' => 'কুমিল্লা', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'চাঁদপুর'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Chandpur'],
+            ['name_bn' => 'চাঁদপুর', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'ফেনী'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Feni'],
+            ['name_bn' => 'ফেনী', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'নোয়াখালী'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Noakhali'],
+            ['name_bn' => 'নোয়াখালী', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'লক্ষীপুর'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Lakshmipur'],
+            ['name_bn' => 'লক্ষীপুর', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'চট্টগ্রাম'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Chattogram'],
+            ['name_bn' => 'চট্টগ্রাম', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'কক্সবাজার'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => "Cox's Bazar"],
+            ['name_bn' => 'কক্সবাজার', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'খাগড়াছড়ি'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Khagrachhari'],
+            ['name_bn' => 'খাগড়াছড়ি', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'রাঙ্গামাটি'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Rangamati'],
+            ['name_bn' => 'রাঙ্গামাটি', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
         District::firstOrCreate(
-            ['name' => 'বান্দরবন'],
-            ['division_id' => $divisions['চট্টগ্রাম']],
+            ['name' => 'Bandarban'],
+            ['name_bn' => 'বান্দরবন', 'division_id' => $divisions['চট্টগ্রাম']],
         )->setStatus('active');
     }
 }

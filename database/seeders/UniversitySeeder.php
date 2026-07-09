@@ -13,1437 +13,1437 @@ class UniversitySeeder extends Seeder
         $categories = UniversityCategory::pluck('id', 'name');
 
         University::firstOrCreate(
-            ['name' => 'Islamic University of Technology (IUT), Gazipur'],
+            ['name' => 'Islamic University of Technology, Gazipur'],
             [
                 'acronym' => 'IUT',
                 'website' => 'https://www.iutoic-dhaka.edu',
                 'university_category_id' => $categories['International'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Asian University for Women'],
             [
-                'acronym' => null,
+                'acronym' => 'AUW',
                 'website' => 'https://www.auw.edu.bd',
                 'university_category_id' => $categories['International'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'South Asian University'],
             [
-                'acronym' => null,
+                'acronym' => 'SAU',
                 'website' => 'https://www.southasianuniversity.org',
                 'university_category_id' => $categories['International'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Dhaka'],
             [
-                'acronym' => null,
+                'acronym' => 'DU',
                 'website' => 'https://www.du.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Rajshahi'],
             [
-                'acronym' => null,
+                'acronym' => 'RU',
                 'website' => 'https://www.ru.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh Agricultural University'],
             [
-                'acronym' => null,
+                'acronym' => 'BAU',
                 'website' => 'https://www.bau.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh University of Engineering & Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'BUET',
                 'website' => 'https://www.buet.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Chittagong'],
             [
-                'acronym' => null,
+                'acronym' => 'CU',
                 'website' => 'https://www.cu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Jahangirnagar University'],
             [
-                'acronym' => null,
+                'acronym' => 'JU',
                 'website' => 'https://www.juniv.edu',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Islamic University, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'IU',
                 'website' => 'https://www.iu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Shahjalal University of Science & Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'SUST',
                 'website' => 'https://www.sust.edu',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Khulna University'],
             [
-                'acronym' => null,
+                'acronym' => 'KU',
                 'website' => 'https://www.ku.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'National University'],
             [
-                'acronym' => null,
+                'acronym' => 'NU',
                 'website' => 'https://www.nu.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh Open University'],
             [
-                'acronym' => null,
+                'acronym' => 'BOU',
                 'website' => 'https://www.bou.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh Medical University'],
             [
-                'acronym' => null,
-                'website' => 'https://www.bsmmu.ac.bd',
+                'acronym' => 'BMU',
+                'website' => 'https://www.bmu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Gazipur Agricultural University'],
             [
-                'acronym' => null,
+                'acronym' => 'GAU',
                 'website' => 'https://gau.edu.bd/',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Hajee Mohammad Danesh Science & Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'HSTU',
                 'website' => 'https://www.hstu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Mawlana Bhashani Science & Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'MBSTU',
                 'website' => 'https://www.mbstu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Patuakhali Science And Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'PSTU',
                 'website' => 'https://www.pstu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Sher-e-Bangla Agricultural University'],
             [
-                'acronym' => null,
+                'acronym' => 'SAU',
                 'website' => 'https://www.sau.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Chittagong University of Engineering & Technology (CUET)'],
+            ['name' => 'Chittagong University of Engineering & Technology'],
             [
                 'acronym' => 'CUET',
                 'website' => 'https://www.cuet.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Rajshahi University of Engineering & Technology (RUET)'],
+            ['name' => 'Rajshahi University of Engineering & Technology'],
             [
                 'acronym' => 'RUET',
                 'website' => 'https://www.ruet.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Khulna University of Engineering & Technology (KUET)'],
+            ['name' => 'Khulna University of Engineering & Technology'],
             [
                 'acronym' => 'KUET',
                 'website' => 'https://www.kuet.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Dhaka University of Engineering & Technology (DUET)'],
+            ['name' => 'Dhaka University of Engineering & Technology'],
             [
                 'acronym' => 'DUET',
                 'website' => 'https://www.duet.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Noakhali Science & Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'NSTU',
                 'website' => 'https://www.nstu.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Jagannath University'],
             [
-                'acronym' => null,
+                'acronym' => 'JNU',
                 'website' => 'https://www.jnu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Comilla University'],
             [
-                'acronym' => null,
+                'acronym' => 'COU',
                 'website' => 'https://www.cou.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Jatiya Kabi Kazi Nazrul Islam University'],
             [
-                'acronym' => null,
+                'acronym' => 'JKKNIU',
                 'website' => 'https://www.jkkniu.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Chittagong Veterinary and Animal Sciences University'],
             [
-                'acronym' => null,
+                'acronym' => 'CVASU',
                 'website' => 'https://www.cvasu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Sylhet Agricultural University'],
             [
-                'acronym' => null,
+                'acronym' => 'SAU',
                 'website' => 'https://www.sau.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Jessore University of Science & Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'JUST',
                 'website' => 'https://www.just.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Pabna University of Science and Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'PUST',
                 'website' => 'https://www.pust.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Begum Rokeya University, Rangpur'],
             [
-                'acronym' => null,
+                'acronym' => 'BRUR',
                 'website' => 'https://www.brur.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh University of Professionals'],
             [
-                'acronym' => null,
+                'acronym' => 'BUP',
                 'website' => 'https://www.bup.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Gopalganj Science & Technology University'],
             [
-                'acronym' => null,
-                'website' => 'https://www.bsmrstu.edu.bd',
+                'acronym' => 'GSTU',
+                'website' => 'https://www.gstu.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh University of Textiles'],
             [
-                'acronym' => null,
+                'acronym' => 'BUTEX',
                 'website' => 'https://www.butex.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Barishal'],
             [
-                'acronym' => null,
+                'acronym' => 'BU',
                 'website' => 'https://www.bu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Rangamati Science and Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'RMSTU',
                 'website' => 'https://www.rmstu.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh Maritime University'],
             [
-                'acronym' => null,
+                'acronym' => 'BMU',
                 'website' => 'https://bmu.edu.bd/',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Islamic Arabic University'],
             [
-                'acronym' => null,
+                'acronym' => 'IAU',
                 'website' => 'https://www.iau.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Chittagong Medical University'],
             [
-                'acronym' => null,
+                'acronym' => 'CMU',
                 'website' => 'https://www.cmu.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Rajshahi Medical University'],
             [
-                'acronym' => null,
+                'acronym' => 'RMU',
                 'website' => 'https://www.rmu.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Rabindra University, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'RUB',
                 'website' => 'https://www.rub.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Frontier Technology, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'UFTB',
                 'website' => 'https://www.uftb.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Netrokona University'],
             [
-                'acronym' => null,
-                'website' => 'https://www.shu.edu.bd/',
+                'acronym' => 'NEU',
+                'website' => 'https://www.neu.ac.bd/',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Khulna Agricultural University'],
             [
-                'acronym' => null,
+                'acronym' => 'KAU',
                 'website' => 'https://www.kau.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Jamalpur Science and Technology University'],
             [
-                'acronym' => null,
-                'website' => 'https://bsfmstu.ac.bd/',
+                'acronym' => 'JSTU',
+                'website' => 'https://jstu.ac.bd/',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Sylhet Medical University, Sylhet'],
             [
-                'acronym' => null,
-                'website' => 'https://www.bsfmmu.edu.bd',
+                'acronym' => 'SMU',
+                'website' => 'https://www.smu.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Aviation And Aerospace University, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'AAUB',
                 'website' => 'https://www.aaub.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Chandpur Science and Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'CSTU',
                 'website' => 'https://www.cstu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Kishoreganj University'],
             [
-                'acronym' => null,
-                'website' => 'https://bsmru.ac.bd.',
+                'acronym' => 'KiU',
+                'website' => 'https://kiu.ac.bd.',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Hobiganj Agricultural University'],
             [
-                'acronym' => null,
+                'acronym' => 'HAU',
                 'website' => 'https://www.hau.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Khulna Medical University, Khulna'],
             [
-                'acronym' => null,
-                'website' => 'https://www.shmu.ac.bd',
+                'acronym' => 'KMU',
+                'website' => 'https://www.kmu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Kurigram Agricultural University'],
             [
-                'acronym' => null,
+                'acronym' => 'KURIAU',
                 'website' => 'https://www.kuriau.edu.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Sunamganj Science and Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'SSTU',
                 'website' => 'https://www.sstu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Pirojpur Science & Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'PRSTU',
                 'website' => 'https://www.prstu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Naogaon University'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'NAU',
+                'website' => 'https://www.nau.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Meherpur University'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'MUM',
+                'website' => 'https://www.mum.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bogra Science and Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'BSTU',
                 'website' => 'https://bstu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Dhaka Central University'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'DCU',
+                'website' => 'https://www.dcu.ac.bd',
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Thakurgaon University'],
             [
-                'acronym' => null,
+                'acronym' => 'TU',
                 'website' => null,
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Lakshmipur Science & Technology University'],
             [
-                'acronym' => null,
+                'acronym' => 'LSTU',
                 'website' => null,
                 'university_category_id' => $categories['Public'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'North South University'],
             [
-                'acronym' => null,
+                'acronym' => 'NSU',
                 'website' => 'https://www.northsouth.edu',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Science & Technology Chittagong'],
             [
-                'acronym' => null,
+                'acronym' => 'USTC',
                 'website' => 'https://www.ustc.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Independent University, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'IUB',
                 'website' => 'https://www.iub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Central Women\'s University'],
             [
-                'acronym' => null,
+                'acronym' => 'CWU',
                 'website' => 'https://www.cwu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'International University of Business Agriculture & Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'IUBAT',
                 'website' => 'https://www.iubat.edu',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'International Islamic University Chittagong'],
             [
-                'acronym' => null,
+                'acronym' => 'IIUC',
                 'website' => 'https://www.iiuc.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Ahsanullah University of Science and Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'AUST',
                 'website' => 'https://www.aust.edu',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'American International University-Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'AIUB',
                 'website' => 'https://www.aiub.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'East West University'],
             [
-                'acronym' => null,
+                'acronym' => 'EWU',
                 'website' => 'https://www.ewubd.edu',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Asia Pacific'],
             [
-                'acronym' => null,
+                'acronym' => 'UAP',
                 'website' => 'https://www.uap-bd.edu',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Gono Bishwabidyalay'],
             [
-                'acronym' => null,
+                'acronym' => 'GB',
                 'website' => 'https://www.gonouniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'The People\'s University of Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'PUB',
                 'website' => 'https://www.pub.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Asian University of Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'AUB',
                 'website' => 'https://www.aub.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Dhaka International University'],
             [
-                'acronym' => null,
+                'acronym' => 'DIU',
                 'website' => 'https://www.diu.ac',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Manarat International University'],
             [
-                'acronym' => null,
+                'acronym' => 'MIU',
                 'website' => 'https://www.manarat.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'BRAC University'],
             [
-                'acronym' => null,
+                'acronym' => 'BRACU',
                 'website' => 'https://www.bracu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh University'],
             [
-                'acronym' => null,
+                'acronym' => 'BU',
                 'website' => 'https://www.bu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Leading University'],
             [
-                'acronym' => null,
+                'acronym' => 'LUS',
                 'website' => 'https://www.lus.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'BGC Trust University Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'BGCTUB',
                 'website' => 'https://www.bgctub.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Sylhet International University'],
             [
-                'acronym' => null,
+                'acronym' => 'SIU',
                 'website' => 'https://www.siu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Development Alternative'],
             [
-                'acronym' => null,
+                'acronym' => 'UODA',
                 'website' => 'https://www.uoda.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Premier University'],
             [
-                'acronym' => null,
+                'acronym' => 'PUC',
                 'website' => 'https://www.puc.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Southeast University'],
             [
-                'acronym' => null,
+                'acronym' => 'SEU',
                 'website' => 'https://www.seu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Daffodil International University'],
             [
-                'acronym' => null,
+                'acronym' => 'DIU',
                 'website' => 'https://www.daffodilvarsity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Stamford University Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'SUB',
                 'website' => 'https://www.stamforduniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'State University of Bangladesh (SUB)'],
+            ['name' => 'State University of Bangladesh'],
             [
                 'acronym' => 'SUB',
                 'website' => 'https://www.sub.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'City University'],
             [
-                'acronym' => null,
+                'acronym' => 'CU',
                 'website' => 'https://www.cityuniversity.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Prime University'],
             [
-                'acronym' => null,
+                'acronym' => 'PU',
                 'website' => 'https://www.primeuniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Northern University Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'NUB',
                 'website' => 'https://www.nub.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Southern University Bangladesh'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'SUB',
+                'website' => 'https://www.southern.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Green University of Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'GUB',
                 'website' => 'https://www.green.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Pundra University of Science & Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'PUST',
                 'website' => 'https://www.pundrauniversity.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'World University of Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'WUB',
                 'website' => 'https://www.wub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Shanto-Mariam University of Creative Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'SMUCT',
                 'website' => 'https://www.smuct.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'The Millennium University'],
             [
-                'acronym' => null,
+                'acronym' => 'TMU',
                 'website' => 'https://www.themillenniumuniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Eastern University'],
             [
-                'acronym' => null,
+                'acronym' => 'EU',
                 'website' => 'https://www.easternuni.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Metropolitan University'],
             [
-                'acronym' => null,
+                'acronym' => 'MU',
                 'website' => 'https://www.metrouni.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Uttara University'],
             [
-                'acronym' => null,
+                'acronym' => 'UU',
                 'website' => 'https://www.uttarauniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'United International University'],
             [
-                'acronym' => null,
+                'acronym' => 'UIU',
                 'website' => 'https://www.uiu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of South Asia'],
             [
-                'acronym' => null,
+                'acronym' => 'USA',
                 'website' => 'https://www.southasiauni.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Victoria University of Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'VUB',
                 'website' => 'https://www.vub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Bangladesh University of Business & Technology (BUBT)'],
+            ['name' => 'Bangladesh University of Business & Technology'],
             [
                 'acronym' => 'BUBT',
                 'website' => 'https://www.bubt.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Presidency University'],
             [
-                'acronym' => null,
-                'website' => 'https://www.presidency.edu.bd, www.pu.edu.bd',
+                'acronym' => 'PU',
+                'website' => 'https://www.presidency.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Information Technology & Sciences'],
             [
-                'acronym' => null,
+                'acronym' => 'UITS',
                 'website' => 'https://www.uits.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Primeasia University'],
             [
-                'acronym' => null,
+                'acronym' => 'PU',
                 'website' => 'https://www.primeasia.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Royal University of Dhaka'],
             [
-                'acronym' => null,
+                'acronym' => 'RUD',
                 'website' => 'https://www.royal.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Liberal Arts Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'ULAB',
                 'website' => 'https://www.ulab.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Atish Dipankar University of Science & Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'ADUST',
                 'website' => 'https://www.adust.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh Islami University'],
             [
-                'acronym' => null,
+                'acronym' => 'BIU',
                 'website' => 'https://www.biu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'ASA University Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'ASAUB',
                 'website' => 'https://www.asaub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'East Delta University'],
             [
-                'acronym' => null,
+                'acronym' => 'EDU',
                 'website' => 'https://www.eastdelta.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'European University of Bangladesh'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'EUB',
+                'website' => 'https://www.eub.edu',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Varendra University'],
             [
-                'acronym' => null,
+                'acronym' => 'VU',
                 'website' => 'https://www.vu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Hamdard University Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'HUB',
                 'website' => 'https://www.hamdarduniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'BGMEA University of Fashion & Technology(BUFT)'],
+            ['name' => 'BGMEA University of Fashion & Technology'],
             [
                 'acronym' => 'BUFT',
                 'website' => 'https://www.buft.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'North East University Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'NEUB',
                 'website' => 'https://www.neub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'First Capital University of Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'FCUB',
                 'website' => 'https://www.fcub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Ishakha International University, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'IIUB',
                 'website' => 'https://www.ishakha.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Z.H Sikder University of Science & Technology'],
             [
-                'acronym' => null,
-                'website' => 'https://www. zhsust.edu.bd',
+                'acronym' => 'ZHSUST',
+                'website' => 'https://www.zhsust.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Exim Bank Agricultural University, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'EBAUB',
                 'website' => 'https://www.ebaub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'North Western University'],
             [
-                'acronym' => null,
+                'acronym' => 'NWU',
                 'website' => 'https://www.nwu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Khwaja Yunus Ali University'],
             [
-                'acronym' => null,
+                'acronym' => 'KYAU',
                 'website' => 'https://www.kyau.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Sonargaon University'],
             [
-                'acronym' => null,
+                'acronym' => 'SU',
                 'website' => 'https://www.su.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Feni University'],
             [
-                'acronym' => null,
+                'acronym' => 'FU',
                 'website' => 'https://www.feniuniversity.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Britannia University'],
             [
-                'acronym' => null,
+                'acronym' => 'BU',
                 'website' => 'https://www.britannia.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Port City International University'],
             [
-                'acronym' => null,
+                'acronym' => 'PCIU',
                 'website' => 'https://www.portcity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh University of Health Sciences'],
             [
-                'acronym' => null,
+                'acronym' => 'BUHS',
                 'website' => 'https://www.buhs.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Chittagong Independent University'],
             [
-                'acronym' => null,
+                'acronym' => 'CIU',
                 'website' => 'https://www.ciu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Notre Dame University Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'NDUB',
                 'website' => 'https://www.ndub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Times University, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'TUB',
                 'website' => 'http://www.timesuniversitybd.com',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'North Bengal International University'],
             [
-                'acronym' => null,
+                'acronym' => 'NBIU',
                 'website' => 'https://www.nbiu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Fareast International University'],
             [
-                'acronym' => null,
+                'acronym' => 'FIU',
                 'website' => 'https://www.fiu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Rajshahi Science & Technology University (RSTU), Natore'],
+            ['name' => 'Rajshahi Science & Technology University, Natore'],
             [
                 'acronym' => 'RSTU',
                 'website' => 'https://www.rstu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Brahmaputra International University'],
             [
-                'acronym' => null,
-                'website' => 'https://www.sfmu.ac.bd',
+                'acronym' => 'BRIU',
+                'website' => 'https://www.briu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Cox\'s Bazar International University'],
             [
-                'acronym' => null,
+                'acronym' => 'CBIU',
                 'website' => 'https://www.cbiu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'R. P. Shaha University'],
             [
-                'acronym' => null,
+                'acronym' => 'RPSU',
                 'website' => 'https://www.rpsu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'German University Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'GUB',
                 'website' => 'https://www.gub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Global University Bangladesh'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'GUB',
+                'website' => 'https://globaluniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'CCN University of Science & Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'CCNUST',
                 'website' => 'https://www.ccnust.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Bangladesh Army University of Science and Technology (BAUST), Saidpur'],
+            ['name' => 'Bangladesh Army University of Science and Technology, Saidpur'],
             [
                 'acronym' => 'BAUST',
                 'website' => 'https://www.baust.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Bangladesh Army University of Engineering and Technology (BAUET), Qadirabad'],
+            ['name' => 'Bangladesh Army University of Engineering and Technology, Qadirabad'],
             [
                 'acronym' => 'BAUET',
                 'website' => 'https://www.bauet.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Bangladesh Army International University of Science & Technology(BAIUST) ,Comilla'],
+            ['name' => 'Bangladesh Army International University of Science & Technology,Comilla'],
             [
                 'acronym' => 'BAIUST',
                 'website' => 'https://www.baiust.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Scholars'],
             [
-                'acronym' => null,
+                'acronym' => 'IUS',
                 'website' => 'https://www.ius.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Canadian University of Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'CUB',
                 'website' => 'https://www.cub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'N.P.I University of Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'NPIUB',
                 'website' => 'https://www.npiub.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Northern University of Business & Technology, Khulna'],
             [
-                'acronym' => null,
+                'acronym' => 'NUBTK',
                 'website' => 'https://www.nubtkhulna.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Rabindra Maitree University, Kushtia'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'RMU',
+                'website' => 'https://www.rmu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Creative Technology, Chittagong'],
             [
-                'acronym' => null,
+                'acronym' => 'UCTC',
                 'website' => 'https://www.uctc.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Central University of Science and Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'CUST',
                 'website' => 'https://www.cust.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Tagore University of Creative Arts, Uttara, Dhaka, Bangladesh'],
             [
-                'acronym' => null,
+                'acronym' => 'TUCA',
                 'website' => 'https://www.tuca.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Global Village'],
             [
-                'acronym' => null,
+                'acronym' => 'UGV',
                 'website' => 'https://www.ugv.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Rupayan A.K.M Shamsuzzoha University'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'RAKMSU',
+                'website' => 'https://www.rakmsu-ac-bd.org',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Anwer Khan Modern University'],
             [
-                'acronym' => null,
+                'acronym' => 'AKMU',
                 'website' => 'https://www.akmu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'ZNRF University of Management Sciences'],
             [
-                'acronym' => null,
+                'acronym' => 'ZUMS',
                 'website' => 'https://www.zums.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Ahsania Mission University of Science and Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'AMUST',
                 'website' => 'https://www.amust.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Khulna Khan Bahadur Ahsanullah University'],
             [
-                'acronym' => null,
+                'acronym' => 'KKBAU',
                 'website' => 'https://www.kkbau.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bandarban University'],
             [
-                'acronym' => null,
+                'acronym' => 'BUBBAN',
                 'website' => 'https://www.bubban.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Shah Makhdum Management University, Rajshahi'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'SMMU',
+                'website' => 'https://smmuniversity.ac/',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Trust University, Barishal'],
             [
-                'acronym' => null,
+                'acronym' => 'TU',
                 'website' => 'https://www.trustuniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'International Standard University'],
             [
-                'acronym' => null,
+                'acronym' => 'ISU',
                 'website' => 'https://www.isu.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Brahmanbaria'],
             [
-                'acronym' => null,
+                'acronym' => 'UoB',
                 'website' => 'https://www.uob.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'University of Skill Enrichment and Technology'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'USET',
+                'website' => 'https://www.uset.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Microland University of Science and Technology'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'MUST',
+                'website' => 'https://www.microlanduniversity.org/',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'R.T.M Al-Kabir Technical University'],
             [
-                'acronym' => null,
+                'acronym' => 'RTMAKTU',
                 'website' => 'https://www.rtm-aktu.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'Dr. Momtaz Begum University of Science and Technology (MUST)'],
+            ['name' => 'Dr. Momtaz Begum University of Science and Technology'],
             [
                 'acronym' => 'MUST',
                 'website' => 'https://www.must.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Chattogram BGMEA University of Fashion and Technology'],
             [
-                'acronym' => null,
+                'acronym' => 'CBUFT',
                 'website' => 'https://www.cbuft.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Bangladesh Army University of Science and Technology, Khulna'],
             [
-                'acronym' => null,
+                'acronym' => 'BAUSTK',
                 'website' => 'https://www.baustkhulna.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Teesta University, Rangpur'],
             [
-                'acronym' => null,
+                'acronym' => 'TU',
                 'website' => 'https://www.teestauniversity.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
-            ['name' => 'International Islami University of Science and Technology Bangladesh (IIUSTB)'],
+            ['name' => 'International Islami University of Science and Technology Bangladesh'],
             [
                 'acronym' => 'IIUSTB',
                 'website' => 'https://www.iiustb.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Lalon University of Science and Arts'],
             [
-                'acronym' => null,
+                'acronym' => 'LUSA',
                 'website' => 'https://lusa.ac.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Justice Abu Zafar Siddiquie Science and Technology University, Kustia'],
             [
-                'acronym' => null,
+                'acronym' => 'JAZSSTUK',
                 'website' => null,
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Grameen University'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'GU',
+                'website' => 'https://grameenu.ac',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'IBAIS University'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'IBAISU',
+                'website' => 'https://ibaisuniversity.org',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'The University of Comilla'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'TUC',
+                'website' => 'https://unicedu.ac',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'Queens University'],
             [
-                'acronym' => null,
-                'website' => null,
+                'acronym' => 'QU',
+                'website' => 'https://www.queensuniversity.edu.bd',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
         University::firstOrCreate(
             ['name' => 'America Bangladesh University'],
             [
-                'acronym' => null,
-                'website' => 'https://.',
+                'acronym' => 'ABU',
+                'website' => 'https://www.abu.ac',
                 'university_category_id' => $categories['Private'],
             ],
-        );
+        )->setStatus('active');
 
         University::firstOrCreate(
-            ['name' => 'Other'],
+            ['name' => 'Not Listed?'],
             [
-                'acronym' => null,
+                'acronym' => 'OTHER',
                 'website' => null,
                 'university_category_id' => null,
             ],
-        );
+        )->setStatus('active');
     }
 }

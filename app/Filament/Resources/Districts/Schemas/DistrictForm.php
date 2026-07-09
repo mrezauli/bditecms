@@ -14,6 +14,9 @@ class DistrictForm
             ->components([
                 TextInput::make('name')
                     ->required(),
+                TextInput::make('name_bn')
+                    ->label('Name (Bengali)')
+                    ->required(),
                 Select::make('division_id')
                     ->relationship('division', 'name')
                     ->required(),

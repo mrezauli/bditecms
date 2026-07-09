@@ -274,17 +274,23 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function () {
             $questions = Question::currentStatus('active')->orderBy('label')->get();
             $answers = Answer::currentStatus('active')->with('question')->get()->groupBy('question_id');
-            $exams = Exam::currentStatus('active')->pluck('acronym', 'id');
-            $types = Type::currentStatus('active')->pluck('name', 'id');
-            $sites = Site::currentStatus('active')->pluck('name', 'id');
-            $genders = Gender::currentStatus('active')->pluck('name', 'id');
-            $districts = District::currentStatus('active')->with('division')->get()->mapWithKeys(fn ($d) => [$d->id => $d->name.' ('.$d->division->name.')']);
-            $universityCategories = UniversityCategory::currentStatus('active')->with('universities')->get();
-            $universities = University::currentStatus('active')->pluck('acronym', 'id');
+            $exams = Exam::currentStatus('active')->orderBy('name')->get()->mapWithKeys(fn ($exam) => [$exam->id => $exam->label]);
+            $types = Type::currentStatus('active')->orderBy('name')->get()->keyBy('id');
+            $sites = Site::currentStatus('active')->orderBy('name')->pluck('name', 'id');
+            $genders = Gender::currentStatus('active')->orderBy('name')->pluck('name', 'id');
+            $districts = District::currentStatus('active')->orderBy('name')->pluck('name', 'id');
+            $universityCategories = UniversityCategory::currentStatus('active')->orderBy('name')->with('universities')->get();
+            $universities = University::currentStatus('active')->orderBy('name')->get()->mapWithKeys(fn ($u) => [$u->id => $u->label]);
+
+            $feExamId = Exam::where('acronym', 'FE')->value('id');
+            $feBothTypeId = Type::where('exam_id', $feExamId)->where('name', 'Both (FE: Morning & Afternoon Exam)')->value('id');
+            $feMorningTypeId = Type::where('exam_id', $feExamId)->where('name', 'Morning Exam')->value('id');
+            $feAfternoonTypeId = Type::where('exam_id', $feExamId)->where('name', 'Afternoon Exam')->value('id');
 
             return view('livewire.auth.register', compact(
                 'questions', 'answers', 'exams', 'types', 'sites',
                 'genders', 'districts', 'universityCategories', 'universities',
+                'feExamId', 'feBothTypeId', 'feMorningTypeId', 'feAfternoonTypeId',
             ));
         });
         Fortify::resetPasswordView(fn () => view('livewire.auth.reset-password'));

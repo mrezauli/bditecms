@@ -15,9 +15,9 @@ return new class extends Migration
         Schema::create('universities', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->string('acronym', 10);
-            $table->string('website', 250);
-            $table->foreignIdFor(UniversityCategory::class);
+            $table->string('acronym', 10)->nullable();
+            $table->string('website', 250)->nullable();
+            $table->foreignIdFor(UniversityCategory::class)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

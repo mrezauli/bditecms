@@ -45,7 +45,7 @@
 
                 <flux:select wire:model="university_id" :label="__('University')" placeholder="Select university">
                     @foreach ($this->universities as $university)
-                        <flux:select.option :value="$university->id">{{ $university->name }}</flux:select.option>
+                        <flux:select.option :value="$university->id">{{ $university->name.' ('.$university->acronym.')' }}</flux:select.option>
                     @endforeach
                 </flux:select>
 

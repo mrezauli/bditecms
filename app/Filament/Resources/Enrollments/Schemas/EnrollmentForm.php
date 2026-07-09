@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Enrollments\Schemas;
 
+use App\Models\Exam;
 use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
 
@@ -13,6 +14,7 @@ class EnrollmentForm
             ->components([
                 Select::make('exam_id')
                     ->relationship('exam', 'acronym')
+                    ->getOptionLabelFromRecordUsing(fn (Exam $exam) => $exam->label)
                     ->required(),
                 Select::make('type_id')
                     ->relationship('type', 'name')

@@ -20,6 +20,7 @@ class DistrictFactory extends Factory
     {
         return [
             'name' => fake()->city(),
+            'name_bn' => fake()->word(),
             'division_id' => fn (): ?int => Division::inRandomOrder()->value('id'),
         ];
     }

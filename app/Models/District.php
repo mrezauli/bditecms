@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\ModelStatus\HasStatuses;
 
-#[Fillable(['name', 'division_id'])]
+#[Fillable(['name', 'name_bn', 'division_id'])]
 class District extends Model
 {
     /** @use HasFactory<DistrictFactory> */

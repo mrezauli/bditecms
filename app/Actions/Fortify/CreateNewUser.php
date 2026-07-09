@@ -33,7 +33,7 @@ class CreateNewUser implements CreatesNewUsers
             ...$this->profileRules(),
             'password' => $this->passwordRules(),
             'exam_id' => ['required', Rule::exists(Exam::class, 'id')],
-            'type_id' => ['required', Rule::exists(Type::class, 'id')],
+            'type_id' => ['nullable', Rule::exists(Type::class, 'id')],
             'site_id' => ['required', Rule::exists(Site::class, 'id')],
             'first_answer_id' => ['required', Rule::exists(Answer::class, 'id')],
             'second_answer_id' => ['required', Rule::exists(Answer::class, 'id')],
@@ -58,7 +58,44 @@ class CreateNewUser implements CreatesNewUsers
 
     public function create(array $input): User
     {
-        Validator::make($input, $this->registrationRules())->validate();
+        $rules = $this->registrationRules();
+
+        if (($input['university_id'] ?? null) === 'other') {
+            $rules['university_id'] = ['nullable', 'string'];
+            $rules['other_university_name'] = ['required', 'string', 'max:255'];
+        } else {
+            $rules['university_id'] = ['required', Rule::exists(University::class, 'id')];
+            $rules['other_university_name'] = ['nullable', 'string', 'max:255'];
+        }
+
+        $feExamId = Exam::where('acronym', 'FE')->value('id');
+
+        if ((int) ($input['exam_id'] ?? null) === $feExamId) {
+            $rules['passed_before'] = ['required', Rule::in(['yes', 'no'])];
+
+            if (($input['passed_before'] ?? null) === 'yes') {
+                $rules['examinee_id'] = ['required', 'string', 'max:255'];
+                $rules['type_id'] = ['required', Rule::exists(Type::class, 'id')];
+            } else {
+                $bothTypeId = Type::where('exam_id', $feExamId)->where('name', 'Both (FE: Morning & Afternoon Exam)')->value('id');
+                $input['type_id'] = $bothTypeId;
+            }
+        }
+
+        $validator = Validator::make($input, $rules);
+
+        if ((int) ($input['exam_id'] ?? null) === $feExamId && ($input['passed_before'] ?? null) === 'yes') {
+            $foundInAm = Enrollment::where('am_exam', $input['examinee_id'])->exists();
+            $foundInPm = Enrollment::where('pm_exam', $input['examinee_id'])->exists();
+
+            if ($foundInAm && $foundInPm) {
+                $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('You should not register because you are already passed.')));
+            } elseif (! $foundInAm && ! $foundInPm) {
+                $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('Invalid ID.')));
+            }
+        }
+
+        $validator->validate();
 
         return DB::transaction(function () use ($input) {
             $user = User::create([
@@ -76,7 +113,8 @@ class CreateNewUser implements CreatesNewUsers
                 'work_address' => $input['work_address'],
                 'post_code' => $input['post_code'],
                 'district_id' => $input['district_id'],
-                'university_id' => $input['university_id'],
+                'university_id' => $input['university_id'] === 'other' ? null : $input['university_id'],
+                'other_university_name' => $input['other_university_name'] ?? null,
                 'occupation' => $input['occupation'],
             ]);
 

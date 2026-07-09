@@ -13,6 +13,8 @@ class DistrictInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
+                TextEntry::make('name_bn')
+                    ->label('Name (Bengali)'),
                 TextEntry::make('division.name')
                     ->label('Division'),
                 TextEntry::make('created_at')

@@ -65,15 +65,24 @@
             <flux:error name="district_id" />
         </flux:field>
 
-        <flux:field>
-            <flux:label>{{ __('University') }} <span class="text-red-500">*</span></flux:label>
-            <flux:select name="university_id" required>
-                <option value="">{{ __('Select university') }}</option>
-                @foreach ($universities as $id => $acronym)
-                    <option value="{{ $id }}" @selected(old('university_id') == $id)>{{ $acronym }}</option>
-                @endforeach
-            </flux:select>
-            <flux:error name="university_id" />
-        </flux:field>
+        <div x-data="{ universityValue: '{{ old('university_id') }}' }" class="contents">
+            <flux:field>
+                <flux:label>{{ __('University') }} <span class="text-red-500">*</span></flux:label>
+                <flux:select name="university_id" x-model="universityValue">
+                    <option value="">{{ __('Select university') }}</option>
+                    <option value="other">{{ __('Not Listed') }}</option>
+                    @foreach ($universities as $id => $label)
+                        <option value="{{ $id }}" @selected(old('university_id') == $id)>{{ $label }}</option>
+                    @endforeach
+                </flux:select>
+                <flux:error name="university_id" />
+            </flux:field>
+
+            <flux:field x-show="universityValue === 'other'" x-cloak>
+                <flux:label>{{ __('Other University Name') }} <span class="text-red-500">*</span></flux:label>
+                <flux:input name="other_university_name" :value="old('other_university_name')" type="text" placeholder="{{ __('Enter your university name') }}" />
+                <flux:error name="other_university_name" />
+            </flux:field>
+        </div>
     </div>
 </div>

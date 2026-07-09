@@ -16,7 +16,7 @@
             @csrf
 
             <div class="flex flex-col gap-8">
-                <x-register.exam-card :exams="$exams" :types="$types" :sites="$sites" />
+                <x-register.exam-card :exams="$exams" :types="$types" :sites="$sites" :fe-exam-id="$feExamId" :fe-both-type-id="$feBothTypeId" :fe-morning-type-id="$feMorningTypeId" :fe-afternoon-type-id="$feAfternoonTypeId" />
                 <x-register.account-card />
                 <x-register.questions-card :questions="$questions" :answers="$answers" />
                 <x-register.personal-card :genders="$genders" :districts="$districts" :universities="$universities" />

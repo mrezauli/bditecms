@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Profiles\Schemas;
 
+use App\Models\University;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -39,6 +39,7 @@ class ProfileForm
                     ->required(),
                 Select::make('university_id')
                     ->relationship('university', 'acronym')
+                    ->getOptionLabelFromRecordUsing(fn (University $university) => $university->label)
                     ->required(),
                 TextInput::make('occupation')
                     ->required(),
