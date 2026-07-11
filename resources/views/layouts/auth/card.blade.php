@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <x-impersonate::banner/>
+    <x-impersonate::banner />
 
     @persist('toast')
     <flux:toast.group>

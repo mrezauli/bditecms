@@ -2,7 +2,6 @@
 name: deploying-laravel-cloud
 description: "Deploys and manages Laravel applications on Laravel Cloud using the `cloud` CLI. Use when the user wants to deploy an app, ship to cloud, create/manage environments, databases, caches, domains, instances, background processes, check billing/usage/spend, or any Laravel Cloud infrastructure. Triggers on deploy, ship, cloud management, environment setup, database provisioning, billing/usage queries, and similar cloud operations."
 ---
-
 # Deploying with Laravel Cloud CLI
 
 ## Setup
