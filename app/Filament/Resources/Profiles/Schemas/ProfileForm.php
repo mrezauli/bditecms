@@ -18,7 +18,8 @@ class ProfileForm
                     ->relationship('user', 'name')
                     ->required(),
                 DatePicker::make('date_of_birth')
-                    ->required(),
+                    ->required()
+                    ->beforeOrEqual(now()->subYears(16)->format('Y-m-d')),
                 Select::make('gender_id')
                     ->relationship('gender', 'name')
                     ->required(),
@@ -33,7 +34,9 @@ class ProfileForm
                     ->columnSpanFull(),
                 TextInput::make('post_code')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->minValue(1000)
+                    ->maxValue(9999),
                 Select::make('district_id')
                     ->relationship('district', 'name')
                     ->required(),

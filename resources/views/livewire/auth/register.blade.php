@@ -15,11 +15,30 @@
         <form method="POST" action="{{ route('register.store') }}" class="flex flex-col gap-8">
             @csrf
 
-            <div class="flex flex-col gap-8">
-                <x-register.exam-card :exams="$exams" :types="$types" :sites="$sites" :fe-exam-id="$feExamId" :fe-both-type-id="$feBothTypeId" :fe-morning-type-id="$feMorningTypeId" :fe-afternoon-type-id="$feAfternoonTypeId" />
-                <x-register.account-card />
-                <x-register.questions-card :questions="$questions" :answers="$answers" />
-                <x-register.personal-card :genders="$genders" :districts="$districts" :universities="$universities" />
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <flux:field>
+                    <flux:label>{{ __('Name') }} <span class="text-red-500">*</span></flux:label>
+                    <flux:input name="name" :value="old('name')" type="text" required autofocus autocomplete="name" placeholder="{{ __('Full name') }}" />
+                    <flux:error name="name" />
+                </flux:field>
+
+                <flux:field>
+                    <flux:label>{{ __('Email address') }} <span class="text-red-500">*</span></flux:label>
+                    <flux:input name="email" :value="old('email')" type="email" required autocomplete="email" placeholder="email@example.com" />
+                    <flux:error name="email" />
+                </flux:field>
+
+                <flux:field>
+                    <flux:label>{{ __('Password') }} <span class="text-red-500">*</span></flux:label>
+                    <flux:input name="password" type="password" required autocomplete="new-password" placeholder="{{ __('Password') }}" viewable />
+                    <flux:error name="password" />
+                </flux:field>
+
+                <flux:field>
+                    <flux:label>{{ __('Confirm password') }} <span class="text-red-500">*</span></flux:label>
+                    <flux:input name="password_confirmation" type="password" required autocomplete="new-password" placeholder="{{ __('Confirm password') }}" viewable />
+                    <flux:error name="password_confirmation" />
+                </flux:field>
             </div>
 
             <div class="flex items-center justify-center">

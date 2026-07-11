@@ -22,7 +22,7 @@ test('profile information can be updated', function () {
         ->set('mobile_number', '123456789')
         ->set('present_address', '123 Main Street')
         ->set('work_address', '456 Work Avenue')
-        ->set('post_code', '12345')
+        ->set('post_code', '1234')
         ->set('occupation', 'Engineer')
         ->call('updateProfileInformation');
 
@@ -41,7 +41,7 @@ test('profile information can be updated', function () {
     expect($profile->mobile_number)->toEqual('123456789');
     expect($profile->present_address)->toEqual('123 Main Street');
     expect($profile->work_address)->toEqual('456 Work Avenue');
-    expect((string) $profile->post_code)->toEqual('12345');
+    expect((string) $profile->post_code)->toEqual('1234');
     expect($profile->occupation)->toEqual('Engineer');
 });
 
