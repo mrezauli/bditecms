@@ -101,6 +101,7 @@ class DatabaseSeeder extends Seeder
                 GenderSeeder::class,
                 ProfileSeeder::class,
                 EnrollmentSeeder::class,
+                HalfPasserSeeder::class,
             ]);
         }
     }

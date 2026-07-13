@@ -64,6 +64,7 @@
                     validationStatus: null,
                     validationMessage: '',
                     validatedTypeId: null,
+                    validatedName: null,
                     isFE: false,
                     selectedTypeId: null,
 
@@ -83,6 +84,7 @@
                         if (this.examineeId.length < 4) return;
                         this.validationStatus = 'loading';
                         this.validationMessage = '';
+                        this.validatedName = null;
                         fetch('{{ url('examinee/validate') }}', {
                             method: 'POST',
                             headers: {
@@ -95,7 +97,10 @@
                         .then(data => {
                             this.validationStatus = data.status;
                             this.validationMessage = data.message;
-                            if (data.status === 'valid') this.validatedTypeId = data.type_id;
+                            if (data.status === 'valid') {
+                                this.validatedTypeId = data.type_id;
+                                this.validatedName = data.name;
+                            }
                         });
                     },
                 }"
@@ -163,6 +168,9 @@
                             <template x-if="validationStatus === 'valid'">
                                 <p class="mt-1 text-sm text-emerald-600" x-text="validationMessage"></p>
                             </template>
+                            <template x-if="validationStatus === 'valid' && validatedName">
+                                <p class="mt-1 text-sm font-semibold text-emerald-700">{{ __('Name:') }} <span x-text="validatedName"></span></p>
+                            </template>
                             <flux:error name="examinee_id" />
                         </flux:field>
                     </template>
@@ -204,7 +212,25 @@
             </div>
 
             {{-- Personal Information --}}
-            <div
+            <div x-data="{
+                    formDob: '{{ old('date_of_birth') }}',
+                    formName: '{{ old('name') }}',
+                    get generatedSlug() {
+                        const namePart = this.formName.replace(/\s+/g, '').toLowerCase();
+                        if (!this.formDob || !namePart) return '';
+                        const parts = this.formDob.split('-');
+                        return namePart + '-' + parts[2] + '-' + parts[1] + '-' + parts[0];
+                    },
+                    init() {
+                        const nameInput = this.$root.closest('form').querySelector('[name=name]');
+                        if (nameInput) {
+                            this.formName = nameInput.value;
+                            nameInput.addEventListener('input', (e) => {
+                                this.formName = e.target.value;
+                            });
+                        }
+                    },
+                }"
                 class="space-y-6 p-6">
                 <h2
                     class="flex items-center gap-2 border-b border-sky-200/50 pb-4 text-lg font-bold text-sky-800 dark:border-sky-800/30 dark:text-sky-200">
@@ -215,8 +241,15 @@
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <flux:field>
                         <flux:label>{{ __('Date of birth') }} <span class="text-red-500">*</span></flux:label>
-                        <flux:input name="date_of_birth" :value="old('date_of_birth')" type="date" required />
+                        <flux:input name="date_of_birth" x-model="formDob" type="date" required />
                         <flux:error name="date_of_birth" />
+                    </flux:field>
+
+                    <flux:field>
+                        <flux:label>{{ __('Generated Slug') }}</flux:label>
+                        <input x-bind:value="generatedSlug" type="text" readonly disabled
+                            placeholder="{{ __('Auto-generated from name and date of birth') }}"
+                            class="w-full rounded-lg border border-neutral-300 bg-neutral-100 px-3 py-2 text-sm text-neutral-700 cursor-not-allowed dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300" />
                     </flux:field>
 
                     <flux:field>
