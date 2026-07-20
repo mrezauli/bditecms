@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             Type::factory(10)->create()->each->setStatus('active');
             Site::factory(10)->create()->each->setStatus('active');
             Question::factory(9)->create()->each->setStatus('active');
-            Answer::factory(10)->create()->each->setStatus('active');
+            Answer::factory(1000)->create()->each->setStatus('active');
             Division::factory(10)->create()->each->setStatus('active');
             District::factory(10)->create()->each->setStatus('active');
             UniversityCategory::factory(10)->create()->each->setStatus('active');

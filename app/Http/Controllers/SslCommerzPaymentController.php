@@ -2,12 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\SslCommerz\SslCommerzNotification;
 use DB;
 use Illuminate\Http\Request;
-use App\Library\SslCommerz\SslCommerzNotification;
+use Raziul\Sslcommerz\Facades\Sslcommerz;
 
 class SslCommerzPaymentController extends Controller
 {
+    public function pay()
+    {
+        $amount = 10;
+        $invoiceId = 'FE-100';
+        $productName = 'Test Product';
+        $customerName = 'John Doe';
+        $customerEmail = 'john.doe@example.com';
+        $customerPhone = '01711111111';
+        $itemsQuantity = 1;
+        $address = '123 Main Street, City, Country';
+        $response = Sslcommerz::setOrder($amount, $invoiceId, $productName)
+            ->setCustomer($customerName, $customerEmail, $customerPhone)
+            ->setShippingInfo($itemsQuantity, $address)
+            ->makePayment();
+
+        if ($response->success()) {
+            // payment initiated, redirect to payment page
+            return redirect($response->gatewayPageURL());
+        } else {
+            // Handle payment failure
+        }
+    }
 
     public function exampleEasyCheckout()
     {

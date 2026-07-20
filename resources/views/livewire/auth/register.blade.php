@@ -273,8 +273,8 @@
                     <flux:field>
                         <flux:label>{{ __('Mobile number') }} <span class="text-red-500">*</span></flux:label>
                         <flux:input.group>
-                            <flux:input.group.prefix>+880</flux:input.group.prefix>
-                            <flux:input name="mobile_number" :value="old('mobile_number')" type="tel" required pattern="[3-9][0-9]{9}" maxlength="10" placeholder="{{ __('Mobile number') }}" />
+                            <flux:input.group.prefix>+8801</flux:input.group.prefix>
+                            <flux:input name="mobile_number" :value="old('mobile_number')" type="tel" required pattern="[3-9][0-9]{8}" maxlength="9" placeholder="{{ __('Mobile number') }}" />
                         </flux:input.group>
                         <flux:error name="mobile_number" />
                     </flux:field>

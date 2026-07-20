@@ -47,7 +47,7 @@ class CreateNewUser implements CreatesNewUsers
             'date_of_birth' => ['required', 'date', 'before_or_equal:'.now()->subYears(16)->format('Y-m-d')],
             'gender_id' => ['required', Rule::exists(Gender::class, 'id')],
             'occupation' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z0-9\s\-\'\.@()]+$/u'],
-            'mobile_number' => ['required', 'integer', 'digits:10', 'regex:/^[3-9]\d{9}$/'],
+            'mobile_number' => ['required', 'integer', 'digits:9', 'regex:/^[3-9]\d{9}$/'],
             'present_address' => ['required', 'string', 'regex:/^[a-zA-Z0-9\s\-\'\.@(),]+$/u'],
             'work_address' => ['required', 'string', 'regex:/^[a-zA-Z0-9\s\-\'\.@(),]+$/u'],
             'post_code' => ['required', 'integer', 'min:1000', 'max:9999'],

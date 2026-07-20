@@ -21,7 +21,7 @@ class AnswerFactory extends Factory
         return [
             'label' => fake()->isbn10(),
             'content' => fake()->sentence(),
-            'question_id' => fn (): ?int => Question::inRandomOrder()->value('id'),
+            'question_id' => fn(): ?int => Question::inRandomOrder()->value('id'),
         ];
     }
 }

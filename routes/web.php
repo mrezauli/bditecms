@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\ExamineeController;
+use App\Http\Controllers\SslcommerzController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Livewire\AppliedExams;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SslCommerzPaymentController;
 
 Route::view('/', 'welcome')->name('home');
 
@@ -20,6 +21,18 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+
+Route::get('/pay', [SslCommerzPaymentController::class, 'pay']);
+
+Route::controller(SslcommerzController::class)
+    ->prefix('sslcommerz') // prefix to avoid conflicts
+    ->name('sslc.')
+    ->group(function () {
+        Route::post('success', 'success')->name('success');
+        Route::post('failure', 'failure')->name('failure');
+        Route::post('cancel', 'cancel')->name('cancel');
+        Route::post('ipn', 'ipn')->name('ipn');
+    });
 
 Route::post('/examinee/validate', [ExamineeController::class, 'validate'])
     ->name('examinee.validate');
