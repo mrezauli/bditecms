@@ -7,16 +7,6 @@ use App\Http\Controllers\SslCommerzPaymentController;
 
 Route::view('/', 'welcome')->name('home');
 
-Route::post('/examinee/validate', [ExamineeController::class, 'validate'])
-    ->name('examinee.validate');
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
-
-    Route::livewire('dashboard/applied-exams', AppliedExams::class)
-        ->name('applied.exams');
-});
-
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
@@ -30,5 +20,17 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+
+Route::post('/examinee/validate', [ExamineeController::class, 'validate'])
+    ->name('examinee.validate');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+
+    Route::livewire('dashboard/applied-exams', AppliedExams::class)
+        ->name('applied.exams');
+});
+
+
 
 require __DIR__ . '/settings.php';
