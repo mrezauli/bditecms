@@ -15,6 +15,16 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => EnsureUserHasRole::class,
         ]);
+
+        $middleware->preventRequestForgery(except: [
+            'success',
+            'fail',
+            'cancel',
+            'ipn',
+            'sslcommerz/*',
+            'pay-via-ajax',
+            'pay',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
