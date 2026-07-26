@@ -8,6 +8,7 @@ use App\Models\Answer;
 use App\Models\District;
 use App\Models\Enrollment;
 use App\Models\Exam;
+use App\Models\ExamSession;
 use App\Models\Gender;
 use App\Models\Profile;
 use App\Models\Site;
@@ -44,7 +45,7 @@ class CreateNewUser implements CreatesNewUsers
             'seventh_answer_id' => ['required', Rule::exists(Answer::class, 'id')],
             'eighth_answer_id' => ['required', Rule::exists(Answer::class, 'id')],
             'ninth_answer_id' => ['required', Rule::exists(Answer::class, 'id')],
-            'date_of_birth' => ['required', 'date', 'before_or_equal:'.now()->subYears(16)->format('Y-m-d')],
+            'date_of_birth' => ['required', 'date', 'before_or_equal:'.static::minimumDateOfBirth()],
             'gender_id' => ['required', Rule::exists(Gender::class, 'id')],
             'occupation' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z0-9\s\-\'\.@()]+$/u'],
             'mobile_number' => ['required', 'integer', 'digits:9', 'regex:/^[3-9]\d{9}$/'],
@@ -80,6 +81,16 @@ class CreateNewUser implements CreatesNewUsers
                 $bothTypeId = Type::where('exam_id', $feExamId)->where('name', 'Both (FE: Morning & Afternoon Exam)')->value('id');
                 $input['type_id'] = $bothTypeId;
             }
+        }
+
+        $session = ExamSession::where('exam_id', $input['exam_id'])->openForRegistration()->first();
+
+        if (! $session) {
+            $exam = Exam::find($input['exam_id']);
+
+            $validator = Validator::make($input, $rules);
+            $validator->after(fn ($v) => $v->errors()->add('exam_id', __('Registration is not open for :exam at this time.', ['exam' => $exam?->name ?? 'this exam'])));
+            $validator->validate();
         }
 
         $validator = Validator::make($input, $rules);
@@ -120,6 +131,7 @@ class CreateNewUser implements CreatesNewUsers
 
             Enrollment::create([
                 'user_id' => $user->id,
+                'exam_session_id' => $session->id,
                 'exam_id' => $input['exam_id'],
                 'type_id' => $input['type_id'],
                 'site_id' => $input['site_id'],

@@ -4,6 +4,7 @@ namespace App\Concerns;
 
 use App\Models\District;
 use App\Models\Gender;
+use App\Models\Setting;
 use App\Models\University;
 use App\Models\User;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -11,6 +12,28 @@ use Illuminate\Validation\Rule;
 
 trait ProfileValidationRules
 {
+    /**
+     * Get the minimum allowed date of birth based on the next BDITEC exam session.
+     * Exams are held on April 24-25 and in October. The cutoff is the 1st of the
+     * next upcoming session month minus the configured minimum age.
+     */
+    public static function minimumDateOfBirth(): string
+    {
+        $minimumAge = Setting::getInt('minimum_age_years', 20);
+        $now = now();
+        $month = $now->month;
+
+        if ($month >= 10) {
+            $cutoff = $now->copy()->addYear()->month(4)->day(1);
+        } elseif ($month >= 4) {
+            $cutoff = $now->copy()->month(10)->day(1);
+        } else {
+            $cutoff = $now->copy()->month(4)->day(1);
+        }
+
+        return $cutoff->subYears($minimumAge)->format('Y-m-d');
+    }
+
     /**
      * Get the validation rules used to validate user profiles.
      *
@@ -21,7 +44,7 @@ trait ProfileValidationRules
         return [
             'name' => $this->nameRules(),
             'email' => $this->emailRules($userId),
-            'date_of_birth' => ['nullable', 'date', 'before_or_equal:'.now()->subYears(16)->format('Y-m-d')],
+            'date_of_birth' => ['nullable', 'date', 'before_or_equal:'.static::minimumDateOfBirth()],
             'gender_id' => ['nullable', 'exists:'.Gender::class.',id'],
             'mobile_number' => ['nullable', 'integer'],
             'present_address' => ['nullable', 'string', 'max:500'],

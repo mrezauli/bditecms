@@ -22,6 +22,7 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 
 class SuperAdminPanelProvider extends PanelProvider
 {
@@ -71,6 +72,10 @@ class SuperAdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->profile(isSimple: false);
+            ->profile(isSimple: false)
+            ->plugins([
+                EnvironmentIndicatorPlugin::make()
+                    ->showGitBranch(),
+            ]);
     }
 }

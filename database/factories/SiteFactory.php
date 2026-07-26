@@ -10,15 +10,18 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class SiteFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected static array $sites = [
+        'Dhaka', 'Chittagong', 'Rajshahi', 'Khulna', 'Sylhet',
+    ];
+
+    protected static int $index = -1;
+
     public function definition(): array
     {
+        static::$index++;
+
         return [
-            'name' => $this->faker->name,
+            'name' => static::$sites[static::$index % count(static::$sites)],
         ];
     }
 }

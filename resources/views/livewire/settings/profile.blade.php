@@ -27,7 +27,7 @@
             <flux:separator :text="__('Additional Information')" />
 
             <div class="grid gap-6 md:grid-cols-2">
-                <flux:input wire:model="date_of_birth" :label="__('Date of birth')" type="date" />
+                <flux:input wire:model="date_of_birth" :label="__('Date of birth')" type="date" max="{{ now()->subYears(20)->format('Y-m-d') }}" />
 
                 <flux:input wire:model="mobile_number" :label="__('Mobile number')" type="number" />
 

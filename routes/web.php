@@ -20,7 +20,7 @@ Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
-//SSLCOMMERZ END
+// SSLCOMMERZ END
 
 Route::get('/pay', [SslCommerzPaymentController::class, 'pay']);
 
@@ -44,6 +44,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('applied.exams');
 });
 
-
-
-require __DIR__ . '/settings.php';
+require __DIR__.'/settings.php';

@@ -10,15 +10,25 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class UniversityCategoryFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected static array $categories = [
+        'Public University',
+        'Private University',
+        'National University',
+        'Science & Technology University',
+        'Engineering University',
+        'Medical University',
+        'Agricultural University',
+        'International University',
+    ];
+
+    protected static int $index = -1;
+
     public function definition(): array
     {
+        static::$index++;
+
         return [
-            'name' => fake()->word(),
+            'name' => static::$categories[static::$index % count(static::$categories)],
         ];
     }
 }

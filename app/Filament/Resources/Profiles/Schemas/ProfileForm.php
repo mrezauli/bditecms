@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Profiles\Schemas;
 
+use App\Concerns\ProfileValidationRules;
 use App\Models\University;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
@@ -19,7 +20,7 @@ class ProfileForm
                     ->required(),
                 DatePicker::make('date_of_birth')
                     ->required()
-                    ->beforeOrEqual(now()->subYears(16)->format('Y-m-d')),
+                    ->beforeOrEqual(ProfileValidationRules::minimumDateOfBirth()),
                 Select::make('gender_id')
                     ->relationship('gender', 'name')
                     ->required(),

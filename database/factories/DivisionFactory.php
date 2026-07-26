@@ -10,15 +10,19 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class DivisionFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected static array $divisions = [
+        'Dhaka', 'Chattogram', 'Rajshahi', 'Khulna', 'Barishal',
+        'Sylhet', 'Rangpur', 'Mymensingh',
+    ];
+
+    protected static int $index = -1;
+
     public function definition(): array
     {
+        static::$index++;
+
         return [
-            'name' => fake()->streetName,
+            'name' => static::$divisions[static::$index % count(static::$divisions)],
         ];
     }
 }

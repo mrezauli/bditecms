@@ -11,16 +11,21 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TypeFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected static array $types = [
+        'FE: Morning Exam',
+        'FE: Afternoon Exam',
+        'Both (FE: Morning & Afternoon Exam)',
+    ];
+
+    protected static int $index = -1;
+
     public function definition(): array
     {
+        static::$index++;
+
         return [
-            'name' => $this->faker->name,
-            'exam_id' => fn (): ?int => Exam::inRandomOrder()->value('id'),
+            'name' => static::$types[static::$index % count(static::$types)],
+            'exam_id' => Exam::where('acronym', 'FE')->value('id') ?? Exam::factory(),
         ];
     }
 }

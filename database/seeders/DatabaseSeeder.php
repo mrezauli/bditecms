@@ -8,9 +8,12 @@ use App\Models\District;
 use App\Models\Division;
 use App\Models\Enrollment;
 use App\Models\Exam;
+use App\Models\ExamSession;
 use App\Models\Gender;
+use App\Models\HalfPasser;
 use App\Models\Profile;
 use App\Models\Question;
+use App\Models\Setting;
 use App\Models\Site;
 use App\Models\Type;
 use App\Models\University;
@@ -67,8 +70,11 @@ class DatabaseSeeder extends Seeder
             UniversityCategory::factory(10)->create()->each->setStatus('active');
             University::factory(10)->create()->each->setStatus('active');
             Gender::factory(10)->create()->each->setStatus('active');
-            Profile::factory(10)->create();
+            Profile::factory(20)->create();
+            ExamSession::factory(10)->create()->each->setStatus('active');
+            HalfPasser::factory(10)->create();
             Enrollment::factory(10)->create();
+            Setting::factory(9)->create();
         } else {
             User::factory()->create([
                 'name' => 'Director',
@@ -91,6 +97,8 @@ class DatabaseSeeder extends Seeder
             $this->call([
                 ExamSeeder::class,
                 TypeSeeder::class,
+                SettingSeeder::class,
+                ExamSessionSeeder::class,
                 SiteSeeder::class,
                 QuestionSeeder::class,
                 AnswerSeeder::class,

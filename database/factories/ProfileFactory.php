@@ -14,25 +14,20 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProfileFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            'user_id' => fn (): ?int => User::inRandomOrder()->value('id'),
-            'date_of_birth' => fake()->dateTimeBetween('-80 years', '-16 years')->format('Y-m-d'),
-            'gender_id' => fn (): ?int => Gender::inRandomOrder()->value('id'),
-            'mobile_number' => fake()->randomDigitNotZero(),
-            'present_address' => fake()->address(),
-            'work_address' => fake()->address(),
+            'user_id' => User::factory(),
+            'date_of_birth' => fake()->dateTimeBetween('-40 years', '-20 years')->format('Y-m-d'),
+            'gender_id' => Gender::inRandomOrder()->value('id') ?? Gender::factory(),
+            'mobile_number' => (string) fake()->numerify('1##########'),
+            'present_address' => fake()->streetAddress().', '.fake()->city(),
+            'work_address' => fake()->company().', '.fake()->city(),
             'post_code' => fake()->numberBetween(1000, 9999),
-            'district_id' => fn (): ?int => District::inRandomOrder()->value('id'),
-            'university_id' => fn (): ?int => University::inRandomOrder()->value('id'),
+            'district_id' => District::inRandomOrder()->value('id') ?? District::factory(),
+            'university_id' => University::inRandomOrder()->value('id') ?? University::factory(),
             'other_university_name' => null,
-            'occupation' => fake()->word(),
+            'occupation' => fake()->randomElement(['Student', 'Software Engineer', 'Lecturer', 'System Analyst', 'Network Engineer', 'Data Analyst']),
         ];
     }
 }

@@ -11,17 +11,31 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class DistrictFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected static array $districts = [
+        ['name' => 'Dhaka', 'name_bn' => 'ঢাকা'],
+        ['name' => 'Gazipur', 'name_bn' => 'গাজীপুর'],
+        ['name' => 'Narayanganj', 'name_bn' => 'নারায়ণগঞ্জ'],
+        ['name' => 'Chattogram', 'name_bn' => 'চট্টগ্রাম'],
+        ['name' => 'Cox\'s Bazar', 'name_bn' => 'কক্সবাজার'],
+        ['name' => 'Rajshahi', 'name_bn' => 'রাজশাহী'],
+        ['name' => 'Bogra', 'name_bn' => 'বগুড়া'],
+        ['name' => 'Khulna', 'name_bn' => 'খুলনা'],
+        ['name' => 'Jessore', 'name_bn' => 'যশোর'],
+        ['name' => 'Sylhet', 'name_bn' => 'সিলেট'],
+    ];
+
+    protected static int $index = -1;
+
     public function definition(): array
     {
+        static::$index++;
+
+        $d = static::$districts[static::$index % count(static::$districts)];
+
         return [
-            'name' => fake()->city(),
-            'name_bn' => fake()->word(),
-            'division_id' => fn (): ?int => Division::inRandomOrder()->value('id'),
+            'name' => $d['name'],
+            'name_bn' => $d['name_bn'],
+            'division_id' => Division::inRandomOrder()->value('id') ?? Division::factory(),
         ];
     }
 }

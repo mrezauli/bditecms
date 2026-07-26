@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\ModelStatus\HasStatuses;
 
-#[Fillable(['name', 'acronym', 'level', 'details'])]
+#[Fillable(['name', 'acronym', 'level', 'details', 'ip_fee', 'fe_full_fee', 'fe_half_passer_fee'])]
 class Exam extends Model
 {
     /** @use HasFactory<ExamFactory> */
@@ -25,6 +25,25 @@ class Exam extends Model
     public function enrollments(): HasMany
     {
         return $this->hasMany(Enrollment::class);
+    }
+
+    public function sessions(): HasMany
+    {
+        return $this->hasMany(ExamSession::class);
+    }
+
+    public function currentSession(): ?ExamSession
+    {
+        return $this->sessions()->openForRegistration()->first();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'ip_fee' => 'decimal:2',
+            'fe_full_fee' => 'decimal:2',
+            'fe_half_passer_fee' => 'decimal:2',
+        ];
     }
 
     protected function label(): Attribute
