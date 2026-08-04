@@ -10,5 +10,16 @@
                 "boost:mcp"
             ]
         }
+    },
+    "lsp": {
+        "laravel-lsp": {
+            "command": [
+                "laravel-lsp"
+            ],
+            "extensions": [
+                ".php",
+                ".blade.php"
+            ]
+        }
     }
 }
