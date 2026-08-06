@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         $driver = Schema::getConnection()->getDriverName();
@@ -16,7 +15,7 @@ return new class extends Migration
             Schema::table('profiles', function ($table) {
                 $table->date('date_of_birth')->nullable()->change();
                 $table->unsignedBigInteger('gender_id')->nullable()->change();
-                $table->integer('mobile_number')->nullable()->change();
+                $table->bigInteger('mobile_number')->nullable()->change();
                 $table->text('present_address')->nullable()->change();
                 $table->text('work_address')->nullable()->change();
                 $table->integer('post_code')->nullable()->change();

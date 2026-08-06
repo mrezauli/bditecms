@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->date('date_of_birth');
             $table->foreignIdFor(Gender::class);
-            $table->integer('mobile_number');
+            $table->bigInteger('mobile_number');
             $table->text('present_address');
             $table->text('work_address');
             $table->integer('post_code');

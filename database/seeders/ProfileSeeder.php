@@ -24,9 +24,9 @@ class ProfileSeeder extends Seeder
                 [
                     'date_of_birth' => fake()->dateTimeBetween('-40 years', '-20 years')->format('Y-m-d'),
                     'gender_id' => $genders->random()->id,
-                    'mobile_number' => fake()->numerify('1##########'),
-                    'present_address' => fake()->streetAddress().', '.fake()->city(),
-                    'work_address' => fake()->company().', '.fake()->city(),
+                    'mobile_number' => fake()->numerify('#########'),
+                    'present_address' => fake()->streetAddress() . ', ' . fake()->city(),
+                    'work_address' => fake()->company() . ', ' . fake()->city(),
                     'post_code' => fake()->numberBetween(1000, 9999),
                     'district_id' => $districts->random()->id,
                     'university_id' => $universities->random()->id,
