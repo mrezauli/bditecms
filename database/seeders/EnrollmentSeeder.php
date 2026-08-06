@@ -22,16 +22,22 @@ class EnrollmentSeeder extends Seeder
         $feSessions = ExamSession::where('exam_id', $feExamId)->get();
         $ipSessions = ExamSession::where('exam_id', $ipExamId)->get();
         $types = Type::all();
-        $bothTypeId = Type::where('name', 'Both (FE: Morning & Afternoon Exam)')->value('id');
+        $bothTypeId = Type::where('name', 'FE: Both (Morning & Afternoon) Exam')->value('id');
         $answerPool = Answer::inRandomOrder()->get();
 
         $feSession = $feSessions->first();
         $ipSession = $ipSessions->first();
 
         $answerFields = [
-            'first_answer_id', 'second_answer_id', 'third_answer_id',
-            'fourth_answer_id', 'fifth_answer_id', 'sixth_answer_id',
-            'seventh_answer_id', 'eighth_answer_id', 'ninth_answer_id',
+            'first_answer_id',
+            'second_answer_id',
+            'third_answer_id',
+            'fourth_answer_id',
+            'fifth_answer_id',
+            'sixth_answer_id',
+            'seventh_answer_id',
+            'eighth_answer_id',
+            'ninth_answer_id',
         ];
 
         foreach ($users as $index => $user) {

@@ -13,6 +13,8 @@ class DivisionForm
             ->components([
                 TextInput::make('name')
                     ->required(),
+                TextInput::make('name_bn')
+                    ->required(),
             ]);
     }
 }

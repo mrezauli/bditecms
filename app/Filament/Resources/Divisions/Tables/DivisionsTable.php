@@ -22,6 +22,8 @@ class DivisionsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('name_bn')
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

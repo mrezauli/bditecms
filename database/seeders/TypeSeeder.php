@@ -14,6 +14,6 @@ class TypeSeeder extends Seeder
 
         Type::firstOrCreate(['name' => 'FE: Morning Exam', 'exam_id' => $exams['FE']])->setStatus('active');
         Type::firstOrCreate(['name' => 'FE: Afternoon Exam', 'exam_id' => $exams['FE']])->setStatus('active');
-        Type::firstOrCreate(['name' => 'Both (FE: Morning & Afternoon Exam)', 'exam_id' => $exams['FE']])->setStatus('active');
+        Type::firstOrCreate(['name' => 'FE: Both (Morning & Afternoon) Exam', 'exam_id' => $exams['FE']])->setStatus('active');
     }
 }

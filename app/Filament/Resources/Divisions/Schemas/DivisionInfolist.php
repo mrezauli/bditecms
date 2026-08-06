@@ -13,6 +13,7 @@ class DivisionInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
+                TextEntry::make('name_bn'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

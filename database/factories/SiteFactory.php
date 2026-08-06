@@ -10,18 +10,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class SiteFactory extends Factory
 {
-    protected static array $sites = [
-        'Dhaka', 'Chittagong', 'Rajshahi', 'Khulna', 'Sylhet',
-    ];
-
-    protected static int $index = -1;
-
     public function definition(): array
     {
-        static::$index++;
-
         return [
-            'name' => static::$sites[static::$index % count(static::$sites)],
+            'name' => fake()->city(),
         ];
     }
 }
