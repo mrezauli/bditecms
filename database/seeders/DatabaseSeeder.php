@@ -59,26 +59,26 @@ class DatabaseSeeder extends Seeder
                 'role' => RoleEnum::SuperAdmin->value,
             ]);
 
-            User::factory(10)->create();
-            Exam::factory(10)->create()->each->setStatus('active');
-            Type::factory(10)->create()->each->setStatus('active');
-            Site::factory(10)->create()->each->setStatus('active');
-            Question::factory(9)->create()->each->setStatus('active');
             Answer::factory(1000)->create()->each->setStatus('active');
-            Division::factory(10)->create()->each->setStatus('active');
             District::factory(10)->create()->each->setStatus('active');
-            UniversityCategory::factory(10)->create()->each->setStatus('active');
-            University::factory(10)->create()->each->setStatus('active');
-            Gender::factory(10)->create()->each->setStatus('active');
-            Profile::factory(20)->create();
-            ExamSession::factory(10)->create()->each->setStatus('active');
-            HalfPasser::factory(10)->create();
+            Division::factory(10)->create()->each->setStatus('active');
             Enrollment::factory(10)->create();
+            Exam::factory(10)->create()->each->setStatus('active');
+            ExamSession::factory(10)->create()->each->setStatus('active');
+            Gender::factory(10)->create()->each->setStatus('active');
+            HalfPasser::factory(10)->create();
+            Profile::factory(20)->create();
+            Question::factory(9)->create()->each->setStatus('active');
             Setting::factory(9)->create();
+            Site::factory(10)->create()->each->setStatus('active');
+            Type::factory(10)->create()->each->setStatus('active');
+            University::factory(10)->create()->each->setStatus('active');
+            UniversityCategory::factory(10)->create()->each->setStatus('active');
+            User::factory(10)->create();
         } else {
             User::factory()->create([
-                'name' => 'Director',
-                'email' => 'director.bditec@bcc.gov.bd',
+                'name' => 'Admin',
+                'email' => 'admin@admin.admin',
                 'email_verified_at' => now(),
                 'password' => Hash::make('Pa$$w0rd!'),
                 'remember_token' => Str::random(10),
@@ -95,20 +95,24 @@ class DatabaseSeeder extends Seeder
             ]);
 
             $this->call([
+                AnswerSeeder::class,
+                DistrictSeeder::class,
+                DivisionSeeder::class,
+                EnrollmentSeeder::class,
                 ExamSeeder::class,
+                ExamSessionSeeder::class,
+                GenderSeeder::class,
                 TypeSeeder::class,
                 SettingSeeder::class,
-                ExamSessionSeeder::class,
+
                 SiteSeeder::class,
                 QuestionSeeder::class,
-                AnswerSeeder::class,
-                DivisionSeeder::class,
-                DistrictSeeder::class,
+
                 UniversityCategorySeeder::class,
                 UniversitySeeder::class,
-                GenderSeeder::class,
+
                 ProfileSeeder::class,
-                EnrollmentSeeder::class,
+
                 HalfPasserSeeder::class,
             ]);
         }
