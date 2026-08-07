@@ -95,18 +95,21 @@ class DatabaseSeeder extends Seeder
             ]);
 
             $this->call([
+                QuestionSeeder::class,
                 AnswerSeeder::class,
-                DistrictSeeder::class,
                 DivisionSeeder::class,
-                EnrollmentSeeder::class,
-                ExamSeeder::class,
-                ExamSessionSeeder::class,
-                GenderSeeder::class,
-                TypeSeeder::class,
-                SettingSeeder::class,
+                DistrictSeeder::class,
 
                 SiteSeeder::class,
-                QuestionSeeder::class,
+                ExamSeeder::class,
+                TypeSeeder::class,
+
+                EnrollmentSeeder::class,
+
+                ExamSessionSeeder::class,
+                GenderSeeder::class,
+
+                SettingSeeder::class,
 
                 UniversityCategorySeeder::class,
                 UniversitySeeder::class,

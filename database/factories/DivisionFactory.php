@@ -14,6 +14,7 @@ class DivisionFactory extends Factory
     {
         return [
             'name' => fake()->city(),
+            'name_bn' => fake()->city(),
         ];
     }
 }
