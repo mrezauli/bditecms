@@ -23,6 +23,7 @@ class DivisionsTable
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('name_bn')
+                    ->label('Name (BN)')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

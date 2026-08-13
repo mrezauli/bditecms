@@ -23,7 +23,7 @@ class UniversityCategoryResource extends Resource
 {
     protected static ?string $model = UniversityCategory::class;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Portal Metadata';
+    protected static string|UnitEnum|null $navigationGroup = 'Exam Metadata';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ClipboardDocumentList;
 

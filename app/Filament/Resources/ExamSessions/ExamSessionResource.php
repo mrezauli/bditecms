@@ -24,7 +24,7 @@ class ExamSessionResource extends Resource
 {
     protected static ?string $model = ExamSession::class;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Exam Sessions';
+    protected static string|UnitEnum|null $navigationGroup = 'Portal Metadata';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCalendarDays;
 

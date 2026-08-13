@@ -23,7 +23,7 @@ class GenderResource extends Resource
 {
     protected static ?string $model = Gender::class;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Portal Metadata';
+    protected static string|UnitEnum|null $navigationGroup = 'Exam Metadata';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Cube;
 

@@ -23,7 +23,8 @@ class AnswersTable
                 TextColumn::make('label')
                     ->searchable(),
                 TextColumn::make('content')
-                    ->searchable(),
+                    ->searchable()
+                    ->words(10, end: ' ...more'),
                 TextColumn::make('question.label')
                     ->label('Question')
                     ->searchable(),

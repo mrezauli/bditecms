@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Answer;
 use App\Models\Enrollment;
 use App\Models\Exam;
-use App\Models\ExamSession;
+use App\Models\Intake;
 use App\Models\Site;
 use App\Models\Type;
 use App\Models\User;
@@ -20,7 +20,7 @@ class EnrollmentFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'exam_session_id' => ExamSession::inRandomOrder()->value('id') ?? ExamSession::factory(),
+            'intake_id' => Intake::inRandomOrder()->value('id') ?? Intake::factory(),
             'exam_id' => Exam::inRandomOrder()->value('id') ?? Exam::factory(),
             'type_id' => Type::inRandomOrder()->value('id') ?? Type::factory(),
             'site_id' => Site::inRandomOrder()->value('id') ?? Site::factory(),

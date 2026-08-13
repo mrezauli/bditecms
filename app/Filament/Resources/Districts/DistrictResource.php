@@ -23,7 +23,7 @@ class DistrictResource extends Resource
 {
     protected static ?string $model = District::class;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Exam Metadata';
+    protected static string|UnitEnum|null $navigationGroup = 'Location';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Plus;
 

@@ -8,9 +8,9 @@ use App\Models\District;
 use App\Models\Division;
 use App\Models\Enrollment;
 use App\Models\Exam;
-use App\Models\ExamSession;
 use App\Models\Gender;
 use App\Models\HalfPasser;
+use App\Models\Intake;
 use App\Models\Profile;
 use App\Models\Question;
 use App\Models\Setting;
@@ -64,8 +64,8 @@ class DatabaseSeeder extends Seeder
             Division::factory(10)->create()->each->setStatus('active');
             Enrollment::factory(10)->create();
             Exam::factory(10)->create()->each->setStatus('active');
-            ExamSession::factory(10)->create()->each->setStatus('active');
             Gender::factory(10)->create()->each->setStatus('active');
+            Intake::factory(10)->create()->each->setStatus('active');
             HalfPasser::factory(10)->create();
             Profile::factory(20)->create();
             Question::factory(9)->create()->each->setStatus('active');
@@ -103,10 +103,10 @@ class DatabaseSeeder extends Seeder
                 SiteSeeder::class,
                 ExamSeeder::class,
                 TypeSeeder::class,
+                IntakeSeeder::class,
 
                 EnrollmentSeeder::class,
 
-                ExamSessionSeeder::class,
                 GenderSeeder::class,
 
                 SettingSeeder::class,

@@ -21,7 +21,8 @@ class UniversitiesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->words(10, end: ' ...more'),
                 TextColumn::make('acronym')
                     ->searchable(),
                 TextColumn::make('website')

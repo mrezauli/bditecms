@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\ModelStatus\HasStatuses;
 
-#[Fillable(['user_id', 'exam_session_id', 'exam_id', 'type_id', 'site_id', 'first_answer_id', 'second_answer_id', 'third_answer_id', 'fourth_answer_id', 'fifth_answer_id', 'sixth_answer_id', 'seventh_answer_id', 'eighth_answer_id', 'ninth_answer_id', 'am_exam', 'pm_exam'])]
+#[Fillable(['user_id', 'intake_id', 'exam_id', 'type_id', 'site_id', 'first_answer_id', 'second_answer_id', 'third_answer_id', 'fourth_answer_id', 'fifth_answer_id', 'sixth_answer_id', 'seventh_answer_id', 'eighth_answer_id', 'ninth_answer_id', 'am_exam', 'pm_exam'])]
 class Enrollment extends Model
 {
     /** @use HasFactory<EnrollmentFactory> */
@@ -21,9 +21,9 @@ class Enrollment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function examSession(): BelongsTo
+    public function intake(): BelongsTo
     {
-        return $this->belongsTo(ExamSession::class);
+        return $this->belongsTo(Intake::class);
     }
 
     public function exam(): BelongsTo

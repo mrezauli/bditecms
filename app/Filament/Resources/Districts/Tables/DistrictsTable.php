@@ -23,7 +23,7 @@ class DistrictsTable
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('name_bn')
-                    ->label('Name (Bengali)')
+                    ->label('Name (BN)')
                     ->searchable(),
                 TextColumn::make('division.name')
                     ->label('Division')

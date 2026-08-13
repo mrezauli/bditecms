@@ -23,7 +23,8 @@ class QuestionsTable
                 TextColumn::make('label')
                     ->searchable(),
                 TextColumn::make('content')
-                    ->searchable(),
+                    ->searchable()
+                    ->words(10, end: ' ...more'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

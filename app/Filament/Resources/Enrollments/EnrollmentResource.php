@@ -23,7 +23,7 @@ class EnrollmentResource extends Resource
 {
     protected static ?string $model = Enrollment::class;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Portal Metadata';
+    protected static string|UnitEnum|null $navigationGroup = 'User Metadata';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::AtSymbol;
 

@@ -2,14 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Exam;
-use App\Models\ExamSession;
+use App\Models\Intake;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<ExamSession>
+ * @extends Factory<Intake>
  */
-class ExamSessionFactory extends Factory
+class IntakeFactory extends Factory
 {
     public function definition(): array
     {
@@ -22,7 +21,6 @@ class ExamSessionFactory extends Factory
         $regEndDay = $month === 4 ? '31' : '30';
 
         return [
-            'exam_id' => Exam::inRandomOrder()->value('id') ?? Exam::factory(),
             'name' => $month === 4 ? "April {$year}" : "October {$year}",
             'exam_date' => $examDate,
             'registration_starts_at' => "{$year}-{$regStartMonth}-01 00:00:00",

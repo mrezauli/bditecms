@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Answer;
 use App\Models\Enrollment;
 use App\Models\Exam;
-use App\Models\ExamSession;
+use App\Models\Intake;
 use App\Models\Site;
 use App\Models\Type;
 use App\Models\User;
@@ -19,14 +19,10 @@ class EnrollmentSeeder extends Seeder
         $ipExamId = Exam::where('acronym', 'IP')->value('id');
         $users = User::all();
         $sites = Site::all();
-        $feSessions = ExamSession::where('exam_id', $feExamId)->get();
-        $ipSessions = ExamSession::where('exam_id', $ipExamId)->get();
+        $intakes = Intake::all();
         $types = Type::all();
         $bothTypeId = Type::where('name', 'FE: Both (Morning & Afternoon) Exam')->value('id');
         $answerPool = Answer::inRandomOrder()->get();
-
-        $feSession = $feSessions->first();
-        $ipSession = $ipSessions->first();
 
         $answerFields = [
             'first_answer_id',
@@ -43,11 +39,11 @@ class EnrollmentSeeder extends Seeder
         foreach ($users as $index => $user) {
             $isFe = $index % 2 === 0;
             $examId = $isFe ? $feExamId : $ipExamId;
-            $session = $isFe ? $feSession : $ipSession;
+            $intake = $intakes->isEmpty() ? null : $intakes->random();
 
             $enrollmentData = [
                 'user_id' => $user->id,
-                'exam_session_id' => $session?->id,
+                'intake_id' => $intake?->id,
                 'exam_id' => $examId,
                 'type_id' => $isFe ? $bothTypeId : $types->random()->id,
                 'site_id' => $sites->random()->id,

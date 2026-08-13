@@ -23,7 +23,7 @@ class SiteResource extends Resource
 {
     protected static ?string $model = Site::class;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Venue Metadata';
+    protected static string|UnitEnum|null $navigationGroup = 'Location';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Cloud;
 

@@ -2,19 +2,18 @@
 
 namespace App\Models;
 
-use Database\Factories\ExamSessionFactory;
+use Database\Factories\IntakeFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\ModelStatus\HasStatuses;
 
-#[Fillable(['exam_id', 'name', 'exam_date', 'registration_starts_at', 'registration_ends_at', 'result_published_at'])]
-class ExamSession extends Model
+#[Fillable(['name', 'exam_date', 'registration_starts_at', 'registration_ends_at', 'result_published_at'])]
+class Intake extends Model
 {
-    /** @use HasFactory<ExamSessionFactory> */
+    /** @use HasFactory<IntakeFactory> */
     use HasFactory, HasStatuses, SoftDeletes;
 
     protected function casts(): array
@@ -25,11 +24,6 @@ class ExamSession extends Model
             'registration_ends_at' => 'datetime',
             'result_published_at' => 'datetime',
         ];
-    }
-
-    public function exam(): BelongsTo
-    {
-        return $this->belongsTo(Exam::class);
     }
 
     public function enrollments(): HasMany

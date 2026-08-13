@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Division;
 use App\Models\Site;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,6 +15,7 @@ class SiteFactory extends Factory
     {
         return [
             'name' => fake()->city(),
+            'division_id' => Division::inRandomOrder()->value('id') ?? Division::factory(),
         ];
     }
 }

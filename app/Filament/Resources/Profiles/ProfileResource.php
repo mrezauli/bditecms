@@ -23,7 +23,7 @@ class ProfileResource extends Resource
 {
     protected static ?string $model = Profile::class;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Portal Metadata';
+    protected static string|UnitEnum|null $navigationGroup = 'User Metadata';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::UserGroup;
 
