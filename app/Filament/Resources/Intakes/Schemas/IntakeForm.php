@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\ExamSessions\Schemas;
+namespace App\Filament\Resources\Intakes\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
@@ -8,7 +8,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
-class ExamSessionForm
+class IntakeForm
 {
     public static function configure(Schema $schema): Schema
     {

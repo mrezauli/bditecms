@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\ExamSessions\Tables;
+namespace App\Filament\Resources\Intakes\Tables;
 
 use App\Filament\Actions\ActivateRecordAction;
 use App\Filament\Actions\DeactivateRecordAction;
@@ -14,7 +14,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
-class ExamSessionsTable
+class IntakesTable
 {
     public static function configure(Table $table): Table
     {

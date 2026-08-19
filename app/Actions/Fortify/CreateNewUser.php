@@ -8,8 +8,8 @@ use App\Models\Answer;
 use App\Models\District;
 use App\Models\Enrollment;
 use App\Models\Exam;
-use App\Models\ExamSession;
 use App\Models\Gender;
+use App\Models\Intake;
 use App\Models\Profile;
 use App\Models\Site;
 use App\Models\Type;
@@ -83,9 +83,9 @@ class CreateNewUser implements CreatesNewUsers
             }
         }
 
-        $session = ExamSession::where('exam_id', $input['exam_id'])->openForRegistration()->first();
+        $intake = Intake::where('exam_id', $input['exam_id'])->get()->first(fn ($intake) => $intake->isRegistrationOpen());
 
-        if (! $session) {
+        if (! $intake) {
             $exam = Exam::find($input['exam_id']);
 
             $validator = Validator::make($input, $rules);
@@ -131,7 +131,7 @@ class CreateNewUser implements CreatesNewUsers
 
             Enrollment::create([
                 'user_id' => $user->id,
-                'exam_session_id' => $session->id,
+                'intake_id' => $intake->id,
                 'exam_id' => $input['exam_id'],
                 'type_id' => $input['type_id'],
                 'site_id' => $input['site_id'],

@@ -58,17 +58,17 @@
 
             {{-- Exam Information --}}
             @php
-                $sessionsJson = $sessionsByExam->map(fn ($s) => [
-                    'name' => $s->name,
-                    'exam_date' => $s->exam_date->format('Y-m-d'),
-                    'exam_date_display' => $s->exam_date->format('d F Y'),
-                    'reg_ends_at' => $s->registration_ends_at->format('Y-m-d'),
-                    'reg_ends_display' => $s->registration_ends_at->format('d F Y'),
-                    'days_left' => (int) now()->diffInDays($s->registration_ends_at, false),
+                $intakesJson = $intakesByExam->map(fn ($intake) => [
+                    'name' => $intake->name,
+                    'exam_date' => $intake->exam_date->format('Y-m-d'),
+                    'exam_date_display' => $intake->exam_date->format('d F Y'),
+                    'reg_ends_at' => $intake->registration_ends_at->format('Y-m-d'),
+                    'reg_ends_display' => $intake->registration_ends_at->format('d F Y'),
+                    'days_left' => (int) now()->diffInDays($intake->registration_ends_at, false),
                 ]);
             @endphp
             <div data-fe-exam-id="{{ $feExamId }}" data-fe-both-type-id="{{ $feBothTypeId }}"
-                data-sessions='{{ $sessionsJson }}' x-data="{
+                data-intakes='{{ $intakesJson }}' x-data="{
                     examId: '{{ old('exam_id') }}',
                     passedBefore: '{{ old('passed_before') }}',
                     examineeId: '{{ old('examinee_id') }}',
@@ -78,14 +78,14 @@
                     validatedName: null,
                     isFE: false,
                     selectedTypeId: null,
-                    activeSession: null,
+                    activeIntake: null,
 
                     init() {
                         this.isFE = this.examId == this.$el.dataset.feExamId;
-                        this.updateSession();
+                        this.updateIntake();
                         this.$watch('examId', value => {
                             this.isFE = value == this.$el.dataset.feExamId;
-                            this.updateSession();
+                            this.updateIntake();
                         });
                         this.$watch('passedBefore', value => {
                             if (value === 'no') this.selectedTypeId = this.$el.dataset.feBothTypeId;
@@ -96,9 +96,9 @@
                         });
                     },
 
-                    updateSession() {
-                        const sessions = JSON.parse(this.$el.dataset.sessions);
-                        this.activeSession = sessions[this.examId] || null;
+                    updateIntake() {
+                        const intakes = JSON.parse(this.$el.dataset.intakes);
+                        this.activeIntake = intakes[this.examId] || null;
                     },
 
                     validateExaminee() {
@@ -141,24 +141,24 @@
                                 <option value="{{ $id }}" @selected(old('exam_id') == $id)>{{ $label }}</option>
                             @endforeach
                         </flux:select>
-                        <template x-if="activeSession">
+                        <template x-if="activeIntake">
                             <div class="mt-2 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm dark:border-emerald-800 dark:bg-emerald-900/20">
                                 <div class="flex items-center gap-2">
                                     <flux:icon name="calendar-days" class="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
-                                    <span class="font-medium text-emerald-800 dark:text-emerald-200" x-text="activeSession.name"></span>
-                                    <span class="ml-auto inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-800 dark:text-emerald-300" x-text="activeSession.days_left > 0 ? activeSession.days_left + ' days left' : 'Closing soon'"></span>
+                                    <span class="font-medium text-emerald-800 dark:text-emerald-200" x-text="activeIntake.name"></span>
+                                    <span class="ml-auto inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-800 dark:text-emerald-300" x-text="activeIntake.days_left > 0 ? activeIntake.days_left + ' days left' : 'Closing soon'"></span>
                                 </div>
                                 <div class="mt-1 text-emerald-700 dark:text-emerald-300">
                                     <span>{{ __('Exam date:') }}</span>
-                                    <span class="font-semibold" x-text="activeSession.exam_date_display"></span>
+                                    <span class="font-semibold" x-text="activeIntake.exam_date_display"></span>
                                 </div>
                                 <div class="text-emerald-700 dark:text-emerald-300">
                                     <span>{{ __('Registration ends:') }}</span>
-                                    <span class="font-semibold" x-text="activeSession.reg_ends_display"></span>
+                                    <span class="font-semibold" x-text="activeIntake.reg_ends_display"></span>
                                 </div>
                             </div>
                         </template>
-                        <template x-if="!activeSession && examId">
+                        <template x-if="!activeIntake && examId">
                             <div class="mt-2 rounded-lg border border-red-200 bg-red-50 p-3 text-sm dark:border-red-800 dark:bg-red-900/20">
                                 <div class="flex items-center gap-2">
                                     <flux:icon name="x-circle" class="size-4 shrink-0 text-red-600 dark:text-red-400" />

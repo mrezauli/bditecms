@@ -13,7 +13,7 @@ use Illuminate\Validation\Rule;
 trait ProfileValidationRules
 {
     /**
-     * Get the minimum allowed date of birth based on the next BDITEC exam session.
+     * Get the minimum allowed date of birth based on the next BDITEC intake.
      * Exams are held on April 24-25 and in October. The cutoff is the 1st of the
      * next upcoming session month minus the configured minimum age.
      */

@@ -31,34 +31,52 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.admin',
+            'email_verified_at' => now(),
+            'password' => Hash::make('Pa$$w0rd!'),
+            'remember_token' => Str::random(10),
+            'role' => RoleEnum::Admin->value,
+        ]);
+
+        User::factory()->create([
+            'name' => 'Super Admin',
+            'email' => 'super@admin.superadmin',
+            'email_verified_at' => now(),
+            'password' => Hash::make('Pa$$w0rd!'),
+            'remember_token' => Str::random(10),
+            'role' => RoleEnum::SuperAdmin->value,
+        ]);
+
+        User::factory()->create([
+            'name' => 'User 1',
+            'email' => 'user1@user.user',
+            'email_verified_at' => now(),
+            'password' => Hash::make('Pa$$w0rd!'),
+            'remember_token' => Str::random(10),
+            'role' => RoleEnum::User->value,
+        ])->setStatus('active');
+
+        User::factory()->create([
+            'name' => 'User 2',
+            'email' => 'user2@user.user',
+            'email_verified_at' => now(),
+            'password' => Hash::make('Pa$$w0rd!'),
+            'remember_token' => Str::random(10),
+            'role' => RoleEnum::User->value,
+        ])->setStatus('active');
+
+        User::factory()->create([
+            'name' => 'User 3',
+            'email' => 'user3@user.user',
+            'email_verified_at' => now(),
+            'password' => Hash::make('Pa$$w0rd!'),
+            'remember_token' => Str::random(10),
+            'role' => RoleEnum::User->value,
+        ]);
+
         if (App::environment('local')) {
-            User::factory()->create([
-                'name' => 'User',
-                'email' => 'user@user.user',
-                'email_verified_at' => now(),
-                'password' => Hash::make('Pa$$w0rd!'),
-                'remember_token' => Str::random(10),
-                'role' => RoleEnum::User->value,
-            ]);
-
-            User::factory()->create([
-                'name' => 'Admin',
-                'email' => 'admin@admin.admin',
-                'email_verified_at' => now(),
-                'password' => Hash::make('Pa$$w0rd!'),
-                'remember_token' => Str::random(10),
-                'role' => RoleEnum::Admin->value,
-            ]);
-
-            User::factory()->create([
-                'name' => 'Super Admin',
-                'email' => 'super@admin.superadmin',
-                'email_verified_at' => now(),
-                'password' => Hash::make('Pa$$w0rd!'),
-                'remember_token' => Str::random(10),
-                'role' => RoleEnum::SuperAdmin->value,
-            ]);
-
             Answer::factory(1000)->create()->each->setStatus('active');
             District::factory(10)->create()->each->setStatus('active');
             Division::factory(10)->create()->each->setStatus('active');
@@ -76,24 +94,6 @@ class DatabaseSeeder extends Seeder
             UniversityCategory::factory(10)->create()->each->setStatus('active');
             User::factory(10)->create();
         } else {
-            User::factory()->create([
-                'name' => 'Admin',
-                'email' => 'admin@admin.admin',
-                'email_verified_at' => now(),
-                'password' => Hash::make('Pa$$w0rd!'),
-                'remember_token' => Str::random(10),
-                'role' => RoleEnum::Admin->value,
-            ]);
-
-            User::factory()->create([
-                'name' => 'Super Admin',
-                'email' => 'super@admin.superadmin',
-                'email_verified_at' => now(),
-                'password' => Hash::make('Pa$$w0rd!'),
-                'remember_token' => Str::random(10),
-                'role' => RoleEnum::SuperAdmin->value,
-            ]);
-
             $this->call([
                 QuestionSeeder::class,
                 AnswerSeeder::class,

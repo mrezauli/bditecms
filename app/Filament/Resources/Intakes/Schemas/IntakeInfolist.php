@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\ExamSessions\Schemas;
+namespace App\Filament\Resources\Intakes\Schemas;
 
-use App\Models\ExamSession;
+use App\Models\Intake;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
-class ExamSessionInfolist
+class IntakeInfolist
 {
     public static function configure(Schema $schema): Schema
     {
@@ -39,7 +39,7 @@ class ExamSessionInfolist
                             ->placeholder('-'),
                         TextEntry::make('deleted_at')
                             ->dateTime()
-                            ->visible(fn (ExamSession $record): bool => $record->trashed()),
+                            ->visible(fn (Intake $record): bool => $record->trashed()),
                     ]),
             ]);
     }

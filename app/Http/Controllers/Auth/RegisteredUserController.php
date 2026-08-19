@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Models\Answer;
 use App\Models\District;
 use App\Models\Exam;
-use App\Models\ExamSession;
 use App\Models\Gender;
+use App\Models\Intake;
 use App\Models\Question;
 use App\Models\Site;
 use App\Models\Type;
@@ -19,10 +19,21 @@ class RegisteredUserController extends FortifyRegisteredUserController
 {
     public function create(Request $request): RegisterViewResponse
     {
+        $intakes = Intake::currentStatus('active')->with('exam')->get()->filter(fn ($intake) => $intake->isRegistrationOpen())->values();
+
+        if ($intakes->isEmpty()) {
+            return new class implements RegisterViewResponse
+            {
+                public function toResponse($request)
+                {
+                    return view('livewire.auth.no-intake');
+                }
+            };
+        }
+
         $questions = Question::currentStatus('active')->orderBy('label')->get();
         $answers = Answer::currentStatus('active')->with('question')->get()->groupBy('question_id');
-        $sessions = ExamSession::openForRegistration()->with('exam')->get();
-        $examIds = $sessions->pluck('exam_id')->unique();
+        $examIds = $intakes->pluck('exam_id')->unique();
         $exams = Exam::whereIn('id', $examIds)->orderBy('name')->get()->mapWithKeys(fn ($exam) => [$exam->id => $exam->label]);
         $types = Type::currentStatus('active')->orderBy('name')->get()->keyBy('id');
         $sites = Site::currentStatus('active')->orderBy('name')->pluck('name', 'id');
@@ -35,9 +46,9 @@ class RegisteredUserController extends FortifyRegisteredUserController
         $feMorningTypeId = Type::where('exam_id', $feExamId)->where('name', 'Morning Exam')->value('id');
         $feAfternoonTypeId = Type::where('exam_id', $feExamId)->where('name', 'Afternoon Exam')->value('id');
 
-        $sessionsByExam = $sessions->groupBy('exam_id')->map(fn ($group) => $group->first());
+        $intakesByExam = $intakes->groupBy('exam_id')->map(fn ($group) => $group->first());
 
-        return new class($questions, $answers, $exams, $types, $sites, $genders, $districts, $universities, $feExamId, $feBothTypeId, $feMorningTypeId, $feAfternoonTypeId, $sessionsByExam) implements RegisterViewResponse
+        return new class($questions, $answers, $exams, $types, $sites, $genders, $districts, $universities, $feExamId, $feBothTypeId, $feMorningTypeId, $feAfternoonTypeId, $intakesByExam) implements RegisterViewResponse
         {
             public function __construct(
                 private $questions,
@@ -52,7 +63,7 @@ class RegisteredUserController extends FortifyRegisteredUserController
                 private $feBothTypeId,
                 private $feMorningTypeId,
                 private $feAfternoonTypeId,
-                private $sessionsByExam,
+                private $intakesByExam,
             ) {}
 
             public function toResponse($request)
@@ -70,7 +81,7 @@ class RegisteredUserController extends FortifyRegisteredUserController
                     'feBothTypeId' => $this->feBothTypeId,
                     'feMorningTypeId' => $this->feMorningTypeId,
                     'feAfternoonTypeId' => $this->feAfternoonTypeId,
-                    'sessionsByExam' => $this->sessionsByExam,
+                    'intakesByExam' => $this->intakesByExam,
                 ]);
             }
         };

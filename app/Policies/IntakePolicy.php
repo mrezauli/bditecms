@@ -2,10 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\ExamSession;
+use App\Models\Intake;
 use App\Models\User;
 
-class ExamSessionPolicy
+class IntakePolicy
 {
     public function viewAny(User $user): bool
     {
@@ -16,7 +16,7 @@ class ExamSessionPolicy
         return false;
     }
 
-    public function view(User $user, ExamSession $examSession): bool
+    public function view(User $user, Intake $intake): bool
     {
         if ($user->role->value === 'super admin') {
             return true;
@@ -34,7 +34,7 @@ class ExamSessionPolicy
         return false;
     }
 
-    public function update(User $user, ExamSession $examSession): bool
+    public function update(User $user, Intake $intake): bool
     {
         if ($user->role->value === 'super admin') {
             return true;
@@ -43,7 +43,7 @@ class ExamSessionPolicy
         return false;
     }
 
-    public function delete(User $user, ExamSession $examSession): bool
+    public function delete(User $user, Intake $intake): bool
     {
         if ($user->role->value === 'super admin') {
             return true;
@@ -61,7 +61,7 @@ class ExamSessionPolicy
         return false;
     }
 
-    public function restore(User $user, ExamSession $examSession): bool
+    public function restore(User $user, Intake $intake): bool
     {
         if ($user->role->value === 'super admin') {
             return true;
@@ -70,7 +70,7 @@ class ExamSessionPolicy
         return false;
     }
 
-    public function forceDelete(User $user, ExamSession $examSession): bool
+    public function forceDelete(User $user, Intake $intake): bool
     {
         if ($user->role->value === 'super admin') {
             return true;

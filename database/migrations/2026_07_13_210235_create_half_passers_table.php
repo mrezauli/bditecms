@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Intake;
+use App\Models\Type;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('examinee_no');
             $table->string('name');
-            $table->string('exam_type');
-            $table->string('remarks')->nullable();
+            $table->foreignIdFor(Type::class);
+            $table->foreignIdFor(Intake::class);
             $table->timestamps();
-
-            $table->unique(['examinee_no', 'exam_type']);
         });
     }
 

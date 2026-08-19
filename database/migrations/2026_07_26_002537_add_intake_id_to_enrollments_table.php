@@ -18,7 +18,6 @@ return new class extends Migration
     {
         Schema::table('enrollments', function (Blueprint $table) {
             $table->dropForeignIdFor(Intake::class);
-            $table->dropColumn('exam_session_id');
         });
     }
 };

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\ExamSessions;
+namespace App\Filament\Resources\Intakes;
 
-use App\Filament\Resources\ExamSessions\Pages\CreateExamSession;
-use App\Filament\Resources\ExamSessions\Pages\EditExamSession;
-use App\Filament\Resources\ExamSessions\Pages\ListExamSessions;
-use App\Filament\Resources\ExamSessions\Pages\ViewExamSession;
-use App\Filament\Resources\ExamSessions\Schemas\ExamSessionForm;
-use App\Filament\Resources\ExamSessions\Schemas\ExamSessionInfolist;
-use App\Filament\Resources\ExamSessions\Tables\ExamSessionsTable;
-use App\Models\ExamSession;
+use App\Filament\Resources\Intakes\Pages\CreateIntake;
+use App\Filament\Resources\Intakes\Pages\EditIntake;
+use App\Filament\Resources\Intakes\Pages\ListIntakes;
+use App\Filament\Resources\Intakes\Pages\ViewIntake;
+use App\Filament\Resources\Intakes\Schemas\IntakeForm;
+use App\Filament\Resources\Intakes\Schemas\IntakeInfolist;
+use App\Filament\Resources\Intakes\Tables\IntakesTable;
+use App\Models\Intake;
 use BackedEnum;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
@@ -20,9 +20,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use UnitEnum;
 
-class ExamSessionResource extends Resource
+class IntakeResource extends Resource
 {
-    protected static ?string $model = ExamSession::class;
+    protected static ?string $model = Intake::class;
 
     protected static string|UnitEnum|null $navigationGroup = 'Portal Metadata';
 
@@ -30,17 +30,17 @@ class ExamSessionResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return ExamSessionForm::configure($schema);
+        return IntakeForm::configure($schema);
     }
 
     public static function infolist(Schema $schema): Schema
     {
-        return ExamSessionInfolist::configure($schema);
+        return IntakeInfolist::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return ExamSessionsTable::configure($table);
+        return IntakesTable::configure($table);
     }
 
     public static function getRelations(): array
@@ -51,10 +51,10 @@ class ExamSessionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListExamSessions::route('/'),
-            'create' => CreateExamSession::route('/create'),
-            'view' => ViewExamSession::route('/{record}'),
-            'edit' => EditExamSession::route('/{record}/edit'),
+            'index' => ListIntakes::route('/'),
+            'create' => CreateIntake::route('/create'),
+            'view' => ViewIntake::route('/{record}'),
+            'edit' => EditIntake::route('/{record}/edit'),
         ];
     }
 
@@ -69,8 +69,8 @@ class ExamSessionResource extends Resource
     public static function getRecordSubNavigation(Page $page): array
     {
         return $page->generateNavigationItems([
-            ViewExamSession::class,
-            EditExamSession::class,
+            ViewIntake::class,
+            EditIntake::class,
         ]);
     }
 }

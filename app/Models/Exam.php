@@ -27,14 +27,14 @@ class Exam extends Model
         return $this->hasMany(Enrollment::class);
     }
 
-    public function sessions(): HasMany
+    public function intakes(): HasMany
     {
-        return $this->hasMany(ExamSession::class);
+        return $this->hasMany(Intake::class);
     }
 
-    public function currentSession(): ?ExamSession
+    public function currentIntake(): ?Intake
     {
-        return $this->sessions()->openForRegistration()->first();
+        return $this->intakes()->get()->first(fn ($intake) => $intake->isRegistrationOpen());
     }
 
     protected function casts(): array

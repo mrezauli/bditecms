@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\RoleEnum;
 use App\Models\Answer;
 use App\Models\Enrollment;
 use App\Models\Exam;
@@ -17,7 +18,7 @@ class EnrollmentSeeder extends Seeder
     {
         $feExamId = Exam::where('acronym', 'FE')->value('id');
         $ipExamId = Exam::where('acronym', 'IP')->value('id');
-        $users = User::all();
+        $users = User::where('role', RoleEnum::User->value)->currentStatus('active')->get();
         $sites = Site::all();
         $intakes = Intake::all();
         $types = Type::all();
