@@ -51,6 +51,7 @@ class ExamineeController extends Controller
             return response()->json([
                 'status' => 'valid',
                 'type_id' => $typeId,
+                'type_name' => $foundInAm ? 'Afternoon Exam' : 'Morning Exam',
                 'name' => $halfPasser?->name,
                 'message' => __('You passed in :exam exam so you can only participate in :other exam.', [
                     'exam' => $passedExam,
@@ -70,17 +71,20 @@ class ExamineeController extends Controller
 
         if ($halfPassers->isNotEmpty()) {
             $halfPasser = $halfPassers->first();
-            $typeId = $halfPasser->exam_type === 'Morning Exam'
+            $passedType = $halfPasser->type;
+            $otherTypeId = $passedType->name === 'Morning Exam'
                 ? Type::where('exam_id', $feExamId)->where('name', 'Afternoon Exam')->value('id')
                 : Type::where('exam_id', $feExamId)->where('name', 'Morning Exam')->value('id');
+            $otherTypeName = $passedType->name === 'Morning Exam' ? 'Afternoon Exam' : 'Morning Exam';
 
             return response()->json([
                 'status' => 'valid',
-                'type_id' => $typeId,
+                'type_id' => $otherTypeId,
+                'type_name' => $otherTypeName,
                 'name' => $halfPasser->name,
                 'message' => __('You passed in :exam so you can only participate in :other.', [
-                    'exam' => $halfPasser->exam_type,
-                    'other' => $halfPasser->exam_type === 'Morning Exam' ? 'Afternoon Exam' : 'Morning Exam',
+                    'exam' => $passedType->name,
+                    'other' => $otherTypeName,
                 ]),
             ]);
         }

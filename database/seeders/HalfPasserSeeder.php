@@ -103,7 +103,7 @@ class HalfPasserSeeder extends Seeder
             $intakeName = $this->extractIntakeName($remarks);
             $intakeId = Intake::where('name', $intakeName)->value('id');
 
-            HalfPasser::firstOrCreate(
+            $halfPasser = HalfPasser::firstOrCreate(
                 ['examinee_no' => $examineeNo, 'type_id' => $morningTypeId],
                 [
                     'name' => $name,
@@ -111,13 +111,17 @@ class HalfPasserSeeder extends Seeder
                     'intake_id' => $intakeId,
                 ],
             );
+
+            if (! $halfPasser->hasStatus('active')) {
+                $halfPasser->setStatus('active');
+            }
         }
 
         foreach ($afternoonExam as [$examineeNo, $name, $remarks]) {
             $intakeName = $this->extractIntakeName($remarks);
             $intakeId = Intake::where('name', $intakeName)->value('id');
 
-            HalfPasser::firstOrCreate(
+            $halfPasser = HalfPasser::firstOrCreate(
                 ['examinee_no' => $examineeNo, 'type_id' => $afternoonTypeId],
                 [
                     'name' => $name,
@@ -125,6 +129,10 @@ class HalfPasserSeeder extends Seeder
                     'intake_id' => $intakeId,
                 ],
             );
+
+            if (! $halfPasser->hasStatus('active')) {
+                $halfPasser->setStatus('active');
+            }
         }
     }
 

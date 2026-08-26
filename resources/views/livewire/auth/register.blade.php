@@ -1,6 +1,5 @@
 <x-layouts::auth :title="__('Register')" wide>
-    <div
-        class="flex flex-col gap-8">
+    <div class="flex flex-col gap-8">
         <div class="flex flex-col items-center text-center">
 
             <h1
@@ -58,7 +57,7 @@
 
             {{-- Exam Information --}}
             @php
-                $intakesJson = $intakesByExam->map(fn ($intake) => [
+                $intakesJson = $intakesByExam->map(fn($intake) => [
                     'name' => $intake->name,
                     'exam_date' => $intake->exam_date->format('Y-m-d'),
                     'exam_date_display' => $intake->exam_date->format('d F Y'),
@@ -75,6 +74,7 @@
                     validationStatus: null,
                     validationMessage: '',
                     validatedTypeId: null,
+                    validatedTypeName: null,
                     validatedName: null,
                     isFE: false,
                     selectedTypeId: null,
@@ -85,6 +85,10 @@
                         this.updateIntake();
                         this.$watch('examId', value => {
                             this.isFE = value == this.$el.dataset.feExamId;
+                            this.selectedTypeId = null;
+                            this.passedBefore = '';
+                            this.examineeId = '';
+                            this.validationStatus = null;
                             this.updateIntake();
                         });
                         this.$watch('passedBefore', value => {
@@ -120,12 +124,12 @@
                             this.validationMessage = data.message;
                             if (data.status === 'valid') {
                                 this.validatedTypeId = data.type_id;
+                                this.validatedTypeName = data.type_name;
                                 this.validatedName = data.name;
                             }
                         });
                     },
-                }"
-                class="space-y-6 p-6">
+                }" class="space-y-6 p-6">
                 <h2
                     class="flex items-center gap-2 border-b border-sky-200/50 pb-4 text-lg font-bold text-sky-800 dark:border-sky-800/30 dark:text-sky-200">
                     <flux:icon name="trophy" class="size-5 text-yellow-500 dark:text-yellow-400" />
@@ -133,42 +137,6 @@
                 </h2>
 
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    <flux:field>
-                        <flux:label>{{ __('Exam') }} <span class="text-red-500">*</span></flux:label>
-                        <flux:select name="exam_id" x-model="examId">
-                            <option value="">{{ __('Select exam') }}</option>
-                            @foreach ($exams as $id => $label)
-                                <option value="{{ $id }}" @selected(old('exam_id') == $id)>{{ $label }}</option>
-                            @endforeach
-                        </flux:select>
-                        <template x-if="activeIntake">
-                            <div class="mt-2 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm dark:border-emerald-800 dark:bg-emerald-900/20">
-                                <div class="flex items-center gap-2">
-                                    <flux:icon name="calendar-days" class="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
-                                    <span class="font-medium text-emerald-800 dark:text-emerald-200" x-text="activeIntake.name"></span>
-                                    <span class="ml-auto inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-800 dark:text-emerald-300" x-text="activeIntake.days_left > 0 ? activeIntake.days_left + ' days left' : 'Closing soon'"></span>
-                                </div>
-                                <div class="mt-1 text-emerald-700 dark:text-emerald-300">
-                                    <span>{{ __('Exam date:') }}</span>
-                                    <span class="font-semibold" x-text="activeIntake.exam_date_display"></span>
-                                </div>
-                                <div class="text-emerald-700 dark:text-emerald-300">
-                                    <span>{{ __('Registration ends:') }}</span>
-                                    <span class="font-semibold" x-text="activeIntake.reg_ends_display"></span>
-                                </div>
-                            </div>
-                        </template>
-                        <template x-if="!activeIntake && examId">
-                            <div class="mt-2 rounded-lg border border-red-200 bg-red-50 p-3 text-sm dark:border-red-800 dark:bg-red-900/20">
-                                <div class="flex items-center gap-2">
-                                    <flux:icon name="x-circle" class="size-4 shrink-0 text-red-600 dark:text-red-400" />
-                                    <span class="font-medium text-red-800 dark:text-red-200">{{ __('Registration is not open for this exam.') }}</span>
-                                </div>
-                            </div>
-                        </template>
-                        <flux:error name="exam_id" />
-                    </flux:field>
-
                     <flux:field>
                         <flux:label>{{ __('Site') }} <span class="text-red-500">*</span></flux:label>
                         <flux:select name="site_id" required>
@@ -180,7 +148,38 @@
                         <flux:error name="site_id" />
                     </flux:field>
 
-                    <input type="hidden" name="type_id" :value="selectedTypeId">
+                    <flux:field>
+                        <flux:label>{{ __('Exam') }} <span class="text-red-500">*</span></flux:label>
+                        <flux:select name="exam_id" x-model="examId">
+                            <option value="">{{ __('Select exam') }}</option>
+                            @foreach ($exams as $id => $label)
+                                <option value="{{ $id }}" @selected(old('exam_id') == $id)>{{ $label }}</option>
+                            @endforeach
+                        </flux:select>
+                        <template x-if="!activeIntake && examId">
+                            <div
+                                class="mt-2 rounded-lg border border-red-200 bg-red-50 p-3 text-sm dark:border-red-800 dark:bg-red-900/20">
+                                <div class="flex items-center gap-2">
+                                    <flux:icon name="x-circle" class="size-4 shrink-0 text-red-600 dark:text-red-400" />
+                                    <span
+                                        class="font-medium text-red-800 dark:text-red-200">{{ __('Registration is not open for this exam.') }}</span>
+                                </div>
+                            </div>
+                        </template>
+                        <flux:error name="exam_id" />
+                    </flux:field>
+
+                    <flux:field>
+                        <flux:label>{{ __('Type') }} <span class="text-red-500">*</span></flux:label>
+                        <flux:select name="type_id" x-model="selectedTypeId" required>
+                            <option value="">{{ __('Select type') }}</option>
+                            @foreach ($types as $id => $type)
+                                <option value="{{ $id }}" data-exam-id="{{ $type->exam_id }}" @selected(old('type_id') == $id)
+                                    x-show="!examId || {{ $type->exam_id }} == examId">{{ $type->name }}</option>
+                            @endforeach
+                        </flux:select>
+                        <flux:error name="type_id" />
+                    </flux:field>
 
                     <template x-if="isFE">
                         <flux:field class="md:col-span-2">
@@ -215,7 +214,13 @@
                                 <p class="mt-1 text-sm text-emerald-600" x-text="validationMessage"></p>
                             </template>
                             <template x-if="validationStatus === 'valid' && validatedName">
-                                <p class="mt-1 text-sm font-semibold text-emerald-700">{{ __('Name:') }} <span x-text="validatedName"></span></p>
+                                <p class="mt-1 text-sm font-semibold text-emerald-700">{{ __('Name:') }} <span
+                                        x-text="validatedName"></span></p>
+                            </template>
+                            <template x-if="validationStatus === 'valid' && validatedTypeName">
+                                <p class="mt-1 text-sm font-semibold text-emerald-700">{{ __('Registering for:') }}
+                                    <span x-text="validatedTypeName"></span>
+                                </p>
                             </template>
                             <flux:error name="examinee_id" />
                         </flux:field>
@@ -228,8 +233,7 @@
                 $answerFields = ['first_answer_id', 'second_answer_id', 'third_answer_id', 'fourth_answer_id', 'fifth_answer_id', 'sixth_answer_id', 'seventh_answer_id', 'eighth_answer_id', 'ninth_answer_id'];
             @endphp
 
-            <div
-                class="space-y-6 p-6">
+            <div class="space-y-6 p-6">
                 <h2
                     class="flex items-center gap-2 border-b border-sky-200/50 pb-4 text-lg font-bold text-sky-800 dark:border-sky-800/30 dark:text-sky-200">
                     <flux:icon name="list-music" class="size-5 text-emerald-500 dark:text-emerald-400" />
@@ -276,8 +280,7 @@
                             });
                         }
                     },
-                }"
-                class="space-y-6 p-6">
+                }" class="space-y-6 p-6">
                 <h2
                     class="flex items-center gap-2 border-b border-sky-200/50 pb-4 text-lg font-bold text-sky-800 dark:border-sky-800/30 dark:text-sky-200">
                     <flux:icon name="user" class="size-5 text-purple-500 dark:text-purple-400" />
@@ -287,15 +290,9 @@
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <flux:field>
                         <flux:label>{{ __('Date of birth') }} <span class="text-red-500">*</span></flux:label>
-                        <flux:input name="date_of_birth" x-model="formDob" type="date" max="{{ now()->subYears(20)->format('Y-m-d') }}" required />
+                        <flux:input name="date_of_birth" x-model="formDob" type="date"
+                            max="{{ now()->subYears(20)->format('Y-m-d') }}" required />
                         <flux:error name="date_of_birth" />
-                    </flux:field>
-
-                    <flux:field>
-                        <flux:label>{{ __('Generated Slug') }}</flux:label>
-                        <input x-bind:value="generatedSlug" type="text" readonly disabled
-                            placeholder="{{ __('Auto-generated from name and date of birth') }}"
-                            class="w-full rounded-lg border border-neutral-300 bg-neutral-100 px-3 py-2 text-sm text-neutral-700 cursor-not-allowed dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300" />
                     </flux:field>
 
                     <flux:field>
@@ -320,14 +317,16 @@
                         <flux:label>{{ __('Mobile number') }} <span class="text-red-500">*</span></flux:label>
                         <flux:input.group>
                             <flux:input.group.prefix>+8801</flux:input.group.prefix>
-                            <flux:input name="mobile_number" :value="old('mobile_number')" type="tel" required pattern="[3-9][0-9]{8}" maxlength="9" placeholder="{{ __('Mobile number') }}" />
+                            <flux:input name="mobile_number" :value="old('mobile_number')" type="tel" required
+                                pattern="[3-9][0-9]{8}" maxlength="9" placeholder="{{ __('Mobile number') }}" />
                         </flux:input.group>
                         <flux:error name="mobile_number" />
                     </flux:field>
 
                     <flux:field>
                         <flux:label>{{ __('Post code') }} <span class="text-red-500">*</span></flux:label>
-                        <flux:input name="post_code" :value="old('post_code')" type="number" required placeholder="{{ __('Post code') }}" />
+                        <flux:input name="post_code" :value="old('post_code')" type="number" required
+                            placeholder="{{ __('Post code') }}" />
                         <flux:error name="post_code" />
                     </flux:field>
 
@@ -356,8 +355,10 @@
                         </flux:field>
 
                         <flux:field x-show="universityValue === 'other'" x-cloak>
-                            <flux:label>{{ __('Other University Name') }} <span class="text-red-500">*</span></flux:label>
-                            <flux:input name="other_university_name" :value="old('other_university_name')" type="text" placeholder="{{ __('Enter your university name') }}" />
+                            <flux:label>{{ __('Other University Name') }} <span class="text-red-500">*</span>
+                            </flux:label>
+                            <flux:input name="other_university_name" :value="old('other_university_name')" type="text"
+                                placeholder="{{ __('Enter your university name') }}" />
                             <flux:error name="other_university_name" />
                         </flux:field>
                     </div>
