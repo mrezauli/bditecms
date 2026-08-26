@@ -3,9 +3,9 @@
 use App\Models\Answer;
 use App\Models\District;
 use App\Models\Division;
-use App\Models\Enrollment;
 use App\Models\Exam;
 use App\Models\Gender;
+use App\Models\HalfPasser;
 use App\Models\Intake;
 use App\Models\Question;
 use App\Models\Site;
@@ -21,7 +21,7 @@ beforeEach(function () {
 
 function seedRegistrationContext(): array
 {
-    $exam = Exam::factory()->create();
+    $exam = Exam::factory()->create(['acronym' => 'XX']);
 
     $intake = Intake::factory()->for($exam)->create([
         'registration_starts_at' => now()->subDay(),
@@ -33,7 +33,6 @@ function seedRegistrationContext(): array
     return [
         'exam' => $exam,
         'intake' => $intake,
-        'type' => Type::factory()->create(['exam_id' => $exam->id]),
         'site' => Site::factory()->create(),
         'gender' => Gender::factory()->create(),
         'district' => District::factory()->for(Division::factory())->create(),
@@ -56,7 +55,6 @@ function registrationPayload(array $context, array $overrides = []): array
         'password' => 'password',
         'password_confirmation' => 'password',
         'exam_id' => $context['exam']->id,
-        'type_id' => $context['type']->id,
         'site_id' => $context['site']->id,
         'first_answer_id' => $first,
         'second_answer_id' => $second,
@@ -140,7 +138,6 @@ test('new users can register while registration is open', function () {
         'user_id' => $user->id,
         'intake_id' => $context['intake']->id,
         'exam_id' => $context['exam']->id,
-        'type_id' => $context['type']->id,
         'site_id' => $context['site']->id,
     ]);
 });
@@ -183,11 +180,9 @@ test('registration is rejected when no intake is open for the selected exam', fu
     $context = seedRegistrationContext();
 
     $closedExam = Exam::factory()->create();
-    $closedType = Type::factory()->create(['exam_id' => $closedExam->id]);
 
     $this->post(route('register.store'), registrationPayload($context, [
         'exam_id' => $closedExam->id,
-        'type_id' => $closedType->id,
     ]))->assertSessionHasErrors();
 
     $errors = session('errors')->getBag('default')->get('exam_id');
@@ -223,10 +218,24 @@ test('fe exam rejects an examinee id that was never issued', function () {
 test('fe exam rejects examinees who passed both sessions', function () {
     $context = seedRegistrationContext();
     $context['exam']->update(['acronym' => 'FE']);
+    $morningType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Morning (AM) Exam',
+    ]);
+    $afternoonType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Afternoon (PM) Exam',
+    ]);
 
-    Enrollment::factory()->create([
-        'am_exam' => 'FE-PASSED-001',
-        'pm_exam' => 'FE-PASSED-001',
+    HalfPasser::factory()->create([
+        'examinee_no' => 'FE-PASSED-001',
+        'type_id' => $morningType->id,
+        'intake_id' => $context['intake']->id,
+    ]);
+    HalfPasser::factory()->create([
+        'examinee_no' => 'FE-PASSED-001',
+        'type_id' => $afternoonType->id,
+        'intake_id' => $context['intake']->id,
     ]);
 
     $this->post(route('register.store'), registrationPayload($context, [
@@ -244,25 +253,31 @@ test('fe exam accepts a half-passer who passed only one session', function () {
     $context['exam']->update(['acronym' => 'FE']);
     $morningType = Type::factory()->create([
         'exam_id' => $context['exam']->id,
-        'name' => 'Morning Exam',
+        'name' => 'FE: Morning (AM) Exam',
+    ]);
+    $afternoonType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Afternoon (PM) Exam',
     ]);
 
-    Enrollment::factory()->create([
-        'am_exam' => 'FE-HALF-001',
-        'pm_exam' => null,
+    HalfPasser::factory()->create([
+        'examinee_no' => 'FE-HALF-001',
+        'name' => 'John Doe',
+        'type_id' => $morningType->id,
+        'intake_id' => $context['intake']->id,
     ]);
 
     $this->post(route('register.store'), registrationPayload($context, [
         'passed_before' => 'yes',
         'examinee_id' => 'FE-HALF-001',
-        'type_id' => $morningType->id,
+        'type_id' => $afternoonType->id,
     ]))->assertSessionHasNoErrors();
 
     $this->assertAuthenticated();
 
     $this->assertDatabaseHas('enrollments', [
         'exam_id' => $context['exam']->id,
-        'type_id' => $morningType->id,
+        'type_id' => $afternoonType->id,
     ]);
 });
 
@@ -272,7 +287,7 @@ test('fe exam forces both sessions when passed_before is no', function () {
 
     $bothType = Type::factory()->create([
         'exam_id' => $context['exam']->id,
-        'name' => 'Both (FE: Morning & Afternoon Exam)',
+        'name' => 'FE: Both - Morning (AM) & Afternoon (PM) Exam',
     ]);
 
     $payload = registrationPayload($context, ['passed_before' => 'no']);
@@ -301,5 +316,129 @@ test('registration supports registering under another university', function () {
         'user_id' => $userId,
         'university_id' => null,
         'other_university_name' => 'My Overseas University',
+    ]);
+});
+
+test('fe exam rejects the wrong-session type for a half-passer', function () {
+    $context = seedRegistrationContext();
+    $context['exam']->update(['acronym' => 'FE']);
+    $morningType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Morning (AM) Exam',
+    ]);
+
+    HalfPasser::factory()->create([
+        'examinee_no' => 'FE-HP-WRONG-001',
+        'type_id' => $morningType->id,
+        'intake_id' => $context['intake']->id,
+    ]);
+
+    $this->post(route('register.store'), registrationPayload($context, [
+        'passed_before' => 'yes',
+        'examinee_id' => 'FE-HP-WRONG-001',
+        'type_id' => $morningType->id,
+    ]))->assertSessionHasErrors('type_id');
+});
+
+test('fe exam rejects a type belonging to another exam', function () {
+    $context = seedRegistrationContext();
+    $context['exam']->update(['acronym' => 'FE']);
+    $otherExam = Exam::factory()->create();
+    $otherType = Type::factory()->create(['exam_id' => $otherExam->id]);
+
+    $this->post(route('register.store'), registrationPayload($context, [
+        'type_id' => $otherType->id,
+    ]))->assertSessionHasErrors('type_id');
+});
+
+test('fe exam rejects a mismatched name when half-passer name is known', function () {
+    $context = seedRegistrationContext();
+    $context['exam']->update(['acronym' => 'FE']);
+    $morningType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Morning (AM) Exam',
+    ]);
+    $afternoonType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Afternoon (PM) Exam',
+    ]);
+
+    HalfPasser::factory()->create([
+        'examinee_no' => 'FE-HP-NAME-001',
+        'name' => 'Rahman',
+        'type_id' => $morningType->id,
+        'intake_id' => $context['intake']->id,
+    ]);
+
+    $this->post(route('register.store'), registrationPayload($context, [
+        'name' => 'Wrong Name',
+        'passed_before' => 'yes',
+        'examinee_id' => 'FE-HP-NAME-001',
+        'type_id' => $afternoonType->id,
+    ]))->assertSessionHasErrors('name');
+});
+
+test('fe exam accepts correct name when half-passer name is known', function () {
+    $context = seedRegistrationContext();
+    $context['exam']->update(['acronym' => 'FE']);
+    $morningType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Morning (AM) Exam',
+    ]);
+    $afternoonType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Afternoon (PM) Exam',
+    ]);
+
+    HalfPasser::factory()->create([
+        'examinee_no' => 'FE-HP-NAME-002',
+        'name' => 'John Doe',
+        'type_id' => $morningType->id,
+        'intake_id' => $context['intake']->id,
+    ]);
+
+    $this->post(route('register.store'), registrationPayload($context, [
+        'passed_before' => 'yes',
+        'examinee_id' => 'FE-HP-NAME-002',
+        'type_id' => $afternoonType->id,
+    ]))->assertSessionHasNoErrors();
+
+    $this->assertAuthenticated();
+});
+
+test('half-passer-only id completes registration end to end', function () {
+    $context = seedRegistrationContext();
+    $context['exam']->update(['acronym' => 'FE']);
+    $morningType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Morning (AM) Exam',
+    ]);
+    $afternoonType = Type::factory()->create([
+        'exam_id' => $context['exam']->id,
+        'name' => 'FE: Afternoon (PM) Exam',
+    ]);
+
+    HalfPasser::factory()->create([
+        'examinee_no' => 'FE-HP-E2E-001',
+        'name' => 'Rahman',
+        'type_id' => $morningType->id,
+        'intake_id' => $context['intake']->id,
+    ]);
+
+    $this->post(route('register.store'), registrationPayload($context, [
+        'name' => 'Rahman',
+        'email' => 'rahman@example.com',
+        'passed_before' => 'yes',
+        'examinee_id' => 'FE-HP-E2E-001',
+        'type_id' => $afternoonType->id,
+    ]))->assertSessionHasNoErrors();
+
+    $user = User::query()->where('name', 'Rahman')->firstOrFail();
+
+    $this->assertAuthenticatedAs($user);
+    $this->assertDatabaseHas('enrollments', [
+        'user_id' => $user->id,
+        'exam_id' => $context['exam']->id,
+        'type_id' => $afternoonType->id,
     ]);
 });

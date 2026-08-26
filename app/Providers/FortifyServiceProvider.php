@@ -283,9 +283,9 @@ class FortifyServiceProvider extends ServiceProvider
             $universities = University::currentStatus('active')->orderBy('name')->get()->mapWithKeys(fn ($u) => [$u->id => $u->label]);
 
             $feExamId = Exam::where('acronym', 'FE')->value('id');
-            $feBothTypeId = Type::where('exam_id', $feExamId)->where('name', 'Both (FE: Morning & Afternoon Exam)')->value('id');
-            $feMorningTypeId = Type::where('exam_id', $feExamId)->where('name', 'Morning Exam')->value('id');
-            $feAfternoonTypeId = Type::where('exam_id', $feExamId)->where('name', 'Afternoon Exam')->value('id');
+            $feBothTypeId = Type::where('exam_id', $feExamId)->where('name', 'FE: Both - Morning (AM) & Afternoon (PM) Exam')->value('id');
+            $feMorningTypeId = Type::where('exam_id', $feExamId)->where('name', 'FE: Morning (AM) Exam')->value('id');
+            $feAfternoonTypeId = Type::where('exam_id', $feExamId)->where('name', 'FE: Afternoon (PM) Exam')->value('id');
 
             return view('livewire.auth.register', compact(
                 'questions', 'answers', 'exams', 'types', 'sites',

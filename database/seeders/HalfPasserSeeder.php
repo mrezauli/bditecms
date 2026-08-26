@@ -11,8 +11,8 @@ class HalfPasserSeeder extends Seeder
 {
     public function run(): void
     {
-        $morningTypeId = Type::where('name', 'FE: Morning Exam')->value('id');
-        $afternoonTypeId = Type::where('name', 'FE: Afternoon Exam')->value('id');
+        $morningTypeId = Type::where('name', 'FE: Morning (AM) Exam')->value('id');
+        $afternoonTypeId = Type::where('name', 'FE: Afternoon (PM) Exam')->value('id');
 
         $morningExam = [
             ['FE01-0023', 'Md. Farhad Hoshen Bakaul', 'Passed in April 2024 Exam'],

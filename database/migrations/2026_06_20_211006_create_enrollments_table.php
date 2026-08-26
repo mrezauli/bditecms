@@ -20,7 +20,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Exam::class);
-            $table->foreignIdFor(Type::class);
+            $table->foreignIdFor(Type::class)->nullable();
             $table->foreignIdFor(Site::class);
             $table->foreignIdFor(Answer::class, 'first_answer_id');
             $table->foreignIdFor(Answer::class, 'second_answer_id');

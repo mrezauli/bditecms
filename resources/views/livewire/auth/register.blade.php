@@ -17,7 +17,9 @@
             @csrf
 
             {{-- Account Information --}}
-            <div class="space-y-6 p-6">
+            <div class="space-y-6 p-6" x-data="{ verifiedName: null }"
+                @examinee-validated.window="verifiedName = $event.detail.name ?? null"
+                @examinee-reset.window="verifiedName = null">
                 <h2
                     class="flex items-center gap-2 border-b border-sky-200/50 pb-4 text-lg font-bold text-sky-800 dark:border-sky-800/30 dark:text-sky-200">
                     <flux:icon name="user" class="size-5 text-blue-500 dark:text-blue-400" />
@@ -28,7 +30,7 @@
                     <flux:field>
                         <flux:label>{{ __('Name') }} <span class="text-red-500">*</span></flux:label>
                         <flux:input name="name" :value="old('name')" type="text" required autofocus autocomplete="name"
-                            placeholder="{{ __('Full name') }}" />
+                            placeholder="{{ __('Full name') }}" x-bind:readonly="verifiedName !== null" />
                         <flux:error name="name" />
                     </flux:field>
 
@@ -78,6 +80,8 @@
                     validatedName: null,
                     isFE: false,
                     selectedTypeId: null,
+                    feTypeName: @js(__('FE: Both - Morning (AM) & Afternoon (PM) Exam')),
+                    csrfToken: @js(csrf_token()),
                     activeIntake: null,
 
                     init() {
@@ -89,14 +93,26 @@
                             this.passedBefore = '';
                             this.examineeId = '';
                             this.validationStatus = null;
+                            this.feTypeName = @js(__('FE: Both - Morning (AM) & Afternoon (PM) Exam'));
                             this.updateIntake();
+                            window.dispatchEvent(new CustomEvent('examinee-reset'));
                         });
                         this.$watch('passedBefore', value => {
-                            if (value === 'no') this.selectedTypeId = this.$el.dataset.feBothTypeId;
-                            else this.selectedTypeId = null;
+                            if (value === 'no') {
+                                this.selectedTypeId = this.$el.dataset.feBothTypeId;
+                                this.feTypeName = @js(__('FE: Both - Morning (AM) & Afternoon (PM) Exam'));
+                            } else {
+                                this.selectedTypeId = null;
+                            }
+                            this.examineeId = '';
+                            this.validationStatus = null;
+                            window.dispatchEvent(new CustomEvent('examinee-reset'));
                         });
                         this.$watch('validationStatus', value => {
-                            if (value === 'valid') this.selectedTypeId = this.validatedTypeId;
+                            if (value === 'valid') {
+                                this.selectedTypeId = this.validatedTypeId;
+                                this.feTypeName = this.validatedTypeName || @js(__('FE: Both - Morning (AM) & Afternoon (PM) Exam'));
+                            }
                         });
                     },
 
@@ -114,9 +130,9 @@
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('input[name=_token]').value,
+                                'X-CSRF-TOKEN': this.csrfToken,
                             },
-                            body: JSON.stringify({ examinee_id: this.examineeId, exam_id: this.examId }),
+                            body: JSON.stringify({ examinee_id: this.examineeId }),
                         })
                         .then(r => r.json())
                         .then(data => {
@@ -126,6 +142,11 @@
                                 this.validatedTypeId = data.type_id;
                                 this.validatedTypeName = data.type_name;
                                 this.validatedName = data.name;
+                                if (data.name) {
+                                    const nameInput = document.querySelector('form [name=name]');
+                                    if (nameInput) { nameInput.value = data.name; }
+                                }
+                                window.dispatchEvent(new CustomEvent('examinee-validated', { detail: { name: data.name } }));
                             }
                         });
                     },
@@ -169,17 +190,25 @@
                         <flux:error name="exam_id" />
                     </flux:field>
 
-                    <flux:field>
-                        <flux:label>{{ __('Type') }} <span class="text-red-500">*</span></flux:label>
-                        <flux:select name="type_id" x-model="selectedTypeId" required>
-                            <option value="">{{ __('Select type') }}</option>
-                            @foreach ($types as $id => $type)
-                                <option value="{{ $id }}" data-exam-id="{{ $type->exam_id }}" @selected(old('type_id') == $id)
-                                    x-show="!examId || {{ $type->exam_id }} == examId">{{ $type->name }}</option>
-                            @endforeach
-                        </flux:select>
-                        <flux:error name="type_id" />
-                    </flux:field>
+                    {{-- IP exam: no type field --}}
+                    <template x-if="!isFE && examId">
+                        <input type="hidden" name="type_id" value="">
+                    </template>
+
+                    {{-- FE exam: locked type select + hidden input --}}
+                    <template x-if="isFE">
+                        <flux:field class="md:col-span-2">
+                            <flux:label>{{ __('Type') }} <span class="text-red-500">*</span></flux:label>
+                            <input type="hidden" name="type_id" :value="selectedTypeId">
+                            <div class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-800">
+                                <span x-text="feTypeName"></span>
+                            </div>
+                            <template x-if="validationStatus === 'valid'">
+                                <p class="mt-1 text-sm text-emerald-600" x-text="validationMessage"></p>
+                            </template>
+                            <flux:error name="type_id" />
+                        </flux:field>
+                    </template>
 
                     <template x-if="isFE">
                         <flux:field class="md:col-span-2">
@@ -187,31 +216,27 @@
                                 <span class="text-red-500">*</span>
                             </flux:label>
                             <flux:select name="passed_before" x-model="passedBefore">
-                                <option value="">{{ __('Select') }}</option>
-                                <option value="yes" @selected(old('passed_before') === 'yes')>{{ __('Yes') }}</option>
                                 <option value="no" @selected(old('passed_before') === 'no')>{{ __('No') }}</option>
+                                <option value="yes" @selected(old('passed_before') === 'yes')>{{ __('Yes') }}</option>
                             </flux:select>
                             <flux:error name="passed_before" />
                         </flux:field>
                     </template>
 
                     <template x-if="isFE && passedBefore === 'yes'">
-                        <flux:field>
+                        <flux:field class="md:col-span-2">
                             <flux:label>{{ __('Examinee Number/ID (Example: FE00-0000)') }} <span
                                     class="text-red-500">*</span></flux:label>
                             <flux:input name="examinee_id" x-model="examineeId"
                                 x-on:input.debounce.500ms="validateExaminee" type="text" placeholder="FE00-0000" />
                             <template x-if="validationStatus === 'loading'">
-                                <p class="mt-1 text-sm text-neutral-500">{{ __('Validating...') }}</p>
+                                <p class="mt-1 text-sm text-neutral-500">{{ __('Searching') }}</p>
                             </template>
                             <template x-if="validationStatus === 'invalid'">
                                 <p class="mt-1 text-sm text-red-600" x-text="validationMessage"></p>
                             </template>
                             <template x-if="validationStatus === 'both_passed'">
                                 <p class="mt-1 text-sm text-red-600" x-text="validationMessage"></p>
-                            </template>
-                            <template x-if="validationStatus === 'valid'">
-                                <p class="mt-1 text-sm text-emerald-600" x-text="validationMessage"></p>
                             </template>
                             <template x-if="validationStatus === 'valid' && validatedName">
                                 <p class="mt-1 text-sm font-semibold text-emerald-700">{{ __('Name:') }} <span
@@ -290,8 +315,8 @@
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <flux:field>
                         <flux:label>{{ __('Date of birth') }} <span class="text-red-500">*</span></flux:label>
-                        <flux:input name="date_of_birth" x-model="formDob" type="date"
-                            max="{{ now()->subYears(20)->format('Y-m-d') }}" required />
+                        <flux:input name="date_of_birth" x-model="formDob" type="date" max="{{ $minimumDateOfBirth }}"
+                            required />
                         <flux:error name="date_of_birth" />
                     </flux:field>
 

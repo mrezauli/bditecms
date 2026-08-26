@@ -22,7 +22,7 @@ class EnrollmentSeeder extends Seeder
         $sites = Site::all();
         $intakes = Intake::all();
         $types = Type::all();
-        $bothTypeId = Type::where('name', 'FE: Both (Morning & Afternoon) Exam')->value('id');
+        $bothTypeId = Type::where('name', 'FE: Both - Morning (AM) & Afternoon (PM) Exam')->value('id');
         $answerPool = Answer::inRandomOrder()->get();
 
         $answerFields = [

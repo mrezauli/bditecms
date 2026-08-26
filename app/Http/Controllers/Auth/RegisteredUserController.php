@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Models\Answer;
 use App\Models\District;
 use App\Models\Exam;
@@ -42,13 +43,14 @@ class RegisteredUserController extends FortifyRegisteredUserController
         $universities = University::currentStatus('active')->orderBy('name')->get()->mapWithKeys(fn ($u) => [$u->id => $u->label]);
 
         $feExamId = Exam::where('acronym', 'FE')->value('id');
-        $feBothTypeId = Type::where('exam_id', $feExamId)->where('name', 'Both (FE: Morning & Afternoon Exam)')->value('id');
-        $feMorningTypeId = Type::where('exam_id', $feExamId)->where('name', 'Morning Exam')->value('id');
-        $feAfternoonTypeId = Type::where('exam_id', $feExamId)->where('name', 'Afternoon Exam')->value('id');
+        $feBothTypeId = Type::where('exam_id', $feExamId)->where('name', 'FE: Both - Morning (AM) & Afternoon (PM) Exam')->value('id');
+        $feMorningTypeId = Type::where('exam_id', $feExamId)->where('name', 'FE: Morning (AM) Exam')->value('id');
+        $feAfternoonTypeId = Type::where('exam_id', $feExamId)->where('name', 'FE: Afternoon (PM) Exam')->value('id');
 
         $intakesByExam = $intakes->groupBy('exam_id')->map(fn ($group) => $group->first());
+        $minimumDateOfBirth = CreateNewUser::minimumDateOfBirth();
 
-        return new class($questions, $answers, $exams, $types, $sites, $genders, $districts, $universities, $feExamId, $feBothTypeId, $feMorningTypeId, $feAfternoonTypeId, $intakesByExam) implements RegisterViewResponse
+        return new class($questions, $answers, $exams, $types, $sites, $genders, $districts, $universities, $feExamId, $feBothTypeId, $feMorningTypeId, $feAfternoonTypeId, $intakesByExam, $minimumDateOfBirth) implements RegisterViewResponse
         {
             public function __construct(
                 private $questions,
@@ -64,6 +66,7 @@ class RegisteredUserController extends FortifyRegisteredUserController
                 private $feMorningTypeId,
                 private $feAfternoonTypeId,
                 private $intakesByExam,
+                private $minimumDateOfBirth,
             ) {}
 
             public function toResponse($request)
@@ -82,6 +85,7 @@ class RegisteredUserController extends FortifyRegisteredUserController
                     'feMorningTypeId' => $this->feMorningTypeId,
                     'feAfternoonTypeId' => $this->feAfternoonTypeId,
                     'intakesByExam' => $this->intakesByExam,
+                    'minimumDateOfBirth' => $this->minimumDateOfBirth,
                 ]);
             }
         };

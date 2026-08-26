@@ -15,6 +15,7 @@ use App\Models\Site;
 use App\Models\Type;
 use App\Models\University;
 use App\Models\User;
+use App\Services\ExamineeResolver;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -25,6 +26,8 @@ class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules, ProfileValidationRules;
 
+    public function __construct(private readonly ExamineeResolver $examineeResolver) {}
+
     /**
      * @return array<string, array<int, ValidationRule|array<mixed>|string>>
      */
@@ -34,7 +37,6 @@ class CreateNewUser implements CreatesNewUsers
             ...$this->profileRules(),
             'password' => $this->passwordRules(),
             'exam_id' => ['required', Rule::exists(Exam::class, 'id')],
-            'type_id' => ['required', Rule::exists(Type::class, 'id')],
             'site_id' => ['required', Rule::exists(Site::class, 'id')],
             'first_answer_id' => ['required', Rule::exists(Answer::class, 'id')],
             'second_answer_id' => ['required', Rule::exists(Answer::class, 'id')],
@@ -61,6 +63,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         $rules = $this->registrationRules();
 
+        // University "Not Listed" flow.
         if (($input['university_id'] ?? null) === 'other') {
             $rules['university_id'] = ['nullable', 'string'];
             $rules['other_university_name'] = ['required', 'string', 'max:255'];
@@ -70,24 +73,36 @@ class CreateNewUser implements CreatesNewUsers
         }
 
         $feExamId = Exam::where('acronym', 'FE')->value('id');
+        $isFe = (int) ($input['exam_id'] ?? null) === $feExamId;
+        $resolution = null;
 
-        if ((int) ($input['exam_id'] ?? null) === $feExamId) {
+        // Type: required for FE (scoped to FE exam), nullable for IP.
+        $rules['type_id'] = $isFe
+            ? ['required', Rule::exists(Type::class, 'id')->where('exam_id', $feExamId)]
+            : ['nullable'];
+
+        if ($isFe) {
             $rules['passed_before'] = ['required', Rule::in(['yes', 'no'])];
+            $rules['examinee_id'] = match (($input['passed_before'] ?? null)) {
+                'yes' => ['required', 'string', 'max:255'],
+                default => ['nullable'],
+            };
+        }
 
-            if (($input['passed_before'] ?? null) === 'yes') {
-                $rules['examinee_id'] = ['required', 'string', 'max:255'];
-                $rules['type_id'] = ['required', Rule::exists(Type::class, 'id')];
-            } else {
-                $bothTypeId = Type::where('exam_id', $feExamId)->where('name', 'Both (FE: Morning & Afternoon Exam)')->value('id');
+        if ($isFe) {
+            if (($input['passed_before'] ?? null) === 'no') {
+                $bothTypeId = Type::where('exam_id', $feExamId)
+                    ->where('name', 'FE: Both - Morning (AM) & Afternoon (PM) Exam')
+                    ->value('id');
                 $input['type_id'] = $bothTypeId;
             }
         }
 
-        $intake = Intake::where('exam_id', $input['exam_id'])->get()->first(fn ($intake) => $intake->isRegistrationOpen());
+        $intake = Intake::where('exam_id', $input['exam_id'])->get()
+            ->first(fn (Intake $intake) => $intake->isRegistrationOpen());
 
         if (! $intake) {
             $exam = Exam::find($input['exam_id']);
-
             $validator = Validator::make($input, $rules);
             $validator->after(fn ($v) => $v->errors()->add('exam_id', __('Registration is not open for :exam at this time.', ['exam' => $exam?->name ?? 'this exam'])));
             $validator->validate();
@@ -95,20 +110,23 @@ class CreateNewUser implements CreatesNewUsers
 
         $validator = Validator::make($input, $rules);
 
-        if ((int) ($input['exam_id'] ?? null) === $feExamId && ($input['passed_before'] ?? null) === 'yes') {
-            $foundInAm = Enrollment::where('am_exam', $input['examinee_id'])->exists();
-            $foundInPm = Enrollment::where('pm_exam', $input['examinee_id'])->exists();
+        if ($isFe && ($input['passed_before'] ?? null) === 'yes') {
+            $resolution = $this->examineeResolver->resolve($input['examinee_id'] ?? '');
 
-            if ($foundInAm && $foundInPm) {
-                $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('You should not register because you are already passed.')));
-            } elseif (! $foundInAm && ! $foundInPm) {
-                $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('Invalid ID.')));
-            }
+            match ($resolution->status) {
+                'both_passed' => $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('You should not register because you are already passed.'))),
+                'invalid' => $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('Invalid ID.'))),
+                'valid' => match (true) {
+                    (int) ($input['type_id'] ?? 0) !== (int) $resolution->remainingTypeId => $validator->after(fn ($v) => $v->errors()->add('type_id', __('You passed in :exam exam so you can only participate in :other exam.', ['exam' => $resolution->passedSession === 'AM' ? 'AM' : 'PM', 'other' => $resolution->remainingTypeName]))),
+                    $resolution->name !== null && trim((string) $input['name']) !== $resolution->name => $validator->after(fn ($v) => $v->errors()->add('name', __('The name must match the name registered for this examinee ID.'))),
+                    default => null,
+                },
+            };
         }
 
         $validator->validate();
 
-        return DB::transaction(function () use ($input) {
+        return DB::transaction(function () use ($input, $intake) {
             $user = User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
@@ -133,7 +151,7 @@ class CreateNewUser implements CreatesNewUsers
                 'user_id' => $user->id,
                 'intake_id' => $intake->id,
                 'exam_id' => $input['exam_id'],
-                'type_id' => $input['type_id'],
+                'type_id' => $input['type_id'] ?? null,
                 'site_id' => $input['site_id'],
                 'first_answer_id' => $input['first_answer_id'],
                 'second_answer_id' => $input['second_answer_id'],

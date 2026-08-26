@@ -12,8 +12,8 @@ class TypeSeeder extends Seeder
     {
         $exams = Exam::pluck('id', 'acronym');
 
-        Type::firstOrCreate(['name' => 'FE: Morning Exam', 'exam_id' => $exams['FE']])->setStatus('active');
-        Type::firstOrCreate(['name' => 'FE: Afternoon Exam', 'exam_id' => $exams['FE']])->setStatus('active');
-        Type::firstOrCreate(['name' => 'FE: Both (Morning & Afternoon) Exam', 'exam_id' => $exams['FE']])->setStatus('active');
+        Type::firstOrCreate(['name' => 'FE: Morning (AM) Exam', 'exam_id' => $exams['FE']])->setStatus('active');
+        Type::firstOrCreate(['name' => 'FE: Afternoon (PM) Exam', 'exam_id' => $exams['FE']])->setStatus('active');
+        Type::firstOrCreate(['name' => 'FE: Both - Morning (AM) & Afternoon (PM) Exam', 'exam_id' => $exams['FE']])->setStatus('active');
     }
 }

@@ -15,9 +15,9 @@ class TypeFactory extends Factory
     {
         return [
             'name' => fake()->randomElement([
-                'FE: Morning Exam',
-                'FE: Afternoon Exam',
-                'Both (FE: Morning & Afternoon Exam)',
+                'FE: Morning (AM) Exam',
+                'FE: Afternoon (PM) Exam',
+                'FE: Both - Morning (AM) & Afternoon (PM) Exam',
             ]),
             'exam_id' => Exam::where('acronym', 'FE')->value('id') ?? Exam::factory(),
         ];
