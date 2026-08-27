@@ -17,6 +17,10 @@ Route::controller(SslcommerzController::class)
         Route::post('failure', 'failure')->name('failure');
         Route::post('cancel', 'cancel')->name('cancel');
         Route::post('ipn', 'ipn')->name('ipn');
+
+        Route::post('enrollment/success', 'enrollmentSuccess')->name('enrollment.success');
+        Route::post('enrollment/failure', 'enrollmentFailure')->name('enrollment.failure');
+        Route::post('enrollment/cancel', 'enrollmentCancel')->name('enrollment.cancel');
     });
 
 Route::post('/examinee/validate', [ExamineeController::class, 'validate'])
@@ -27,6 +31,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::livewire('dashboard/applied-exams', AppliedExams::class)
         ->name('applied.exams');
+
+    Route::get('enrollment/{enrollment}/pay', [SslcommerzController::class, 'payEnrollment'])
+        ->name('enrollment.pay');
 });
 
 require __DIR__.'/settings.php';

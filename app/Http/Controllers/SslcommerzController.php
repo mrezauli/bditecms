@@ -2,12 +2,126 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enrollment;
+use App\Models\Payment;
 use DB;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Raziul\Sslcommerz\Facades\Sslcommerz;
 
 class SslcommerzController extends Controller
 {
+    public function payEnrollment(Request $request, Enrollment $enrollment): RedirectResponse
+    {
+        abort_unless($enrollment->user_id === Auth::id(), 403);
+
+        $existingPayment = $enrollment->payment;
+        if ($existingPayment && $existingPayment->status === 'Complete') {
+            return redirect()->route('applied.exams')
+                ->with('error', __('This exam is already paid.'));
+        }
+
+        if ($existingPayment && $existingPayment->status === 'Pending') {
+            $payment = $existingPayment;
+        } else {
+            if ($existingPayment) {
+                $existingPayment->delete();
+            }
+
+            $transactionId = 'ENROLL-'.$enrollment->id.'-'.uniqid();
+
+            $payment = Payment::create([
+                'enrollment_id' => $enrollment->id,
+                'user_id' => Auth::id(),
+                'amount' => $enrollment->fee,
+                'transaction_id' => $transactionId,
+                'status' => 'Pending',
+                'currency' => 'BDT',
+            ]);
+        }
+
+        $user = Auth::user();
+        $amount = $enrollment->fee;
+        $productName = $enrollment->exam->name.' Exam Fee';
+
+        $response = Sslcommerz::setOrder($amount, $payment->transaction_id, $productName)
+            ->setCustomer($user->name, $user->email, '', '')
+            ->setShippingInfo(1, 'Dhaka')
+            ->setProductProfile('digital-goods')
+            ->setCallbackUrls(
+                route('sslc.enrollment.success'),
+                route('sslc.enrollment.failure'),
+                route('sslc.enrollment.cancel'),
+                route('sslc.enrollment.success'),
+            )
+            ->makePayment();
+
+        if ($response->success()) {
+            return redirect($response->gatewayPageURL());
+        }
+
+        return back()->with('error', $response->failedReason());
+    }
+
+    public function enrollmentSuccess(Request $request): RedirectResponse
+    {
+        $tranId = $request->input('tran_id');
+        $amount = $request->input('amount');
+
+        $payment = Payment::where('transaction_id', $tranId)->first();
+
+        if (! $payment) {
+            return redirect()->route('applied.exams')
+                ->with('error', __('Invalid transaction.'));
+        }
+
+        if ($payment->status === 'Pending') {
+            $validation = Sslcommerz::validatePayment($request->all(), $tranId, $amount);
+
+            if ($validation) {
+                $payment->update(['status' => 'Complete']);
+
+                return redirect()->route('applied.exams')
+                    ->with('success', __('Payment completed successfully.'));
+            }
+
+            return redirect()->route('applied.exams')
+                ->with('error', __('Payment verification failed.'));
+        }
+
+        return redirect()->route('applied.exams')
+            ->with('success', __('Payment was already processed.'));
+    }
+
+    public function enrollmentFailure(Request $request): RedirectResponse
+    {
+        $tranId = $request->input('tran_id');
+
+        $payment = Payment::where('transaction_id', $tranId)->first();
+
+        if ($payment && $payment->status === 'Pending') {
+            $payment->update(['status' => 'Failed']);
+        }
+
+        return redirect()->route('applied.exams')
+            ->with('error', __('Payment failed. Please try again.'));
+    }
+
+    public function enrollmentCancel(Request $request): RedirectResponse
+    {
+        $tranId = $request->input('tran_id');
+
+        $payment = Payment::where('transaction_id', $tranId)->first();
+
+        if ($payment && $payment->status === 'Pending') {
+            $payment->update(['status' => 'Canceled']);
+        }
+
+        return redirect()->route('applied.exams')
+            ->with('error', __('Payment was canceled.'));
+    }
+
     public function success(Request $request)
     {
         $tran_id = $request->input('tran_id');
