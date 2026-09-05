@@ -13,7 +13,7 @@
 
         <x-auth-session-status class="text-center" :status="session('status')" />
 
-        <form method="POST" action="{{ route('register.store') }}" class="flex flex-col gap-8">
+        <form method="POST" action="{{ route('register.preview') }}" class="flex flex-col gap-8">
             @csrf
 
             {{-- Account Information --}}
@@ -410,7 +410,7 @@
                 <flux:button type="submit" variant="primary"
                     class="w-full max-w-md bg-gradient-to-r from-sky-600 to-indigo-600 py-4 text-base font-bold tracking-wide shadow-lg transition-all hover:scale-[1.01] hover:from-sky-500 hover:to-indigo-500 hover:shadow-sky-500/25 active:scale-[0.99]"
                     data-test="register-user-button">
-                    {{ __('Create account') }}
+                    {{ __('Preview') }}
                 </flux:button>
             </div>
         </form>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\ModelStatus\HasStatuses;
 
@@ -86,18 +87,29 @@ class Enrollment extends Model
         return $this->belongsTo(Answer::class, 'ninth_answer_id');
     }
 
+    public function payment(): HasOne
+    {
+        return $this->hasOne(Payment::class);
+    }
+
+    /**
+     * Canonical fee for compliance: IP 500, FE half 500, FE both 1000.
+     * DB fee columns are kept for display but gateway always uses this.
+     */
     public function getFeeAttribute(): float
     {
         $exam = $this->exam;
 
-        if ($exam->acronym === 'IP') {
-            return (float) $exam->ip_fee;
+        // IP exam is always 500 BDT
+        if ($exam && $exam->acronym === 'IP') {
+            return 500.00;
         }
 
+        // FE: Both sessions = 1000 BDT, any half/single = 500 BDT
         if ($this->type?->name === 'FE: Both - Morning (AM) & Afternoon (PM) Exam') {
-            return (float) $exam->fe_full_fee;
+            return 1000.00;
         }
 
-        return (float) $exam->fe_half_passer_fee;
+        return 500.00;
     }
 }

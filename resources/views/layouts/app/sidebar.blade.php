@@ -25,6 +25,18 @@
                     {{ __('Applied exams') }}
                 </flux:sidebar.item>
             </flux:sidebar.group>
+
+            <flux:sidebar.group :heading="__('Payment')" class="grid">
+                <flux:sidebar.item icon="banknotes" :href="route('payment.details')"
+                    :current="request()->routeIs('payment.details')" wire:navigate>
+                    {{ __('Payment Details') }}
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="shield-check" :href="route('payment.validation')"
+                    :current="request()->routeIs('payment.validation')" wire:navigate>
+                    {{ __('Payment Validation') }}
+                </flux:sidebar.item>
+            </flux:sidebar.group>
         </flux:sidebar.nav>
 
         <flux:spacer />

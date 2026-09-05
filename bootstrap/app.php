@@ -16,8 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => EnsureUserHasRole::class,
         ]);
 
-        $middleware->preventRequestForgery(except: [
-            //
+        $middleware->validateCsrfTokens(except: [
+            'sslcommerz/*',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -21,6 +21,16 @@
                 :current="request()->routeIs('applied.exams')" wire:navigate>
                 {{ __('Applied exams') }}
             </flux:navbar.item>
+
+            <flux:navbar.item icon="banknotes" :href="route('payment.details')"
+                :current="request()->routeIs('payment.details')" wire:navigate>
+                {{ __('Payment Details') }}
+            </flux:navbar.item>
+
+            <flux:navbar.item icon="shield-check" :href="route('payment.validation')"
+                :current="request()->routeIs('payment.validation')" wire:navigate>
+                {{ __('Payment Validation') }}
+            </flux:navbar.item>
         </flux:navbar>
 
         <flux:spacer />
@@ -63,6 +73,18 @@
                 <flux:sidebar.item icon="clipboard-document-list" :href="route('applied.exams')"
                     :current="request()->routeIs('applied.exams')" wire:navigate>
                     {{ __('Applied exams') }}
+                </flux:sidebar.item>
+            </flux:sidebar.group>
+
+            <flux:sidebar.group :heading="__('Payment')">
+                <flux:sidebar.item icon="banknotes" :href="route('payment.details')"
+                    :current="request()->routeIs('payment.details')" wire:navigate>
+                    {{ __('Payment Details') }}
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="shield-check" :href="route('payment.validation')"
+                    :current="request()->routeIs('payment.validation')" wire:navigate>
+                    {{ __('Payment Validation') }}
                 </flux:sidebar.item>
             </flux:sidebar.group>
         </flux:sidebar.nav>
