@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Models\Enrollment;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
@@ -16,18 +15,9 @@ class AppliedExams extends Component
     {
         return Auth::user()
             ->enrollments()
-            ->with(['exam', 'type', 'site', 'payment'])
+            ->with(['exam', 'type', 'site'])
             ->latest()
             ->get();
-    }
-
-    public function pay(int $enrollmentId)
-    {
-        $enrollment = Enrollment::findOrFail($enrollmentId);
-
-        abort_unless($enrollment->user_id === Auth::id(), 403);
-
-        return redirect()->route('enrollment.pay', $enrollment);
     }
 
     public function render()

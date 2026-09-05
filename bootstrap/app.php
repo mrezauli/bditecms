@@ -17,13 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->preventRequestForgery(except: [
-            'success',
-            'fail',
-            'cancel',
-            'ipn',
-            'sslcommerz/*',
-            'pay-via-ajax',
-            'pay',
+            //
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

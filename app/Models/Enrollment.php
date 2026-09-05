@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\ModelStatus\HasStatuses;
 
@@ -85,11 +84,6 @@ class Enrollment extends Model
     public function ninthAnswer(): BelongsTo
     {
         return $this->belongsTo(Answer::class, 'ninth_answer_id');
-    }
-
-    public function payment(): HasOne
-    {
-        return $this->hasOne(Payment::class);
     }
 
     public function getFeeAttribute(): float

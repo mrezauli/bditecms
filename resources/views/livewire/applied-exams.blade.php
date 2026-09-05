@@ -46,32 +46,6 @@
                     <div class="text-xs text-zinc-400 dark:text-zinc-500">
                         {{ __('Applied') }}: {{ $enrollment->created_at->format('d M Y, h:i A') }}
                     </div>
-
-                    <flux:separator />
-
-                    <div class="flex items-center justify-between">
-                        @if ($enrollment->payment)
-                            @if ($enrollment->payment->status === 'Complete')
-                                <flux:badge color="green" size="sm">{{ __('Paid') }}</flux:badge>
-                            @elseif ($enrollment->payment->status === 'Pending')
-                                <flux:badge color="yellow" size="sm">{{ __('Pending') }}</flux:badge>
-                            @else
-                                <flux:badge color="red" size="sm">{{ $enrollment->payment->status }}</flux:badge>
-                            @endif
-                        @else
-                            <flux:badge size="sm">{{ __('Unpaid') }}</flux:badge>
-                        @endif
-
-                        @if (! $enrollment->payment || $enrollment->payment->status !== 'Complete')
-                            <flux:button
-                                wire:click="pay({{ $enrollment->id }})"
-                                size="sm"
-                                variant="primary"
-                            >
-                                {{ __('Pay ৳:fee', ['fee' => number_format($enrollment->fee, 2)]) }}
-                            </flux:button>
-                        @endif
-                    </div>
                 </flux:card>
             @endforeach
         </div>
