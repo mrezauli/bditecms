@@ -50,7 +50,16 @@ class RegisteredUserController extends FortifyRegisteredUserController
         $intakesByExam = $intakes->groupBy('exam_id')->map(fn ($group) => $group->first());
         $minimumDateOfBirth = CreateNewUser::minimumDateOfBirth();
 
-        return new class($questions, $answers, $exams, $types, $sites, $genders, $districts, $universities, $feExamId, $feBothTypeId, $feMorningTypeId, $feAfternoonTypeId, $intakesByExam, $minimumDateOfBirth) implements RegisterViewResponse
+        $feIntakes = Intake::where('exam_id', $feExamId)
+            ->currentStatus('active')
+            ->orderByDesc('exam_date')
+            ->get()
+            ->map(fn (Intake $intake) => [
+                'id' => $intake->id,
+                'name' => $intake->name.' ('.$intake->exam_date->format('d F Y').')',
+            ]);
+
+        return new class($questions, $answers, $exams, $types, $sites, $genders, $districts, $universities, $feExamId, $feBothTypeId, $feMorningTypeId, $feAfternoonTypeId, $intakesByExam, $minimumDateOfBirth, $feIntakes) implements RegisterViewResponse
         {
             public function __construct(
                 private $questions,
@@ -67,6 +76,7 @@ class RegisteredUserController extends FortifyRegisteredUserController
                 private $feAfternoonTypeId,
                 private $intakesByExam,
                 private $minimumDateOfBirth,
+                private $feIntakes,
             ) {}
 
             public function toResponse($request)
@@ -86,6 +96,7 @@ class RegisteredUserController extends FortifyRegisteredUserController
                     'feAfternoonTypeId' => $this->feAfternoonTypeId,
                     'intakesByExam' => $this->intakesByExam,
                     'minimumDateOfBirth' => $this->minimumDateOfBirth,
+                    'feIntakes' => $this->feIntakes,
                 ]);
             }
         };

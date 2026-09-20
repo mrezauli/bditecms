@@ -14,10 +14,11 @@ class ExamineeResolver
      * A candidate who passed a single session may register for the remaining
      * session only; passing both disqualifies them entirely.
      */
-    public function resolve(string $examineeId): ExamineeResolution
+    public function resolve(string $examineeId, ?int $intakeId = null): ExamineeResolution
     {
         $records = HalfPasser::query()
             ->where('examinee_no', $examineeId)
+            ->when($intakeId, fn ($q) => $q->where('intake_id', $intakeId))
             ->with('type')
             ->get();
 

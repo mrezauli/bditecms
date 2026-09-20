@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterPreviewController;
 use App\Http\Controllers\SslcommerzController;
 use App\Http\Middleware\VerifyCsrfToken;
 use App\Livewire\AppliedExams;
+use App\Livewire\Issues\Dashboard as IssuesDashboard;
 use App\Livewire\PaymentDetails;
 use App\Livewire\PaymentValidation;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +35,7 @@ Route::controller(SslcommerzController::class)
         Route::post('ipn', 'ipn')->name('ipn');
     });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:user'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 
     Route::livewire('dashboard/applied-exams', AppliedExams::class)
@@ -48,6 +49,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('enrollment/{enrollment}/pay', [SslcommerzController::class, 'payEnrollment'])
         ->name('enrollment.pay');
+
+    Route::livewire('issues', IssuesDashboard::class)
+        ->name('issues');
 });
 
 require __DIR__.'/settings.php';

@@ -13,12 +13,14 @@
     "sail": false,
     "skills": [
         "infer-conventions",
+        "deploying-to-cloud",
         "fortify-development",
         "laravel-best-practices",
         "testing-best-practices",
         "fluxui-development",
         "livewire-development",
         "tailwindcss-development",
+        "filament-development",
         "debug-using-debugbar",
         "deploying-laravel-cloud"
     ]

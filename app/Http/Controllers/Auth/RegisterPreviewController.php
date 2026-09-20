@@ -51,7 +51,7 @@ class RegisterPreviewController extends Controller
         $validated['email'] = $input['email'] ?? $validated['email'] ?? null;
 
         // Keep examinee-related fields as user typed (already normalized in validator)
-        foreach (['exam_id', 'site_id', 'type_id', 'passed_before', 'examinee_id'] as $key) {
+        foreach (['exam_id', 'site_id', 'type_id', 'passed_before', 'examinee_id', 'intake_id'] as $key) {
             if (array_key_exists($key, $input)) {
                 $validated[$key] = $input[$key];
             }
@@ -144,7 +144,9 @@ class RegisterPreviewController extends Controller
         }
 
         $intake = null;
-        if (isset($validated['exam_id'])) {
+        if (isset($validated['intake_id']) && $validated['intake_id']) {
+            $intake = Intake::find($validated['intake_id']);
+        } elseif (isset($validated['exam_id'])) {
             $intake = Intake::where('exam_id', $validated['exam_id'])->get()->first(fn (Intake $i) => $i->isRegistrationOpen());
         }
 
@@ -229,6 +231,10 @@ class RegisterPreviewController extends Controller
                 'yes' => ['required', 'string', 'max:255'],
                 default => ['nullable'],
             };
+            $rules['intake_id'] = match (($input['passed_before'] ?? null)) {
+                'yes' => ['required', Rule::exists(Intake::class, 'id')],
+                default => ['nullable'],
+            };
         }
 
         // For preview, normalize type_id for 'no' case before validation (same as creator)
@@ -252,7 +258,7 @@ class RegisterPreviewController extends Controller
 
         if ($isFe && ($input['passed_before'] ?? null) === 'yes') {
             $resolver = app(ExamineeResolver::class);
-            $resolution = $resolver->resolve($input['examinee_id'] ?? '');
+            $resolution = $resolver->resolve($input['examinee_id'] ?? '', $input['intake_id'] ?? null);
             match ($resolution->status) {
                 'both_passed' => $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('You should not register because you are already passed.'))),
                 'invalid' => $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('Invalid ID.'))),

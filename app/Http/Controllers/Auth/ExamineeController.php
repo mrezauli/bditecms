@@ -15,9 +15,10 @@ class ExamineeController extends Controller
     {
         $data = $request->validate([
             'examinee_id' => ['required', 'string', 'max:255'],
+            'intake_id' => ['required', 'integer', 'exists:intakes,id'],
         ]);
 
-        $resolution = $this->examineeResolver->resolve($data['examinee_id']);
+        $resolution = $this->examineeResolver->resolve($data['examinee_id'], $data['intake_id']);
 
         return response()->json([
             'status' => $resolution->status,

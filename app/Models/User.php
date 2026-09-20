@@ -54,6 +54,11 @@ class User extends Authenticatable implements FilamentUser, PasskeyUser
         return $this->hasMany(Enrollment::class);
     }
 
+    public function issues(): HasMany
+    {
+        return $this->hasMany(Issue::class);
+    }
+
     public function initials(): string
     {
         return Str::of($this->name)

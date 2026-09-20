@@ -87,6 +87,10 @@ class CreateNewUser implements CreatesNewUsers
                 'yes' => ['required', 'string', 'max:255'],
                 default => ['nullable'],
             };
+            $rules['intake_id'] = match (($input['passed_before'] ?? null)) {
+                'yes' => ['required', Rule::exists(Intake::class, 'id')],
+                default => ['nullable'],
+            };
         }
 
         if ($isFe) {
@@ -111,7 +115,7 @@ class CreateNewUser implements CreatesNewUsers
         $validator = Validator::make($input, $rules);
 
         if ($isFe && ($input['passed_before'] ?? null) === 'yes') {
-            $resolution = $this->examineeResolver->resolve($input['examinee_id'] ?? '');
+            $resolution = $this->examineeResolver->resolve($input['examinee_id'] ?? '', $input['intake_id'] ?? null);
 
             match ($resolution->status) {
                 'both_passed' => $validator->after(fn ($v) => $v->errors()->add('examinee_id', __('You should not register because you are already passed.'))),

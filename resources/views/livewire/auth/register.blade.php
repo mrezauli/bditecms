@@ -73,6 +73,7 @@
                     examId: '{{ old('exam_id') }}',
                     passedBefore: '{{ old('passed_before') }}',
                     examineeId: '{{ old('examinee_id') }}',
+                    selectedIntakeId: '{{ old('intake_id') }}',
                     validationStatus: null,
                     validationMessage: '',
                     validatedTypeId: null,
@@ -92,6 +93,7 @@
                             this.selectedTypeId = null;
                             this.passedBefore = '';
                             this.examineeId = '';
+                            this.selectedIntakeId = '';
                             this.validationStatus = null;
                             this.feTypeName = @js(__('FE: Both - Morning (AM) & Afternoon (PM) Exam'));
                             this.updateIntake();
@@ -105,6 +107,7 @@
                                 this.selectedTypeId = null;
                             }
                             this.examineeId = '';
+                            this.selectedIntakeId = '';
                             this.validationStatus = null;
                             window.dispatchEvent(new CustomEvent('examinee-reset'));
                         });
@@ -123,6 +126,7 @@
 
                     validateExaminee() {
                         if (this.examineeId.length < 4) return;
+                        if (!this.selectedIntakeId) return;
                         this.validationStatus = 'loading';
                         this.validationMessage = '';
                         this.validatedName = null;
@@ -132,7 +136,7 @@
                                 'Content-Type': 'application/json',
                                 'X-CSRF-TOKEN': this.csrfToken,
                             },
-                            body: JSON.stringify({ examinee_id: this.examineeId }),
+                            body: JSON.stringify({ examinee_id: this.examineeId, intake_id: this.selectedIntakeId }),
                         })
                         .then(r => r.json())
                         .then(data => {
@@ -220,6 +224,20 @@
                                 <option value="yes" @selected(old('passed_before') === 'yes')>{{ __('Yes') }}</option>
                             </flux:select>
                             <flux:error name="passed_before" />
+                        </flux:field>
+                    </template>
+
+                    <template x-if="isFE && passedBefore === 'yes'">
+                        <flux:field class="md:col-span-2">
+                            <flux:label>{{ __('Intake') }} <span class="text-red-500">*</span></flux:label>
+                            <input type="hidden" name="intake_id" :value="selectedIntakeId">
+                            <flux:select x-model="selectedIntakeId" x-on:change="examineeId = ''; validationStatus = null;">
+                                <option value="">{{ __('Select intake') }}</option>
+                                @foreach ($feIntakes as $intake)
+                                    <option value="{{ $intake['id'] }}">{{ $intake['name'] }}</option>
+                                @endforeach
+                            </flux:select>
+                            <flux:error name="intake_id" />
                         </flux:field>
                     </template>
 
