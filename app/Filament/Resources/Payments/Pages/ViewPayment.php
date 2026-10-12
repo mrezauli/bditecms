@@ -16,6 +16,12 @@ class ViewPayment extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('downloadAcknowledgement')
+                ->label('Acknowledgement Slip (PDF)')
+                ->icon('heroicon-o-document-arrow-down')
+                ->color('success')
+                ->url(fn () => route('payment.acknowledgement', $this->record))
+                ->openUrlInNewTab(),
             Action::make('validateGateway')
                 ->label('Validate via Gateway')
                 ->icon('heroicon-o-shield-check')

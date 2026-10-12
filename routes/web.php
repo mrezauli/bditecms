@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ExamineeController;
 use App\Http\Controllers\Auth\RegisterPreviewController;
+use App\Http\Controllers\PaymentAcknowledgementController;
 use App\Http\Controllers\SslcommerzController;
 use App\Http\Middleware\VerifyCsrfToken;
 use App\Livewire\AppliedExams;
@@ -34,6 +35,11 @@ Route::controller(SslcommerzController::class)
         Route::post('cancel', 'enrollmentCancel')->name('cancel');
         Route::post('ipn', 'ipn')->name('ipn');
     });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('dashboard/payments/{payment}/acknowledgement', PaymentAcknowledgementController::class)
+        ->name('payment.acknowledgement');
+});
 
 Route::middleware(['auth', 'verified', 'role:user'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');

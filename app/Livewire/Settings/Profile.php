@@ -10,6 +10,7 @@ use App\Models\University;
 use Flux\Flux;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -37,7 +38,9 @@ class Profile extends Component
 
     public ?int $district_id = null;
 
-    public ?int $university_id = null;
+    public string|int|null $university_id = null;
+
+    public ?string $other_university_name = null;
 
     public ?string $occupation = null;
 
@@ -61,7 +64,8 @@ class Profile extends Component
             $this->work_address = $profile->work_address;
             $this->post_code = $profile->post_code;
             $this->district_id = $profile->district_id;
-            $this->university_id = $profile->university_id;
+            $this->other_university_name = $profile->other_university_name;
+            $this->university_id = $profile->university_id ?? ($profile->other_university_name ? 'other' : null);
             $this->occupation = $profile->occupation;
         }
     }
@@ -73,32 +77,45 @@ class Profile extends Component
     {
         $user = Auth::user();
 
-        $validated = $this->validate($this->profileRules($user->id));
+        Gate::authorize('update', $user->profile ?? new ProfileModel(['user_id' => $user->id]));
 
-        $user->fill($validated);
+        $rules = $this->profileRules($user->id);
+        unset($rules['email'], $rules['mobile_number']);
 
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
+        if (($this->university_id ?? null) === 'other') {
+            $rules['university_id'] = ['nullable', 'string'];
+            $rules['other_university_name'] = ['required', 'string', 'max:255'];
+        } else {
+            $rules['other_university_name'] = ['nullable', 'string', 'max:255'];
         }
 
+        $validated = $this->validate($rules);
+
+        $user->fill(['name' => $validated['name'] ?? $this->name]);
+
         $user->save();
+
+        $universityId = ($this->university_id ?? null) === 'other' ? null : $this->university_id;
+        $otherUniversityName = ($this->university_id ?? null) === 'other' ? $this->other_university_name : null;
 
         $profileData = array_filter([
             'date_of_birth' => $this->date_of_birth,
             'gender_id' => $this->gender_id,
-            'mobile_number' => $this->mobile_number,
             'present_address' => $this->present_address,
             'work_address' => $this->work_address,
             'post_code' => $this->post_code,
             'district_id' => $this->district_id,
-            'university_id' => $this->university_id,
+            'university_id' => $universityId,
+            'other_university_name' => $otherUniversityName,
             'occupation' => $this->occupation,
         ], fn ($value) => $value !== null);
 
-        if ($profileData || $user->profile) {
+        if ($profileData || $user->profile || $universityId === null || $otherUniversityName === null) {
             $profile = $user->profile ?? new ProfileModel(['user_id' => $user->id]);
 
             $profile->fill($profileData);
+            $profile->university_id = $universityId;
+            $profile->other_university_name = $otherUniversityName;
 
             $profile->save();
         }
@@ -135,6 +152,14 @@ class Profile extends Component
     {
         return ! Auth::user() instanceof MustVerifyEmail
             || (Auth::user() instanceof MustVerifyEmail && Auth::user()->hasVerifiedEmail());
+    }
+
+    #[Computed]
+    public function isProfileLocked(): bool
+    {
+        $user = Auth::user();
+
+        return Gate::denies('update', $user->profile ?? new ProfileModel(['user_id' => $user->id]));
     }
 
     #[Computed]

@@ -8,6 +8,13 @@ use Filament\Schemas\Schema;
 
 class EnrollmentInfolist
 {
+    protected static function answerEntry(string $relation, string $label): TextEntry
+    {
+        return TextEntry::make("{$relation}.content")
+            ->label($label)
+            ->helperText(fn (Enrollment $record): ?string => $record->{$relation}?->question?->content);
+    }
+
     public static function configure(Schema $schema): Schema
     {
         return $schema
@@ -18,24 +25,15 @@ class EnrollmentInfolist
                     ->label('Type'),
                 TextEntry::make('site.name')
                     ->label('Site'),
-                TextEntry::make('firstAnswer.label')
-                    ->label('1st Answer'),
-                TextEntry::make('secondAnswer.label')
-                    ->label('2nd Answer'),
-                TextEntry::make('thirdAnswer.label')
-                    ->label('3rd Answer'),
-                TextEntry::make('fourthAnswer.label')
-                    ->label('4th Answer'),
-                TextEntry::make('fifthAnswer.label')
-                    ->label('5th Answer'),
-                TextEntry::make('sixthAnswer.label')
-                    ->label('6th Answer'),
-                TextEntry::make('seventhAnswer.label')
-                    ->label('7th Answer'),
-                TextEntry::make('eighthAnswer.label')
-                    ->label('8th Answer'),
-                TextEntry::make('ninthAnswer.label')
-                    ->label('9th Answer'),
+                self::answerEntry('firstAnswer', '1st Answer'),
+                self::answerEntry('secondAnswer', '2nd Answer'),
+                self::answerEntry('thirdAnswer', '3rd Answer'),
+                self::answerEntry('fourthAnswer', '4th Answer'),
+                self::answerEntry('fifthAnswer', '5th Answer'),
+                self::answerEntry('sixthAnswer', '6th Answer'),
+                self::answerEntry('seventhAnswer', '7th Answer'),
+                self::answerEntry('eighthAnswer', '8th Answer'),
+                self::answerEntry('ninthAnswer', '9th Answer'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

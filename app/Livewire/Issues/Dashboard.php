@@ -4,6 +4,7 @@ namespace App\Livewire\Issues;
 
 use App\Models\Issue;
 use App\Models\IssueCategory;
+use App\Models\Setting;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -39,6 +40,21 @@ class Dashboard extends Component
     public function categories()
     {
         return IssueCategory::all();
+    }
+
+    #[Computed]
+    public function supportPhones(): array
+    {
+        $raw = Setting::getValue('support_phones', '02-55006847, 02-8181032, 02-8181033, 01857321122');
+
+        return collect(explode(',', (string) $raw))
+            ->map(fn (string $phone): array => [
+                'display' => trim($phone),
+                'link' => 'tel:'.preg_replace('/[^0-9+]/', '', trim($phone)),
+            ])
+            ->filter(fn (array $phone): bool => $phone['display'] !== '')
+            ->values()
+            ->all();
     }
 
     #[Computed]

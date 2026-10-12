@@ -44,6 +44,28 @@ class EnrollmentResource extends Resource
         return EnrollmentsTable::configure($table);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with([
+            'user.profile.gender',
+            'user.profile.district',
+            'user.profile.university',
+            'exam',
+            'type',
+            'site',
+            'firstAnswer',
+            'secondAnswer',
+            'thirdAnswer',
+            'fourthAnswer',
+            'fifthAnswer',
+            'sixthAnswer',
+            'seventhAnswer',
+            'eighthAnswer',
+            'ninthAnswer',
+            'payment',
+        ]);
+    }
+
     public static function getRelations(): array
     {
         return [

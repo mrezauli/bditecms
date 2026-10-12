@@ -44,7 +44,8 @@
                         <span>{{ __('Updated') }}: {{ $payment->updated_at->format('d M Y, h:i A') }}</span>
                     </div>
 
-                    <div class="flex justify-end">
+                    <div class="flex justify-end gap-2">
+                        <flux:button :href="route('payment.acknowledgement', $payment)" size="sm" variant="ghost" icon="document-arrow-down">{{ __('Acknowledgement (PDF)') }}</flux:button>
                         <flux:button :href="route('payment.validation', ['transaction_id' => $payment->transaction_id])" wire:navigate size="sm" variant="ghost" icon="shield-check">{{ __('Validate') }}</flux:button>
                     </div>
                 </flux:card>

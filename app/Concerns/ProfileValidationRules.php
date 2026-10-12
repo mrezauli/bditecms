@@ -4,6 +4,7 @@ namespace App\Concerns;
 
 use App\Models\District;
 use App\Models\Gender;
+use App\Models\Profile;
 use App\Models\Setting;
 use App\Models\University;
 use App\Models\User;
@@ -46,7 +47,7 @@ trait ProfileValidationRules
             'email' => $this->emailRules($userId),
             'date_of_birth' => ['nullable', 'date', 'before_or_equal:'.static::minimumDateOfBirth()],
             'gender_id' => ['nullable', 'exists:'.Gender::class.',id'],
-            'mobile_number' => ['nullable', 'integer'],
+            'mobile_number' => $this->mobileRules($userId),
             'present_address' => ['nullable', 'string', 'max:500'],
             'work_address' => ['nullable', 'string', 'max:500'],
             'post_code' => ['nullable', 'integer', 'min:1000', 'max:9999'],
@@ -54,6 +55,22 @@ trait ProfileValidationRules
             'university_id' => ['nullable', 'exists:'.University::class.',id'],
             'occupation' => ['nullable', 'string', 'max:20'],
         ];
+    }
+
+    /**
+     * Get the validation rules used to validate mobile numbers.
+     *
+     * @return array<int, ValidationRule|array<mixed>|string>
+     */
+    protected function mobileRules(?int $userId = null): array
+    {
+        $unique = Rule::unique(Profile::class, 'mobile_number');
+
+        if ($userId !== null) {
+            $unique->ignore($userId, 'user_id');
+        }
+
+        return ['nullable', 'integer', $unique];
     }
 
     /**

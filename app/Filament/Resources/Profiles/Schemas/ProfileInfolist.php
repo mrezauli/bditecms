@@ -30,6 +30,9 @@ class ProfileInfolist
                     ->label('District'),
                 TextEntry::make('university.acronym')
                     ->label('University'),
+                TextEntry::make('other_university_name')
+                    ->label('Other University Name')
+                    ->placeholder('-'),
                 TextEntry::make('occupation'),
                 TextEntry::make('created_at')
                     ->dateTime()

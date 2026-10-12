@@ -7,6 +7,7 @@ use App\Models\Exam;
 use App\Models\Gender;
 use App\Models\HalfPasser;
 use App\Models\Intake;
+use App\Models\Profile;
 use App\Models\Question;
 use App\Models\Site;
 use App\Models\Type;
@@ -172,6 +173,17 @@ test('registration rejects a duplicate email address', function () {
 
     $this->post(route('register.store'), registrationPayload($context))
         ->assertSessionHasErrors('email');
+
+    expect(User::count())->toBe(1);
+});
+
+test('registration rejects a duplicate mobile number', function () {
+    $context = seedRegistrationContext();
+    $owner = User::factory()->create();
+    Profile::factory()->create(['user_id' => $owner->id, 'mobile_number' => '712345678']);
+
+    $this->post(route('register.store'), registrationPayload($context))
+        ->assertSessionHasErrors('mobile_number');
 
     expect(User::count())->toBe(1);
 });

@@ -53,5 +53,10 @@ class SettingSeeder extends Seeder
             ['key' => 'half_passer_max_attempts'],
             ['value' => '2', 'description' => 'Maximum additional attempts for a half-passer'],
         )->setStatus('active');
+
+        Setting::firstOrCreate(
+            ['key' => 'support_phones'],
+            ['value' => '02-55006847, 02-8181032, 02-8181033, 01857321122', 'description' => 'BDITEC support phone numbers shown in the complaint box'],
+        )->setStatus('active');
     }
 }

@@ -7,6 +7,14 @@
         </flux:button>
     </div>
 
+    <div class="flex flex-wrap items-center gap-2 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900 dark:border-sky-800 dark:bg-sky-900/20 dark:text-sky-200">
+        <flux:icon name="phone" class="size-5 shrink-0" />
+        <span>{{ __('Need urgent help? Contact BDITEC:') }}</span>
+        @foreach ($this->supportPhones as $phone)
+            <a href="{{ $phone['link'] }}" class="font-semibold underline underline-offset-2">{{ $phone['display'] }}</a>@if(!$loop->last)<span>,</span>@endif
+        @endforeach
+    </div>
+
     {{-- Issue List --}}
     @if ($this->selectedIssueId && $this->selectedIssue)
         {{-- Issue Detail View --}}
