@@ -31,41 +31,41 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::updateOrCreate([
-            'name' => 'Admin',
-            'email' => 'admin@admin.admin',
-            'email_verified_at' => now(),
-            'password' => Hash::make('Pa$$w0rd!'),
-            'remember_token' => Str::random(10),
-            'role' => RoleEnum::Admin->value,
-        ]);
+        // User::updateOrCreate([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@admin.admin',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('Pa$$w0rd!'),
+        //     'remember_token' => Str::random(10),
+        //     'role' => RoleEnum::Admin->value,
+        // ]);
 
-        User::updateOrCreate([
-            'name' => 'Super Admin',
-            'email' => 'super@admin.superadmin',
-            'email_verified_at' => now(),
-            'password' => Hash::make('Pa$$w0rd!'),
-            'remember_token' => Str::random(10),
-            'role' => RoleEnum::SuperAdmin->value,
-        ]);
+        // User::updateOrCreate([
+        //     'name' => 'Super Admin',
+        //     'email' => 'super@admin.superadmin',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('Pa$$w0rd!'),
+        //     'remember_token' => Str::random(10),
+        //     'role' => RoleEnum::SuperAdmin->value,
+        // ]);
 
-        User::updateOrCreate([
-            'name' => 'User 1',
-            'email' => 'user1@user.user',
-            'email_verified_at' => now(),
-            'password' => Hash::make('Pa$$w0rd!'),
-            'remember_token' => Str::random(10),
-            'role' => RoleEnum::User->value,
-        ])->setStatus('active');
+        // User::updateOrCreate([
+        //     'name' => 'User 1',
+        //     'email' => 'user1@user.user',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('Pa$$w0rd!'),
+        //     'remember_token' => Str::random(10),
+        //     'role' => RoleEnum::User->value,
+        // ])->setStatus('active');
 
-        User::updateOrCreate([
-            'name' => 'User 2',
-            'email' => 'user2@user.user',
-            'email_verified_at' => now(),
-            'password' => Hash::make('Pa$$w0rd!'),
-            'remember_token' => Str::random(10),
-            'role' => RoleEnum::User->value,
-        ])->setStatus('active');
+        // User::updateOrCreate([
+        //     'name' => 'User 2',
+        //     'email' => 'user2@user.user',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('Pa$$w0rd!'),
+        //     'remember_token' => Str::random(10),
+        //     'role' => RoleEnum::User->value,
+        // ])->setStatus('active');
 
         User::updateOrCreate([
             'name' => 'User 3',
