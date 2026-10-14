@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
+        User::updateOrCreate([
             'name' => 'Admin',
             'email' => 'admin@admin.admin',
             'email_verified_at' => now(),
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'role' => RoleEnum::Admin->value,
         ]);
 
-        User::factory()->create([
+        User::updateOrCreate([
             'name' => 'Super Admin',
             'email' => 'super@admin.superadmin',
             'email_verified_at' => now(),
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'role' => RoleEnum::SuperAdmin->value,
         ]);
 
-        User::factory()->create([
+        User::updateOrCreate([
             'name' => 'User 1',
             'email' => 'user1@user.user',
             'email_verified_at' => now(),
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             'role' => RoleEnum::User->value,
         ])->setStatus('active');
 
-        User::factory()->create([
+        User::updateOrCreate([
             'name' => 'User 2',
             'email' => 'user2@user.user',
             'email_verified_at' => now(),
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'role' => RoleEnum::User->value,
         ])->setStatus('active');
 
-        User::factory()->create([
+        User::updateOrCreate([
             'name' => 'User 3',
             'email' => 'user3@user.user',
             'email_verified_at' => now(),
