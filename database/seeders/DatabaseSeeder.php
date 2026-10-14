@@ -67,14 +67,14 @@ class DatabaseSeeder extends Seeder
         //     'role' => RoleEnum::User->value,
         // ])->setStatus('active');
 
-        User::updateOrCreate([
-            'name' => 'User 3',
-            'email' => 'user3@user.user',
-            'email_verified_at' => now(),
-            'password' => Hash::make('Pa$$w0rd!'),
-            'remember_token' => Str::random(10),
-            'role' => RoleEnum::User->value,
-        ]);
+        // User::updateOrCreate([
+        //     'name' => 'User 3',
+        //     'email' => 'user3@user.user',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('Pa$$w0rd!'),
+        //     'remember_token' => Str::random(10),
+        //     'role' => RoleEnum::User->value,
+        // ]);
 
         if (App::environment('local')) {
             Answer::factory(1000)->create()->each->setStatus('active');
