@@ -12,7 +12,7 @@ class UniversitySeeder extends Seeder
     {
         $categories = UniversityCategory::pluck('id', 'name');
 
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Islamic University of Technology, Gazipur'],
             [
                 'acronym' => 'IUT',
@@ -20,7 +20,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['International'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Asian University for Women'],
             [
                 'acronym' => 'AUW',
@@ -28,7 +28,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['International'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'South Asian University'],
             [
                 'acronym' => 'SAU',
@@ -36,7 +36,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['International'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Dhaka'],
             [
                 'acronym' => 'DU',
@@ -44,7 +44,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Rajshahi'],
             [
                 'acronym' => 'RU',
@@ -52,7 +52,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Agricultural University'],
             [
                 'acronym' => 'BAU',
@@ -60,7 +60,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh University of Engineering & Technology'],
             [
                 'acronym' => 'BUET',
@@ -68,7 +68,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Chittagong'],
             [
                 'acronym' => 'CU',
@@ -76,7 +76,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Jahangirnagar University'],
             [
                 'acronym' => 'JU',
@@ -84,7 +84,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Islamic University, Bangladesh'],
             [
                 'acronym' => 'IU',
@@ -92,7 +92,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Shahjalal University of Science & Technology'],
             [
                 'acronym' => 'SUST',
@@ -100,7 +100,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Khulna University'],
             [
                 'acronym' => 'KU',
@@ -108,7 +108,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'National University'],
             [
                 'acronym' => 'NU',
@@ -116,7 +116,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Open University'],
             [
                 'acronym' => 'BOU',
@@ -124,7 +124,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Medical University'],
             [
                 'acronym' => 'BMU',
@@ -132,7 +132,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Gazipur Agricultural University'],
             [
                 'acronym' => 'GAU',
@@ -140,7 +140,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Hajee Mohammad Danesh Science & Technology University'],
             [
                 'acronym' => 'HSTU',
@@ -148,7 +148,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Mawlana Bhashani Science & Technology University'],
             [
                 'acronym' => 'MBSTU',
@@ -156,7 +156,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Patuakhali Science And Technology University'],
             [
                 'acronym' => 'PSTU',
@@ -164,7 +164,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Sher-e-Bangla Agricultural University'],
             [
                 'acronym' => 'SAU',
@@ -172,7 +172,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Chittagong University of Engineering & Technology'],
             [
                 'acronym' => 'CUET',
@@ -180,7 +180,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Rajshahi University of Engineering & Technology'],
             [
                 'acronym' => 'RUET',
@@ -188,7 +188,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Khulna University of Engineering & Technology'],
             [
                 'acronym' => 'KUET',
@@ -196,7 +196,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Dhaka University of Engineering & Technology'],
             [
                 'acronym' => 'DUET',
@@ -204,7 +204,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Noakhali Science & Technology University'],
             [
                 'acronym' => 'NSTU',
@@ -212,7 +212,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Jagannath University'],
             [
                 'acronym' => 'JNU',
@@ -220,7 +220,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Comilla University'],
             [
                 'acronym' => 'COU',
@@ -228,7 +228,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Jatiya Kabi Kazi Nazrul Islam University'],
             [
                 'acronym' => 'JKKNIU',
@@ -236,7 +236,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Chittagong Veterinary and Animal Sciences University'],
             [
                 'acronym' => 'CVASU',
@@ -244,7 +244,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Sylhet Agricultural University'],
             [
                 'acronym' => 'SAU',
@@ -252,7 +252,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Jessore University of Science & Technology'],
             [
                 'acronym' => 'JUST',
@@ -260,7 +260,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Pabna University of Science and Technology'],
             [
                 'acronym' => 'PUST',
@@ -268,7 +268,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Begum Rokeya University, Rangpur'],
             [
                 'acronym' => 'BRUR',
@@ -276,7 +276,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh University of Professionals'],
             [
                 'acronym' => 'BUP',
@@ -284,7 +284,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Gopalganj Science & Technology University'],
             [
                 'acronym' => 'GSTU',
@@ -292,7 +292,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh University of Textiles'],
             [
                 'acronym' => 'BUTEX',
@@ -300,7 +300,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Barishal'],
             [
                 'acronym' => 'BU',
@@ -308,7 +308,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Rangamati Science and Technology University'],
             [
                 'acronym' => 'RMSTU',
@@ -316,7 +316,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Maritime University'],
             [
                 'acronym' => 'BMU',
@@ -324,7 +324,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Islamic Arabic University'],
             [
                 'acronym' => 'IAU',
@@ -332,7 +332,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Chittagong Medical University'],
             [
                 'acronym' => 'CMU',
@@ -340,7 +340,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Rajshahi Medical University'],
             [
                 'acronym' => 'RMU',
@@ -348,7 +348,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Rabindra University, Bangladesh'],
             [
                 'acronym' => 'RUB',
@@ -356,7 +356,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Frontier Technology, Bangladesh'],
             [
                 'acronym' => 'UFTB',
@@ -364,7 +364,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Netrokona University'],
             [
                 'acronym' => 'NEU',
@@ -372,7 +372,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Khulna Agricultural University'],
             [
                 'acronym' => 'KAU',
@@ -380,7 +380,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Jamalpur Science and Technology University'],
             [
                 'acronym' => 'JSTU',
@@ -388,7 +388,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Sylhet Medical University, Sylhet'],
             [
                 'acronym' => 'SMU',
@@ -396,7 +396,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Aviation And Aerospace University, Bangladesh'],
             [
                 'acronym' => 'AAUB',
@@ -404,7 +404,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Chandpur Science and Technology University'],
             [
                 'acronym' => 'CSTU',
@@ -412,7 +412,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Kishoreganj University'],
             [
                 'acronym' => 'KiU',
@@ -420,7 +420,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Hobiganj Agricultural University'],
             [
                 'acronym' => 'HAU',
@@ -428,7 +428,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Khulna Medical University, Khulna'],
             [
                 'acronym' => 'KMU',
@@ -436,7 +436,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Kurigram Agricultural University'],
             [
                 'acronym' => 'KURIAU',
@@ -444,7 +444,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Sunamganj Science and Technology University'],
             [
                 'acronym' => 'SSTU',
@@ -452,7 +452,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Pirojpur Science & Technology University'],
             [
                 'acronym' => 'PRSTU',
@@ -460,7 +460,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Naogaon University'],
             [
                 'acronym' => 'NAU',
@@ -468,7 +468,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Meherpur University'],
             [
                 'acronym' => 'MUM',
@@ -476,7 +476,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bogra Science and Technology University'],
             [
                 'acronym' => 'BSTU',
@@ -484,7 +484,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Dhaka Central University'],
             [
                 'acronym' => 'DCU',
@@ -492,7 +492,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Thakurgaon University'],
             [
                 'acronym' => 'TU',
@@ -500,7 +500,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Lakshmipur Science & Technology University'],
             [
                 'acronym' => 'LSTU',
@@ -508,7 +508,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Public'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'North South University'],
             [
                 'acronym' => 'NSU',
@@ -516,7 +516,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Science & Technology Chittagong'],
             [
                 'acronym' => 'USTC',
@@ -524,7 +524,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Independent University, Bangladesh'],
             [
                 'acronym' => 'IUB',
@@ -532,7 +532,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Central Women\'s University'],
             [
                 'acronym' => 'CWU',
@@ -540,7 +540,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'International University of Business Agriculture & Technology'],
             [
                 'acronym' => 'IUBAT',
@@ -548,7 +548,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'International Islamic University Chittagong'],
             [
                 'acronym' => 'IIUC',
@@ -556,7 +556,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Ahsanullah University of Science and Technology'],
             [
                 'acronym' => 'AUST',
@@ -564,7 +564,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'American International University-Bangladesh'],
             [
                 'acronym' => 'AIUB',
@@ -572,7 +572,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'East West University'],
             [
                 'acronym' => 'EWU',
@@ -580,7 +580,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Asia Pacific'],
             [
                 'acronym' => 'UAP',
@@ -588,7 +588,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Gono Bishwabidyalay'],
             [
                 'acronym' => 'GB',
@@ -596,7 +596,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'The People\'s University of Bangladesh'],
             [
                 'acronym' => 'PUB',
@@ -604,7 +604,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Asian University of Bangladesh'],
             [
                 'acronym' => 'AUB',
@@ -612,7 +612,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Dhaka International University'],
             [
                 'acronym' => 'DIU',
@@ -620,7 +620,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Manarat International University'],
             [
                 'acronym' => 'MIU',
@@ -628,7 +628,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'BRAC University'],
             [
                 'acronym' => 'BRACU',
@@ -636,7 +636,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh University'],
             [
                 'acronym' => 'BU',
@@ -644,7 +644,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Leading University'],
             [
                 'acronym' => 'LUS',
@@ -652,7 +652,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'BGC Trust University Bangladesh'],
             [
                 'acronym' => 'BGCTUB',
@@ -660,7 +660,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Sylhet International University'],
             [
                 'acronym' => 'SIU',
@@ -668,7 +668,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Development Alternative'],
             [
                 'acronym' => 'UODA',
@@ -676,7 +676,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Premier University'],
             [
                 'acronym' => 'PUC',
@@ -684,7 +684,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Southeast University'],
             [
                 'acronym' => 'SEU',
@@ -692,7 +692,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Daffodil International University'],
             [
                 'acronym' => 'DIU',
@@ -700,7 +700,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Stamford University Bangladesh'],
             [
                 'acronym' => 'SUB',
@@ -708,7 +708,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'State University of Bangladesh'],
             [
                 'acronym' => 'SUB',
@@ -716,7 +716,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'City University'],
             [
                 'acronym' => 'CU',
@@ -724,7 +724,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Prime University'],
             [
                 'acronym' => 'PU',
@@ -732,7 +732,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Northern University Bangladesh'],
             [
                 'acronym' => 'NUB',
@@ -740,7 +740,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Southern University Bangladesh'],
             [
                 'acronym' => 'SUB',
@@ -748,7 +748,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Green University of Bangladesh'],
             [
                 'acronym' => 'GUB',
@@ -756,7 +756,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Pundra University of Science & Technology'],
             [
                 'acronym' => 'PUST',
@@ -764,7 +764,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'World University of Bangladesh'],
             [
                 'acronym' => 'WUB',
@@ -772,7 +772,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Shanto-Mariam University of Creative Technology'],
             [
                 'acronym' => 'SMUCT',
@@ -780,7 +780,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'The Millennium University'],
             [
                 'acronym' => 'TMU',
@@ -788,7 +788,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Eastern University'],
             [
                 'acronym' => 'EU',
@@ -796,7 +796,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Metropolitan University'],
             [
                 'acronym' => 'MU',
@@ -804,7 +804,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Uttara University'],
             [
                 'acronym' => 'UU',
@@ -812,7 +812,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'United International University'],
             [
                 'acronym' => 'UIU',
@@ -820,7 +820,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of South Asia'],
             [
                 'acronym' => 'USA',
@@ -828,7 +828,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Victoria University of Bangladesh'],
             [
                 'acronym' => 'VUB',
@@ -836,7 +836,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh University of Business & Technology'],
             [
                 'acronym' => 'BUBT',
@@ -844,7 +844,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Presidency University'],
             [
                 'acronym' => 'PU',
@@ -852,7 +852,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Information Technology & Sciences'],
             [
                 'acronym' => 'UITS',
@@ -860,7 +860,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Primeasia University'],
             [
                 'acronym' => 'PU',
@@ -868,7 +868,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Royal University of Dhaka'],
             [
                 'acronym' => 'RUD',
@@ -876,7 +876,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Liberal Arts Bangladesh'],
             [
                 'acronym' => 'ULAB',
@@ -884,7 +884,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Atish Dipankar University of Science & Technology'],
             [
                 'acronym' => 'ADUST',
@@ -892,7 +892,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Islami University'],
             [
                 'acronym' => 'BIU',
@@ -900,7 +900,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'ASA University Bangladesh'],
             [
                 'acronym' => 'ASAUB',
@@ -908,7 +908,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'East Delta University'],
             [
                 'acronym' => 'EDU',
@@ -916,7 +916,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'European University of Bangladesh'],
             [
                 'acronym' => 'EUB',
@@ -924,7 +924,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Varendra University'],
             [
                 'acronym' => 'VU',
@@ -932,7 +932,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Hamdard University Bangladesh'],
             [
                 'acronym' => 'HUB',
@@ -940,7 +940,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'BGMEA University of Fashion & Technology'],
             [
                 'acronym' => 'BUFT',
@@ -948,7 +948,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'North East University Bangladesh'],
             [
                 'acronym' => 'NEUB',
@@ -956,7 +956,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'First Capital University of Bangladesh'],
             [
                 'acronym' => 'FCUB',
@@ -964,7 +964,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Ishakha International University, Bangladesh'],
             [
                 'acronym' => 'IIUB',
@@ -972,7 +972,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Z.H Sikder University of Science & Technology'],
             [
                 'acronym' => 'ZHSUST',
@@ -980,7 +980,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Exim Bank Agricultural University, Bangladesh'],
             [
                 'acronym' => 'EBAUB',
@@ -988,7 +988,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'North Western University'],
             [
                 'acronym' => 'NWU',
@@ -996,7 +996,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Khwaja Yunus Ali University'],
             [
                 'acronym' => 'KYAU',
@@ -1004,7 +1004,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Sonargaon University'],
             [
                 'acronym' => 'SU',
@@ -1012,7 +1012,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Feni University'],
             [
                 'acronym' => 'FU',
@@ -1020,7 +1020,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Britannia University'],
             [
                 'acronym' => 'BU',
@@ -1028,7 +1028,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Port City International University'],
             [
                 'acronym' => 'PCIU',
@@ -1036,7 +1036,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh University of Health Sciences'],
             [
                 'acronym' => 'BUHS',
@@ -1044,7 +1044,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Chittagong Independent University'],
             [
                 'acronym' => 'CIU',
@@ -1052,7 +1052,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Notre Dame University Bangladesh'],
             [
                 'acronym' => 'NDUB',
@@ -1060,7 +1060,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Times University, Bangladesh'],
             [
                 'acronym' => 'TUB',
@@ -1068,7 +1068,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'North Bengal International University'],
             [
                 'acronym' => 'NBIU',
@@ -1076,7 +1076,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Fareast International University'],
             [
                 'acronym' => 'FIU',
@@ -1084,7 +1084,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Rajshahi Science & Technology University, Natore'],
             [
                 'acronym' => 'RSTU',
@@ -1092,7 +1092,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Brahmaputra International University'],
             [
                 'acronym' => 'BRIU',
@@ -1100,7 +1100,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Cox\'s Bazar International University'],
             [
                 'acronym' => 'CBIU',
@@ -1108,7 +1108,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'R. P. Shaha University'],
             [
                 'acronym' => 'RPSU',
@@ -1116,7 +1116,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'German University Bangladesh'],
             [
                 'acronym' => 'GUB',
@@ -1124,7 +1124,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Global University Bangladesh'],
             [
                 'acronym' => 'GUB',
@@ -1132,7 +1132,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'CCN University of Science & Technology'],
             [
                 'acronym' => 'CCNUST',
@@ -1140,7 +1140,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Army University of Science and Technology, Saidpur'],
             [
                 'acronym' => 'BAUST',
@@ -1148,7 +1148,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Army University of Engineering and Technology, Qadirabad'],
             [
                 'acronym' => 'BAUET',
@@ -1156,7 +1156,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Army International University of Science & Technology,Comilla'],
             [
                 'acronym' => 'BAIUST',
@@ -1164,7 +1164,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Scholars'],
             [
                 'acronym' => 'IUS',
@@ -1172,7 +1172,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Canadian University of Bangladesh'],
             [
                 'acronym' => 'CUB',
@@ -1180,7 +1180,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'N.P.I University of Bangladesh'],
             [
                 'acronym' => 'NPIUB',
@@ -1188,7 +1188,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Northern University of Business & Technology, Khulna'],
             [
                 'acronym' => 'NUBTK',
@@ -1196,7 +1196,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Rabindra Maitree University, Kushtia'],
             [
                 'acronym' => 'RMU',
@@ -1204,7 +1204,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Creative Technology, Chittagong'],
             [
                 'acronym' => 'UCTC',
@@ -1212,7 +1212,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Central University of Science and Technology'],
             [
                 'acronym' => 'CUST',
@@ -1220,7 +1220,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Tagore University of Creative Arts, Uttara, Dhaka, Bangladesh'],
             [
                 'acronym' => 'TUCA',
@@ -1228,7 +1228,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Global Village'],
             [
                 'acronym' => 'UGV',
@@ -1236,7 +1236,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Rupayan A.K.M Shamsuzzoha University'],
             [
                 'acronym' => 'RAKMSU',
@@ -1244,7 +1244,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Anwer Khan Modern University'],
             [
                 'acronym' => 'AKMU',
@@ -1252,7 +1252,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'ZNRF University of Management Sciences'],
             [
                 'acronym' => 'ZUMS',
@@ -1260,7 +1260,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Ahsania Mission University of Science and Technology'],
             [
                 'acronym' => 'AMUST',
@@ -1268,7 +1268,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Khulna Khan Bahadur Ahsanullah University'],
             [
                 'acronym' => 'KKBAU',
@@ -1276,7 +1276,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bandarban University'],
             [
                 'acronym' => 'BUBBAN',
@@ -1284,7 +1284,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Shah Makhdum Management University, Rajshahi'],
             [
                 'acronym' => 'SMMU',
@@ -1292,7 +1292,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Trust University, Barishal'],
             [
                 'acronym' => 'TU',
@@ -1300,7 +1300,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'International Standard University'],
             [
                 'acronym' => 'ISU',
@@ -1308,7 +1308,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Brahmanbaria'],
             [
                 'acronym' => 'UoB',
@@ -1316,7 +1316,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'University of Skill Enrichment and Technology'],
             [
                 'acronym' => 'USET',
@@ -1324,7 +1324,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Microland University of Science and Technology'],
             [
                 'acronym' => 'MUST',
@@ -1332,7 +1332,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'R.T.M Al-Kabir Technical University'],
             [
                 'acronym' => 'RTMAKTU',
@@ -1340,7 +1340,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Dr. Momtaz Begum University of Science and Technology'],
             [
                 'acronym' => 'MUST',
@@ -1348,7 +1348,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Chattogram BGMEA University of Fashion and Technology'],
             [
                 'acronym' => 'CBUFT',
@@ -1356,7 +1356,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Bangladesh Army University of Science and Technology, Khulna'],
             [
                 'acronym' => 'BAUSTK',
@@ -1364,7 +1364,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Teesta University, Rangpur'],
             [
                 'acronym' => 'TU',
@@ -1372,7 +1372,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'International Islami University of Science and Technology Bangladesh'],
             [
                 'acronym' => 'IIUSTB',
@@ -1380,7 +1380,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Lalon University of Science and Arts'],
             [
                 'acronym' => 'LUSA',
@@ -1388,7 +1388,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Justice Abu Zafar Siddiquie Science and Technology University, Kustia'],
             [
                 'acronym' => 'JAZSSTUK',
@@ -1396,7 +1396,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Grameen University'],
             [
                 'acronym' => 'GU',
@@ -1404,7 +1404,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'IBAIS University'],
             [
                 'acronym' => 'IBAISU',
@@ -1412,7 +1412,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'The University of Comilla'],
             [
                 'acronym' => 'TUC',
@@ -1420,7 +1420,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Queens University'],
             [
                 'acronym' => 'QU',
@@ -1428,7 +1428,7 @@ class UniversitySeeder extends Seeder
                 'university_category_id' => $categories['Private'],
             ],
         )->setStatus('active');
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'America Bangladesh University'],
             [
                 'acronym' => 'ABU',
@@ -1437,7 +1437,7 @@ class UniversitySeeder extends Seeder
             ],
         )->setStatus('active');
 
-        University::firstOrCreate(
+        University::updateOrCreate(
             ['name' => 'Not Listed?'],
             [
                 'acronym' => 'OTHER',

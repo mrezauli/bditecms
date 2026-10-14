@@ -9,7 +9,7 @@ class ExamSeeder extends Seeder
 {
     public function run(): void
     {
-        Exam::firstOrCreate(
+        Exam::updateOrCreate(
             ['name' => 'IT Passport Exam'],
             [
                 'acronym' => 'IP',
@@ -21,7 +21,7 @@ class ExamSeeder extends Seeder
             ],
         )->setStatus('active');
 
-        Exam::firstOrCreate(
+        Exam::updateOrCreate(
             ['name' => 'Fundamental IT Engineer Exam'],
             [
                 'acronym' => 'FE',

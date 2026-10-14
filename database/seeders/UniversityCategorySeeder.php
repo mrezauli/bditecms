@@ -9,8 +9,8 @@ class UniversityCategorySeeder extends Seeder
 {
     public function run(): void
     {
-        UniversityCategory::firstOrCreate(['name' => 'International']);
-        UniversityCategory::firstOrCreate(['name' => 'Public']);
-        UniversityCategory::firstOrCreate(['name' => 'Private']);
+        UniversityCategory::updateOrCreate(['name' => 'International']);
+        UniversityCategory::updateOrCreate(['name' => 'Public']);
+        UniversityCategory::updateOrCreate(['name' => 'Private']);
     }
 }

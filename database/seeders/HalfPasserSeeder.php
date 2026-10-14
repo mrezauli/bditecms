@@ -103,7 +103,7 @@ class HalfPasserSeeder extends Seeder
             $intakeName = $this->extractIntakeName($remarks);
             $intakeId = Intake::where('name', $intakeName)->value('id');
 
-            $halfPasser = HalfPasser::firstOrCreate(
+            $halfPasser = HalfPasser::updateOrCreate(
                 ['examinee_no' => $examineeNo, 'type_id' => $morningTypeId],
                 [
                     'name' => $name,
@@ -121,7 +121,7 @@ class HalfPasserSeeder extends Seeder
             $intakeName = $this->extractIntakeName($remarks);
             $intakeId = Intake::where('name', $intakeName)->value('id');
 
-            $halfPasser = HalfPasser::firstOrCreate(
+            $halfPasser = HalfPasser::updateOrCreate(
                 ['examinee_no' => $examineeNo, 'type_id' => $afternoonTypeId],
                 [
                     'name' => $name,

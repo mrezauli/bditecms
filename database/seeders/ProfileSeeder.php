@@ -20,7 +20,7 @@ class ProfileSeeder extends Seeder
         $universities = University::all();
 
         foreach ($users as $user) {
-            Profile::firstOrCreate(
+            Profile::updateOrCreate(
                 ['user_id' => $user->id],
                 [
                     'date_of_birth' => fake()->dateTimeBetween('-40 years', '-20 years')->format('Y-m-d'),

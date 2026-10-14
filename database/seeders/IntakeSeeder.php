@@ -28,7 +28,7 @@ class IntakeSeeder extends Seeder
         ];
 
         foreach ($intakes as $intake) {
-            Intake::firstOrCreate(
+            Intake::updateOrCreate(
                 ['name' => $intake['name'], 'exam_id' => $intake['exam_id']],
                 $intake,
             )->setStatus('active');

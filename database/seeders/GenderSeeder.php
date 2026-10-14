@@ -9,7 +9,7 @@ class GenderSeeder extends Seeder
 {
     public function run(): void
     {
-        Gender::firstOrCreate(['name' => 'Male'])->setStatus('active');
-        Gender::firstOrCreate(['name' => 'Female'])->setStatus('active');
+        Gender::updateOrCreate(['name' => 'Male'])->setStatus('active');
+        Gender::updateOrCreate(['name' => 'Female'])->setStatus('active');
     }
 }

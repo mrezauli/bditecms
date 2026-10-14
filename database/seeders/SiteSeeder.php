@@ -12,23 +12,23 @@ class SiteSeeder extends Seeder
     {
         $divisions = Division::pluck('id', 'name');
 
-        Site::firstOrCreate(
+        Site::updateOrCreate(
             ['name' => 'Dhaka'],
             ['division_id' => $divisions['Dhaka']]
         )->setStatus('active');
-        Site::firstOrCreate(
+        Site::updateOrCreate(
             ['name' => 'Rajshahi'],
             ['division_id' => $divisions['Rajshahi']]
         )->setStatus('active');
-        Site::firstOrCreate(
+        Site::updateOrCreate(
             ['name' => 'Chattogram'],
             ['division_id' => $divisions['Chattogram']]
         )->setStatus('active');
-        Site::firstOrCreate(
+        Site::updateOrCreate(
             ['name' => 'Khulna'],
             ['division_id' => $divisions['Khulna']]
         )->setStatus('active');
-        Site::firstOrCreate(
+        Site::updateOrCreate(
             ['name' => 'Sylhet'],
             ['division_id' => $divisions['Sylhet']]
         )->setStatus('active');

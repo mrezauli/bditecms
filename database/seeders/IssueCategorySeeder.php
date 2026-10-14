@@ -12,7 +12,7 @@ class IssueCategorySeeder extends Seeder
         $categories = ['Payment', 'Exam', 'Account', 'General'];
 
         foreach ($categories as $name) {
-            IssueCategory::firstOrCreate(['name' => $name]);
+            IssueCategory::updateOrCreate(['name' => $name]);
         }
     }
 }

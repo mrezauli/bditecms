@@ -61,7 +61,7 @@ class EnrollmentSeeder extends Seeder
                     : $answerPool->random()->id;
             }
 
-            Enrollment::firstOrCreate(
+            Enrollment::updateOrCreate(
                 ['user_id' => $user->id, 'exam_id' => $examId],
                 $enrollmentData,
             );
