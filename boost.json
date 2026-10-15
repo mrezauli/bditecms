@@ -8,7 +8,8 @@
     "nightwatch": false,
     "packages": [
         "filament/filament",
-        "barryvdh/laravel-debugbar"
+        "barryvdh/laravel-debugbar",
+        "spatie/laravel-pdf"
     ],
     "sail": false,
     "skills": [
@@ -21,6 +22,7 @@
         "livewire-development",
         "tailwindcss-development",
         "filament-development",
+        "laravel-pdf",
         "debug-using-debugbar",
         "deploying-laravel-cloud"
     ]
