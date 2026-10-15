@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ExamineeController;
 use App\Http\Controllers\Auth\RegisterPreviewController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentAcknowledgementController;
 use App\Http\Controllers\SslcommerzController;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -11,7 +12,7 @@ use App\Livewire\PaymentDetails;
 use App\Livewire\PaymentValidation;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::post('/examinee/validate', [ExamineeController::class, 'validate'])
     ->name('examinee.validate');

@@ -1174,34 +1174,33 @@
                         <span
                             style="color:#94a3b8;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase">Upcoming
                             Examination</span>
-                        <span
-                            style="background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:#34d399;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:99px">Open</span>
+                        @if ($heroIntake && $heroIntake->isRegistrationOpen())
+                            <span
+                                style="background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:#34d399;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:99px">Open</span>
+                        @elseif($heroIntake)
+                            <span
+                                style="background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:#fbbf24;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:99px">Closed</span>
+                        @endif
                     </div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-                        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px">
-                            <div
-                                style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:#818cf8;line-height:1">
-                                IP Exam</div>
-                            <div style="color:#94a3b8;font-size:12px;margin-top:5px;font-weight:500">Level 1 — Passport
+                        @foreach ($exams->take(2) as $exam)
+                            <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px">
+                                <div
+                                    style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:{{ $loop->first ? '#818cf8' : '#34d399' }};line-height:1">
+                                    {{ $exam->acronym }} Exam</div>
+                                <div style="color:#94a3b8;font-size:12px;margin-top:5px;font-weight:500">Level
+                                    {{ $exam->level }} — {{ $exam->name }}
+                                </div>
+                                <div style="margin-top:10px;font-size:11px;color:#64748b">
+                                    {{ $loop->first ? 'For all graduates & professionals' : 'For CSE/IT students & engineers' }}</div>
                             </div>
-                            <div style="margin-top:10px;font-size:11px;color:#64748b">For all graduates &amp;
-                                professionals</div>
-                        </div>
-                        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px">
-                            <div
-                                style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:#34d399;line-height:1">
-                                FE Exam</div>
-                            <div style="color:#94a3b8;font-size:12px;margin-top:5px;font-weight:500">Level 2 —
-                                Fundamental</div>
-                            <div style="margin-top:10px;font-size:11px;color:#64748b">For CSE/IT students &amp;
-                                engineers</div>
-                        </div>
+                        @endforeach
                     </div>
                     <div
                         style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between">
                         <div style="display:flex;align-items:center;gap:6px;color:#64748b;font-size:12px">
                             <span class="ms" style="font-size:15px;color:#64748b">calendar_month</span>
-                            April / May 2026
+                            {{ $heroIntake ? $heroIntake->name.' — '.$heroIntake->exam_date->format('d F Y') : 'Schedule to be announced' }}
                         </div>
                         <a href="#"
                             style="color:#818cf8;font-size:12px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:3px">
@@ -1246,7 +1245,7 @@
                 </div>
                 <div class="hero-stat-divider"></div>
                 <div class="hero-stat-item" style="flex:1">
-                    <span class="hero-stat-val" data-count="4">0</span>
+                    <span class="hero-stat-val" data-count="{{ $sites->count() }}">{{ $sites->count() }}</span>
                     <span class="hero-stat-label">Exam Venues</span>
                 </div>
                 <div class="hero-stat-divider"></div>
@@ -1598,75 +1597,46 @@
             </div>
 
             <div style="display:flex;flex-direction:column;gap:12px">
-                <div class="date-card reveal">
-                    <div class="date-badge-wrap" style="flex-shrink:0">
-                        <span class="month-lbl">Apr</span>
-                        <span class="day-lbl">26</span>
-                    </div>
-                    <div style="flex:1">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
-                            <span style="font-weight:700;color:#0f172a;font-size:15px">IP &amp; FE Exam — Spring
-                                2026</span>
-                            <span class="status-pill status-open">Open</span>
+                @forelse ($schedules as $schedule)
+                    @php
+                        $isOpen = $schedule->isRegistrationOpen();
+                        $isUpcoming = ! $isOpen && now()->lt($schedule->registration_starts_at);
+                        $pill = $isOpen ? 'status-open' : ($isUpcoming ? 'status-soon' : 'status-closed');
+                        $pillText = $isOpen ? 'Open' : ($isUpcoming ? 'Upcoming' : 'Closed');
+                        $subLine = $isOpen
+                            ? 'Registration closes '.$schedule->registration_ends_at->format('d F Y')
+                            : ($isUpcoming
+                                ? 'Registration opens '.$schedule->registration_starts_at->format('d F Y')
+                                : ($schedule->result_published_at && now()->gte($schedule->result_published_at)
+                                    ? 'Results published — check the Results page'
+                                    : 'Exam held on '.$schedule->exam_date->format('d F Y')));
+                    @endphp
+                    <div class="date-card reveal" @if(! $isOpen) style="border-left-color:#9ca3af;opacity:.65" @endif>
+                        <div class="date-badge-wrap" style="flex-shrink:0">
+                            <span class="month-lbl" @if(! $isOpen) style="background:#6b7280" @endif>{{ $schedule->exam_date->format('M') }}</span>
+                            <span class="day-lbl" @if(! $isOpen) style="background:#f3f4f6;color:#374151" @endif>{{ $schedule->exam_date->format('d') }}</span>
                         </div>
-                        <div style="color:#64748b;font-size:12.5px">Registration closes 31 March 2026</div>
-                        <div
-                            style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:flex;align-items:center;gap:5px">
-                            <span class="ms" style="font-size:13px;color:#94a3b8">location_on</span>Dhaka · Chittagong ·
-                            Rajshahi · Khulna
+                        <div style="flex:1">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
+                                <span style="font-weight:700;color:#0f172a;font-size:15px">{{ $schedule->exam?->acronym }} Exam — {{ $schedule->name }}</span>
+                                <span class="status-pill {{ $pill }}">{{ $pillText }}</span>
+                            </div>
+                            <div style="color:#64748b;font-size:12.5px">{{ $subLine }}</div>
+                            <div
+                                style="color:#94a3b8;font-size:11.5px;margin-top:4px;display:flex;align-items:center;gap:5px">
+                                <span class="ms" style="font-size:13px;color:#94a3b8">location_on</span>{{ $sites->pluck('name')->join(' · ') }}
+                            </div>
+                        </div>
+                        <span class="ms" style="color:#c7d2fe;font-size:20px;flex-shrink:0">chevron_right</span>
+                    </div>
+                @empty
+                    <div class="date-card reveal">
+                        <div style="flex:1">
+                            <span style="font-weight:700;color:#0f172a;font-size:15px">Schedule to be announced</span>
+                            <div style="color:#64748b;font-size:12.5px">Upcoming exam dates will appear here.</div>
                         </div>
                     </div>
-                    <span class="ms" style="color:#c7d2fe;font-size:20px;flex-shrink:0">chevron_right</span>
-                </div>
-
-                <div class="date-card reveal d1" style="border-left-color:#16a34a">
-                    <div class="date-badge-wrap" style="flex-shrink:0">
-                        <span class="month-lbl" style="background:#16a34a">Mar</span>
-                        <span class="day-lbl" style="background:#dcfce7;color:#166534">31</span>
-                    </div>
-                    <div style="flex:1">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
-                            <span style="font-weight:700;color:#0f172a;font-size:15px">Registration Deadline — Spring
-                                2026</span>
-                            <span class="status-pill status-soon">Upcoming</span>
-                        </div>
-                        <div style="color:#64748b;font-size:12.5px">Submit form and bKash payment confirmation before
-                            midnight</div>
-                    </div>
-                    <span class="ms" style="color:#c7d2fe;font-size:20px;flex-shrink:0">chevron_right</span>
-                </div>
-
-                <div class="date-card reveal d2" style="border-left-color:#9ca3af;opacity:.65">
-                    <div class="date-badge-wrap" style="flex-shrink:0">
-                        <span class="month-lbl" style="background:#6b7280">Oct</span>
-                        <span class="day-lbl" style="background:#f3f4f6;color:#374151">25</span>
-                    </div>
-                    <div style="flex:1">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
-                            <span style="font-weight:700;color:#0f172a;font-size:15px">IP &amp; FE Exam — Autumn
-                                2025</span>
-                            <span class="status-pill status-closed">Closed</span>
-                        </div>
-                        <div style="color:#64748b;font-size:12.5px">Results published — check the Results page</div>
-                    </div>
-                    <span class="ms" style="color:#e2e8f0;font-size:20px;flex-shrink:0">chevron_right</span>
-                </div>
-
-                <div class="date-card reveal d3" style="border-left-color:#9ca3af;opacity:.5">
-                    <div class="date-badge-wrap" style="flex-shrink:0">
-                        <span class="month-lbl" style="background:#6b7280">Apr</span>
-                        <span class="day-lbl" style="background:#f3f4f6;color:#374151">27</span>
-                    </div>
-                    <div style="flex:1">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap">
-                            <span style="font-weight:700;color:#0f172a;font-size:15px">IP &amp; FE Exam — Spring
-                                2025</span>
-                            <span class="status-pill status-closed">Closed</span>
-                        </div>
-                        <div style="color:#64748b;font-size:12.5px">Results published — check the Results page</div>
-                    </div>
-                    <span class="ms" style="color:#e2e8f0;font-size:20px;flex-shrink:0">chevron_right</span>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -1680,66 +1650,36 @@
                 <div class="section-chip">
                     <span class="ms" style="font-size:13px">location_on</span>Exam Venues
                 </div>
-                <h2 class="section-title">Four Cities <em>Across Bangladesh</em></h2>
+                <h2 class="section-title">{{ $sites->count() }} Cities <em>Across Bangladesh</em></h2>
                 <div class="section-rule" style="margin:14px auto"></div>
                 <p class="section-desc" style="margin:0 auto;text-align:center">The examination is conducted
-                    simultaneously at four venues on the same day and time.</p>
+                    simultaneously at {{ $sites->count() }} venues on the same day and time.</p>
             </div>
 
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" class="venue-grid">
-                <div class="venue-card reveal d1">
-                    <div class="venue-pin-icon" style="background:#eef2ff">
-                        <span class="ms" style="color:#4f46e5;font-size:28px">location_city</span>
+                @php
+                    $palettes = [
+                        ['bg' => '#eef2ff', 'fg' => '#4f46e5', 'badge_bg' => '#eef2ff', 'badge_fg' => '#4338ca'],
+                        ['bg' => '#f0fdf4', 'fg' => '#16a34a', 'badge_bg' => '#f0fdf4', 'badge_fg' => '#166534'],
+                        ['bg' => '#fff7ed', 'fg' => '#ea580c', 'badge_bg' => '#fff7ed', 'badge_fg' => '#9a3412'],
+                        ['bg' => '#fdf4ff', 'fg' => '#9333ea', 'badge_bg' => '#fdf4ff', 'badge_fg' => '#7e22ce'],
+                    ];
+                @endphp
+                @foreach ($sites as $site)
+                    @php $palette = $palettes[$loop->index % count($palettes)]; @endphp
+                    <div class="venue-card reveal d{{ ($loop->index % 4) + 1 }}">
+                        <div class="venue-pin-icon" style="background:{{ $palette['bg'] }}">
+                            <span class="ms" style="color:{{ $palette['fg'] }};font-size:28px">location_city</span>
+                        </div>
+                        <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">{{ $site->name }}</h3>
+                        <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">{{ $site->division?->name }}</p>
+                        <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
+                            <span
+                                style="background:{{ $palette['badge_bg'] }};color:{{ $palette['badge_fg'] }};font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">{{ $loop->first ? 'Primary' : 'Regional' }}
+                                Venue</span>
+                        </div>
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">Dhaka</h3>
-                    <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">Bangladesh Computer
-                        Council, ICT Tower, Agargaon</p>
-                    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
-                        <span
-                            style="background:#eef2ff;color:#4338ca;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">Primary
-                            Venue</span>
-                    </div>
-                </div>
-                <div class="venue-card reveal d2">
-                    <div class="venue-pin-icon" style="background:#f0fdf4">
-                        <span class="ms" style="color:#16a34a;font-size:28px">location_city</span>
-                    </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">Chittagong
-                    </h3>
-                    <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">Chittagong University of
-                        Engineering &amp; Technology</p>
-                    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
-                        <span
-                            style="background:#f0fdf4;color:#166534;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">Regional
-                            Venue</span>
-                    </div>
-                </div>
-                <div class="venue-card reveal d3">
-                    <div class="venue-pin-icon" style="background:#fff7ed">
-                        <span class="ms" style="color:#ea580c;font-size:28px">location_city</span>
-                    </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">Rajshahi</h3>
-                    <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">Rajshahi University of
-                        Engineering &amp; Technology</p>
-                    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
-                        <span
-                            style="background:#fff7ed;color:#9a3412;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">Regional
-                            Venue</span>
-                    </div>
-                </div>
-                <div class="venue-card reveal d4">
-                    <div class="venue-pin-icon" style="background:#fdf4ff">
-                        <span class="ms" style="color:#9333ea;font-size:28px">location_city</span>
-                    </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:#0f172a">Khulna</h3>
-                    <p style="color:#64748b;font-size:12.5px;margin-top:7px;line-height:1.55">Khulna University of
-                        Engineering &amp; Technology</p>
-                    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9">
-                        <span
-                            style="background:#fdf4ff;color:#7e22ce;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:99px">Regional
-                            Venue</span>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
